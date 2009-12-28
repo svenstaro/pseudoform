@@ -1,0 +1,64 @@
+Pseudoform README
+============================
+
+Some clearing up
+----------------------------
+Clarification for everything that is to follow:
+* Portalized is the name of the game engine
+* Pseudoform is the name of the overall project, the idea and all media included
+Any references to Pseudoform therefore also address Portalized because Portalized
+is a necessary part of this project.
+
+License
+----------------------------
+The project is licensed under the zlib license described in COPYING. 
+The license applies to the Portalized game engine code, Pseudoform media and 
+Pseudoform documents. 
+It does not apply to the third party libraries Portalized is linked against.
+If you want to find out about the third party libraries, please look them up
+in the doc/ directory.
+
+Control and configuration
+----------------------------
+Relevant configuration files are:
+	data/scripts/bind.lua for looking up and settings keybindings
+and
+	data/scripts/root.xml for changing the resolution and screen mode.
+Do NOT change the plugins line in root.xml.
+
+Standard configuration for editor mode is:
+Left Mouse Hold		-	Move on XZ plane
+Right Mouse Hold	-	Look around XY
+Left+Right Mouse	-	Move on XY plane
+Middle mouse 		- 	Drag object (needs simulation to be started)
+1, 2, 3				-	Gizmos for transformations
+Del					- 	Delete selected object
+Escape				-	Go back from game mode
+CTRL-D 				- 	Duplicate selection
+
+Standard configuration for game mode is:
+W, A, S, D			-	Standard FPS movement
+Space				-	Jump
+
+Known problems
+----------------------------
+- The game is currently not found to be working with Intel integrated graphics chips.
+- ATI users should use D3D in root.xml instead of OGL if they see issues with OGL
+- Some ATI cards do currently not work at all using either renderer
+
+Problems reporting
+----------------------------
+If there are problems, bugs or other issues, tell us so on our 
+forums on http://www.pseudoform.org. Please also read the stickies.
+
+Have fun
+----------------------------
+Greetings to everyone in the community!
+Sven-Hendrik 'Svenstaro' Haase <sh@lutzhaase.com>
+
+
+----------------------------
+
+Copyright (c) 2008-2009 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
+
+This file is part of Pseudoform (Pseudoform project at http://www.pseudoform.org).
