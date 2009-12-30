@@ -9,3 +9,5 @@ copy zlib.h ..\include
 copy zconf.h ..\include
 cd ..
 rm -rf zlib-1.2.3
+exit
+

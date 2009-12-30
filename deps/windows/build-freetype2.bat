@@ -8,3 +8,5 @@ copy objs\.libs\libfreetype.a ..\lib
 cp -r include/* ../include/
 cd ..
 rm -rf freetype-2.3.11
+exit
+

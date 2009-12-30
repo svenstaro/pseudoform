@@ -15,3 +15,5 @@ copy dll\OIS_d.dll ..\bin
 cp -r includes/* ../include/
 cd ..
 rm -rf ois
+exit
+

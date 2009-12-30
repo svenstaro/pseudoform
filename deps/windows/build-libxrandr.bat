@@ -4,3 +4,5 @@ tar xjvf libXrandr-1.3.0.tar.bz2
 cd libXaw-1.3.0
 sh configure
 make
+exit
+

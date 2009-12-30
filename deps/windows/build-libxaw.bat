@@ -4,3 +4,5 @@ tar xjvf libXaw-1.0.7.tar.bz2
 cd libXaw-1.0.7
 sh configure
 make
+exit
+

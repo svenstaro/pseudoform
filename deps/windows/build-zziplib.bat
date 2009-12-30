@@ -11,3 +11,5 @@ copy zzip\zzip.h ..\include
 cd ..
 pause 
 rem rm -rf zziplib-0.13.58
+exit
+

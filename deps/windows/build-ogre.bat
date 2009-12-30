@@ -13,3 +13,5 @@ cd build
 path = %oldpath%
 cmake -G "MinGW Makefiles" ..
 make
+exit
+
