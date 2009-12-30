@@ -27,18 +27,18 @@ and
 Do NOT change the plugins line in root.xml.
 
 Standard configuration for editor mode is:
-Left Mouse Hold		-	Move on XZ plane
-Right Mouse Hold	-	Look around XY
-Left+Right Mouse	-	Move on XY plane
-Middle mouse 		- 	Drag object (needs simulation to be started)
-1, 2, 3				-	Gizmos for transformations
-Del					- 	Delete selected object
-Escape				-	Go back from game mode
-CTRL-D 				- 	Duplicate selection
+Left Mouse Hold         -       Move on XZ plane
+Right Mouse Hold        -       Look around XY
+Left+Right Mouse        -       Move on XY plane
+Middle mouse            -       Drag object (needs simulation to be started)
+1, 2, 3                 -       Gizmos for transformations
+Del                     -       Delete selected object
+Escape                  -       Go back from game mode
+CTRL-D                  -       Duplicate selection
 
 Standard configuration for game mode is:
-W, A, S, D			-	Standard FPS movement
-Space				-	Jump
+W, A, S, D		-	Standard FPS movement
+Space			-	Jump
 
 Known problems
 ----------------------------
