@@ -7,7 +7,7 @@ start /wait DXSDK_Aug09.exe
 wget -c "http://developer.download.nvidia.com/cg/Cg_2.2/Cg-2.2_October2009_Setup.exe"
 start /wait Cg-2.2_October2009_Setup.exe
 start /WAIT build-zlib.bat
-start /WAIT buiid-freeimage.bat
+start /WAIT build-freeimage.bat
 start /WAIT build-ois.bat
 start /WAIT build-freetype2.bat
 start /WAIT build-boost.bat
