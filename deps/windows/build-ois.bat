@@ -1,5 +1,5 @@
 path = %PATH%;%CD%\CodeBlocks\MinGW\bin
-wget -c "http://sourceforge.net/projects/wgois/files/Source Release/1.2/ois_1.2.0.tar.gz/download"
+wget -c "http://downloads.sourceforge.net/wgois/ois_1.2.0.tar.gz"
 tar xzvf ois_1.2.0.tar.gz
 cd ois
 copy "%DXSDK_DIR%"\include\* includes\
