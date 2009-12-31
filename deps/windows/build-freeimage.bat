@@ -11,4 +11,3 @@ copy Dist\FreeImage.h ..\include
 cd ..
 rm -rf FreeImage
 exit
-

@@ -5,4 +5,3 @@ cd libXaw-1.3.0
 sh configure
 make
 exit
-
