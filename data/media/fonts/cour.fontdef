@@ -1,0 +1,16 @@
+courier
+{
+    type truetype
+    source media/fonts/cour.ttf
+    size 16
+    antialias_colour false
+    antialias_alpha false
+}
+
+//courier.16
+//{
+//    type truetype
+//    source media/fonts/cour.ttf
+//    size 16
+//    antialias_colour false
+//}

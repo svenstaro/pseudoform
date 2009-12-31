@@ -1,0 +1,5 @@
+<prop>
+    <gfx group="primary" mesh="levels/test_ao2/test_ao2.mesh" material="test_ao2_mat"/>
+    <phys type="tree" mesh="levels/test_ao2/test_ao2.mesh" mass="0"/>
+	<scale x="1" y="1" z="1"/>
+</prop>

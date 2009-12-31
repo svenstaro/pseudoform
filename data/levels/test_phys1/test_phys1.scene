@@ -1,0 +1,29 @@
+<scene formatVersion="1.0" upAxis="y" unitsPerMeter="100" minOgreVersion="1.4" author="OgreMax Scene Exporter by Derek Nedelman (www.ogremax.com)">
+    <environment>
+        <colourAmbient r="0" g="0" b="0" />
+        <colourBackground r="0" g="0" b="0" />
+    </environment>
+    <nodes>
+        <node name="test_phys1">
+            <scale x="0.460686" y="0.460686" z="0.460686" />
+            <position x="0" y="0" z="0" />
+            <rotation qx="0" qy="-5.72181e-010" qz="0" qw="1" />
+            <entity name="test_phys1" id="1" meshFile="test_phys1.mesh" castShadows="true" receiveShadows="true">
+                <subentities>
+                    <subentity index="0" materialName="Material#280[test_phys1]" />
+                    <subentity index="1" materialName="Default1" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="VRayLight01">
+            <scale x="1.28421" y="1" z="1.59395" />
+            <position x="-2731.81" y="1346.41" z="8.69302" />
+            <rotation qx="-0.706434" qy="0.0308435" qz="0.0308435" qw="-0.706434" />
+            <light name="VRayLight01" id="74" type="point" castShadows="true" power="1.20985e+006">
+                <colourDiffuse r="1" g="1" b="1" />
+                <colourSpecular r="1" g="1" b="1" />
+                <lightAttenuation range="1e+020" constant="1" linear="0" quadric="0" />
+            </light>
+        </node>
+    </nodes>
+</scene>

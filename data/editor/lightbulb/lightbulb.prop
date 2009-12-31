@@ -1,0 +1,5 @@
+<prop>
+    <gfx group="secondary" mesh="editor/lightbulb/lightbulb.mesh" material="lightbulb_mat"/>
+    <phys type="convex" mesh="editor/lightbulb/lightbulb.mesh" mass="1" swept="1"/>
+    <scale x="0.1" y="0.1" z="0.1"/>
+</prop>

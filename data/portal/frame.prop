@@ -1,0 +1,5 @@
+<prop>
+    <gfx group="secondary" mesh="props/frame/frame.mesh" material="wood"/>
+    <phys type="concave" mesh="props/frame/frame.mesh" x="1" y="1" z="0.1" mass="10" swept="1"/>
+    <scale x="1" y="1" z="1"/>
+</prop>

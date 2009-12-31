@@ -1,0 +1,5 @@
+<prop>
+    <gfx group="secondary" mesh="actors/sentry/capsule.mesh" material="wood"/>
+    <phys type="capsule" x="0.9" y="1.9" z="0.9" swept="1"/>
+    <scale x="1" y="1" z="1"/>
+</prop>

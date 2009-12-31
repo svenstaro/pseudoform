@@ -1,0 +1,10 @@
+import normal_map_template from "media/shaders/general.material"
+
+material turbine_mat : normal_map_template
+{
+    set_texture_alias diffuseMap props/turbine/turbine_d.png
+    // need to fix turbine TEXCOORD1 for AO map
+    //set_texture_alias aoMap media/textures/turbine_a.png
+    set_texture_alias emissiveMap props/turbine/turbine_e.png
+    set_texture_alias normalMap media/textures/noisy_n.jpg
+}

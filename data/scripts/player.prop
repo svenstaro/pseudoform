@@ -1,0 +1,5 @@
+<prop>
+    <gfx group="secondary" mesh="Prefab_Cube" material="blue"/>
+    <phys type="capsule" x="100" y="100" z="100" mass="10" swept="1"/>
+    <scale x="0.0025" y="0.05" z="0.0025"/>
+</prop>

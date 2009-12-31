@@ -1,0 +1,77 @@
+vertex_program generic_forward_vs cg
+{
+    source media/shaders/forward.cg
+    entry_point generic_forward_vs
+
+    profiles vs_1_1 arbvp1
+
+    default_params
+    {
+        param_named_auto wMat world_matrix
+        param_named_auto wvpMat worldviewproj_matrix
+    }
+}
+
+fragment_program generic_forward_ps cg
+{
+    source media/shaders/forward.cg
+    entry_point generic_forward_ps
+
+    profiles ps_2_0 arbfp1
+
+    default_params
+    {
+        param_named_auto clipPlane custom 256
+        param_named_auto sceneClipPlane custom 257
+    }
+}
+
+fragment_program colour_forward_ps cg
+{
+    source media/shaders/forward.cg
+    entry_point colour_forward_ps
+
+    profiles ps_2_0 arbfp1
+
+    default_params
+    {
+        param_named_auto clipPlane custom 256
+        param_named_auto sceneClipPlane custom 257
+    }
+}
+
+fragment_program clear_depth_ps cg
+{
+    source media/shaders/utils.cg
+    entry_point clear_depth_ps
+
+    profiles ps_2_0 arbfp1
+}
+
+fragment_program basic_texture_ps cg
+{
+    source media/shaders/utils.cg
+    entry_point basic_ps
+
+    profiles ps_2_0 arbfp1
+
+    default_params
+    {
+        param_named_auto colour surface_diffuse_colour
+    }
+
+    compile_arguments -DTEXTURE
+}
+
+fragment_program basic_colour_ps cg
+{
+    source media/shaders/utils.cg
+    entry_point basic_ps
+
+    profiles ps_2_0 arbfp1
+
+    default_params
+    {
+        param_named_auto colour surface_diffuse_colour
+    }
+}

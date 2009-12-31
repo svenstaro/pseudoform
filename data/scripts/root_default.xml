@@ -1,0 +1,7 @@
+<renderer lib="ogl"
+    plugins="/usr/lib/OGRE/"
+    width="1024"
+    height="768"
+    fullscreen="0"
+    fsaa="0"
+    vsync="false"/>

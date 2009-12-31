@@ -1,0 +1,5 @@
+<prop>
+    <gfx group="secondary" mesh="props/ogrehead/ogrehead.mesh" material="ogrehead_mat"/>
+    <phys type="convex" mesh="props/ogrehead/ogrehead.mesh" mass="50"/>
+    <scale x="0.025" y="0.025" z="0.025"/>
+</prop>

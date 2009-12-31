@@ -1,0 +1,83 @@
+
+struct vertIn_generic
+{
+    float4 p  : POSITION;
+    float3 n  : NORMAL;
+    float3 t  : TANGENT;
+    float2 uv0: TEXCOORD0;
+    float2 uv1: TEXCOORD1;
+};
+
+struct vertOut_forward
+{
+    float4 p  : POSITION;
+    float2 uv0: TEXCOORD0;
+    float2 uv1: TEXCOORD1;
+    float3 wp : TEXCOORD2;
+};
+
+struct fragIn_forward
+{
+    float2 uv0: TEXCOORD0;
+    float2 uv1: TEXCOORD1;
+    float3 wp : TEXCOORD2;
+};
+
+struct fragOut_forward
+{
+    float4 col: COLOR0;
+};
+
+vertOut_forward generic_forward_vs(vertIn_generic IN,
+    uniform float4x4 wMat,
+    uniform float4x4 wvpMat)
+{
+    vertOut_forward OUT;
+
+    OUT.p = mul(wvpMat, IN.p);
+    OUT.uv0 = IN.uv0;
+    OUT.uv1 = IN.uv1;
+
+    OUT.wp = mul(wMat, float4(IN.p.xyz, 1)).xyz;
+
+    return OUT;
+}
+
+fragOut_forward generic_forward_ps(fragIn_forward IN,
+    uniform float4 clipPlane,
+    uniform float4 sceneClipPlane,
+    uniform sampler2D diffuseMap : TEXUNIT0,
+    uniform sampler2D emissiveMap: TEXUNIT1
+    )
+{
+    fragOut_forward OUT;
+
+    clip(dot(clipPlane.xyz, IN.wp) + clipPlane.w);
+    clip(dot(sceneClipPlane.xyz, IN.wp) + sceneClipPlane.w);
+
+    float4 diffuseTexel = tex2D(diffuseMap, IN.uv0);
+    float4 emissiveTexel = tex2D(emissiveMap, IN.uv0);
+    float4 aoTexel = tex2D(emissiveMap, IN.uv1);
+
+    OUT.col = float4(diffuseTexel.xyz * aoTexel.w + emissiveTexel.xyz, 1);
+
+    return OUT;
+}
+
+fragOut_forward colour_forward_ps(fragIn_forward IN,
+    uniform float far,
+    uniform float4 clipPlane,
+    uniform float4 sceneClipPlane,
+    uniform float4x4 iTWVMat, // inverse transpose for normals
+    uniform float4 colour)
+{
+    fragOut_forward OUT;
+
+    clip(dot(clipPlane.xyz, IN.wp) + clipPlane.w);
+    clip(dot(sceneClipPlane.xyz, IN.wp) + sceneClipPlane.w);
+
+    OUT.col = float4(colour.xyz + colour.xyz * colour.w, 1);
+
+    return OUT;
+}
+

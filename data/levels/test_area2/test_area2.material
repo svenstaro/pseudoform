@@ -1,0 +1,44 @@
+import basic_template from "media/shaders/general.material"
+import normal_map_template from "media/shaders/general.material"
+
+material "Yellow Bricks" : normal_map_template
+{
+    set_texture_alias diffuseMap media/textures/test13_d.jpg
+    set_texture_alias normalMap media/textures/test13_n.jpg
+
+//    set_texture_alias diffuseMap levels/test_area2/yelw_tex.jpg
+//    set_texture_alias normalMap levels/test_area2/yelw_bmp.jpg
+}
+
+material "Rusty Metal" : normal_map_template
+{
+//    set_texture_alias diffuseMap levels/test_area2/rsty_tex.jpg
+//    set_texture_alias normalMap levels/test_area2/rsty_bmp.jpg
+    set_texture_alias diffuseMap media/textures/test14_d.jpg
+    set_texture_alias normalMap media/textures/test14_n.jpg
+}
+
+material "Brick Tiles" : normal_map_template
+{
+    // Brik is higher case =P
+    set_texture_alias diffuseMap media/textures/test12_d.jpg
+    set_texture_alias normalMap media/textures/test12_n.jpg
+//    set_texture_alias diffuseMap levels/test_area2/Brik_tex.jpg
+//    set_texture_alias normalMap levels/test_area2/Brik_bmp.jpg
+}
+
+material "Small Bricks" : normal_map_template
+{
+//    set_texture_alias diffuseMap levels/test_area2/smll_tex.jpg
+//    set_texture_alias normalMap levels/test_area2/smll_bmp.jpg
+    set_texture_alias diffuseMap media/textures/test12_d.jpg
+    set_texture_alias normalMap media/textures/test12_n.jpg
+}
+
+material "Diamond Plate" : normal_map_template
+{
+    set_texture_alias diffuseMap media/textures/test11_d.jpg
+    set_texture_alias normalMap media/textures/test11_n.jpg
+//    set_texture_alias diffuseMap levels/test_area2/dmnd_tex.jpg
+//    set_texture_alias normalMap levels/test_area2/dmnd_bmp.jpg
+}

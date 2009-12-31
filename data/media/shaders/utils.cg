@@ -1,0 +1,104 @@
+//#if defined(SM3)
+//#define TEX2DLOD(map, uv) tex2Dlod(map, float4((uv).xy, 0, 0))
+//#elif defined(SM2)
+//#define TEX2DLOD(map, uv) tex2D(map, (uv).xy)
+//#else
+//#define TEX2DLOD tex2D
+//#endif
+ps_3_0 float4 TEX2DLOD(sampler2D map, float2 uv)
+{
+    return tex2Dlod(map, float4(uv.xy, 0, 0));
+}
+
+float4 TEX2DLOD(sampler2D map, float2 uv)
+{
+    return tex2D(map, uv);
+}
+
+float2 projectedUV(float4 uv)
+{
+    return (uv.xy / uv.w) * float2(0.5, -0.5) + float2(0.5, 0.5);
+}
+
+float3 expand(float3 n)
+{
+    return n * 2 - 1;
+}
+
+float3 compress(float3 n)
+{
+    return (n + 1) * 0.5;
+}
+
+float2 expand(float2 n)
+{
+    return n * 2 - 1;
+}
+
+float2 compress(float2 n)
+{
+    return (n + 1) * 0.5;
+}
+
+float3 avg(float3 f)
+{
+    return (f.x + f.y + f.z) * 0.333333;
+}
+
+float3 computeZ(float2 xy)
+{
+    return float3(xy, sqrt(1.0 - dot(xy, xy)));
+}
+
+float3 computeViewNorm(float3 vp)
+{
+    float3 b = normalize(ddx(vp));
+    float3 t = normalize(ddy(vp));
+    return cross(t, b);
+}
+
+float sqlength(float3 a, float3 b)
+{
+    return dot(a, b);
+}
+
+float lum(float3 c)
+{
+    return dot(c, float3(0.3, 0.59, 0.11));
+}
+
+float4 basic_ps(in float2 uv : TEXCOORD0,
+    uniform float4 colour
+    #ifdef TEXTURE
+    ,uniform sampler2D map
+    #endif
+    ) : COLOR0
+{
+    #ifdef TEXTURE
+    return tex2D(map, uv) * colour;
+    #else
+    return colour;
+    #endif
+}
+
+float4 clear_depth_ps(out float oDepth : DEPTH): COLOR0
+{
+    oDepth = 1;
+    // shouldn't write colour
+    return float4(1, 0, 1, 1);
+}
+
+float4 btex2Dlod(sampler2D map, float2 uv, float radius, float steps)
+{
+    half stepSize = 2.0 * radius / steps;
+    uv.xy -= radius.xx;
+
+    float4 total = float4(0, 0, 0, 0);
+    for (int x = 0; x < steps; ++x)
+        for (int y = 0; y < steps; ++y)
+            total +=
+                tex2Dlod(map, float4(uv.xy + float2(x * stepSize, y * stepSize), 0, 0));
+
+    return total / (steps * steps);
+}
+

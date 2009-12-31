@@ -1,0 +1,8 @@
+import normal_map_template from "media/shaders/general.material"
+
+material radio_mat : normal_map_template
+{
+    set_texture_alias diffuseMap props/radio/radio_d.png
+    set_texture_alias emissiveMap props/radio/radio_e.png
+    set_texture_alias normalMap props/radio/radio_n.png
+}

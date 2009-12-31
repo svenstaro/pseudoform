@@ -1,0 +1,192 @@
+material empty_mat
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            depth_write off
+            depth_check off
+            colour_write off
+        }
+    }
+}
+
+material generic_template
+{
+    set $poly_mode "solid"
+    set $depth_check "on"
+
+    technique forward
+    {
+        //scheme forward
+
+        pass 0
+        {
+            vertex_program_ref generic_forward_vs
+            {
+            }
+
+            polygon_mode $poly_mode
+            depth_check $depth_check
+        }
+    }
+
+    technique depth
+    {
+        scheme depth
+
+        pass 0
+        {
+            // render only depth
+            depth_check $depth_check
+            polygon_mode $poly_mode
+            depth_write on
+
+            colour_write off
+            lighting off
+        }
+    }
+}
+
+material basic_template : generic_template
+{
+    technique forward
+    {
+        pass 0
+        {
+            fragment_program_ref generic_forward_ps
+            {
+            }
+
+            texture_unit diffuseMap
+            {
+                texture media/textures/white.bmp
+                tex_coord_set 0
+            }
+
+            texture_unit emissiveMap
+            {
+                texture media/textures/black.bmp
+                tex_coord_set 0
+            }
+        }
+    }
+}
+
+material normal_map_template : generic_template
+{
+    technique forward
+    {
+        pass 0
+        {
+            fragment_program_ref generic_forward_ps
+            {
+            }
+
+            texture_unit diffuseMap
+            {
+                texture media/textures/white.bmp
+                tex_coord_set 0
+            }
+
+            texture_unit emissiveMap
+            {
+                texture media/textures/black.bmp
+                tex_coord_set 0
+            }
+        }
+    }
+}
+
+material colour_template : generic_template
+{
+    set $colour "1 0 1 1"
+
+    technique forward
+    {
+        pass 0
+        {
+            fragment_program_ref colour_forward_ps
+            {
+                param_named colour float4 $colour
+            }
+        }
+    }
+}
+
+material rockwall : basic_template
+{
+    //set_texture_alias emissiveMap media/textures/black.bmp
+}
+
+material wood : basic_template
+{
+    set_texture_alias diffuseMap media/textures/wood_d.jpg
+}
+
+material test_mat : normal_map_template
+{
+    set_texture_alias diffuseMap media/textures/test10_d.jpg
+    set_texture_alias normalMap media/textures/test10_n.jpg
+}
+
+material red : colour_template
+{
+    set $colour "1 0 0 0"
+}
+
+material green : colour_template
+{
+    set $colour "0 1 0 0"
+}
+
+material blue : colour_template
+{
+    set $colour "0 0 1 0"
+}
+
+material white : colour_template
+{
+    set $colour "1 1 1 0"
+}
+
+material orange : colour_template
+{
+    set $colour "1 0.5 0.25 1"
+}
+
+material red_wireframe : colour_template
+{
+    set $colour "1 0 0 1"
+    set $poly_mode "wireframe"
+}
+
+material green_wireframe : colour_template
+{
+    set $colour "0 1 0 1"
+    set $poly_mode "wireframe"
+}
+
+material blue_wireframe : colour_template
+{
+    set $colour "0 0 1 1"
+    set $poly_mode "wireframe"
+}
+
+material white_wireframe : colour_template
+{
+    set $colour "1 1 1 1"
+    set $poly_mode "wireframe"
+}
+
+// make our own 'default' materials that render properly
+material BaseWhite : red_wireframe
+{
+}
+
+material BaseWhiteNoLighting : red_wireframe
+{
+}
+
+

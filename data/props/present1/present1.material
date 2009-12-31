@@ -1,0 +1,9 @@
+import normal_map_template from "media/shaders/general.material"
+
+material present1_mat : normal_map_template
+{
+    set_texture_alias diffuseMap props/present1/present1_d.png
+    //set_texture_alias aoMap props/present1/present1_a.png
+    set_texture_alias specularMap props/present1/present1_s.png
+	set_texture_alias normalMap props/present1/present1_n.png
+}

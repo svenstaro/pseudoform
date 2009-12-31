@@ -1,0 +1,5 @@
+<prop>
+    <gfx group="secondary" mesh="Prefab_Sphere" material="orange"/>
+    <phys type="sphere" x="100" y="100" z="100" mass="10" swept="0"/>
+    <scale x="0.004" y="0.004" z="0.004"/>
+</prop>

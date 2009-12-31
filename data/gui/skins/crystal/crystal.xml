@@ -1,0 +1,85 @@
+<skin name="crystal">
+    <panel>
+        <top_left image="crystal_panel_tl.png"/>
+        <top image="crystal_panel_tc.png"/>
+        <top_right image="crystal_panel_tr.png"/>
+        <right image="crystal_panel_rc.png"/>
+        <bottom_right image="crystal_panel_br.png"/>
+        <bottom image="crystal_panel_bc.png"/>
+        <bottom_left image="crystal_panel_bl.png"/>
+        <left image="crystal_panel_lc.png"/>
+        <middle image="crystal_panel_mi.png"/>
+    </panel>
+
+    <window>
+        <top_left image=""/>
+        <top image=""/>
+        <top_right image=""/>
+        <right image="crystal_panel_rc.png"/>
+        <bottom_right image="crystal_panel_br.png"/>
+        <bottom image="crystal_panel_bc.png"/>
+        <bottom_left image="crystal_panel_bl.png"/>
+        <left image="crystal_panel_lc.png"/>
+        <middle image="crystal_panel_mi.png"/>
+    </window>
+
+    <titlebar>
+        <top_left image="crystal_panel_tl.png"/>
+        <top image="crystal_panel_tc.png"/>
+        <top_right image="crystal_panel_tr.png"/>
+        <right image="crystal_panel_rc.png"/>
+        <bottom_right image=""/>
+        <bottom image=""/>
+        <bottom_left image=""/>
+        <left image="crystal_panel_lc.png"/>
+        <middle image="crystal_panel_mi.png"/>
+    </titlebar>
+
+    <checkBox>
+        <top_left image="crystal_extra_tl.png"/>
+        <top image="crystal_extra_tc.png"/>
+        <top_right image="crystal_extra_tr.png"/>
+        <right image="crystal_extra_rc.png"/>
+        <bottom_right image="crystal_extra_br.png"/>
+        <bottom image="crystal_extra_bc.png"/>
+        <bottom_left image="crystal_extra_bl.png"/>
+        <left image="crystal_extra_lc.png"/>
+        <middle image="crystal_extra_mi.png"/>
+    </checkBox>
+
+    <textBox>
+        <top_left image="crystal_extra_tl.png"/>
+        <top image="crystal_extra_tc.png"/>
+        <top_right image="crystal_extra_tr.png"/>
+        <right image="crystal_extra_rc.png"/>
+        <bottom_right image="crystal_extra_br.png"/>
+        <bottom image="crystal_extra_bc.png"/>
+        <bottom_left image="crystal_extra_bl.png"/>
+        <left image="crystal_extra_lc.png"/>
+        <middle image="crystal_extra_mi.png"/>
+    </textBox>
+
+    <dropDownMenu>
+        <top_left image="crystal_extra_tl.png"/>
+        <top image="crystal_extra_tc.png"/>
+        <top_right image="crystal_extra_tr.png"/>
+        <right image="crystal_extra_rc.png"/>
+        <bottom_right image="crystal_extra_br.png"/>
+        <bottom image="crystal_extra_bc.png"/>
+        <bottom_left image="crystal_extra_bl.png"/>
+        <left image="crystal_extra_lc.png"/>
+        <middle image="crystal_extra_mi.png"/>
+    </dropDownMenu>
+
+    <button>
+        <top_left image="crystal_extra_tl.png"/>
+        <top image="crystal_extra_tc.png"/>
+        <top_right image="crystal_extra_tr.png"/>
+        <right image="crystal_extra_rc.png"/>
+        <bottom_right image="crystal_extra_br.png"/>
+        <bottom image="crystal_extra_bc.png"/>
+        <bottom_left image="crystal_extra_bl.png"/>
+        <left image="crystal_extra_lc.png"/>
+        <middle image="crystal_extra_mi.png"/>
+    </button>
+</skin>

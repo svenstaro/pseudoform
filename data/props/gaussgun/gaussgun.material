@@ -1,0 +1,28 @@
+import basic_template from "media/shaders/general.material"
+
+material gaussgun_mat : basic_template
+{
+    set_texture_alias diffuseMap props/gaussgun/gaussgun_base_d.png
+	set_texture_alias emissiveMap props/gaussgun/gaussgun_base_e.png
+    //set_texture_alias aoMap props/gaussgun/gaussgun_base_a.png
+    //set_texture_alias specularMap props/gaussgun/gaussgun_base_s.png
+	//set_texture_alias normalMap props/gaussgun/gaussgun_base_n.png
+}
+
+material gaussgun_barrel_mat : basic_template
+{
+    set_texture_alias diffuseMap props/gaussgun/gaussgun_barrel_d.png
+	//set_texture_alias emissiveMap props/gaussgun/gaussgun_barrel_e.png
+    //set_texture_alias aoMap props/gaussgun/gaussgun_barrel_a.png
+    //set_texture_alias specularMap props/gaussgun/gaussgun_barrel_s.png
+	//set_texture_alias normalMap props/gaussgun/gaussgun_barrel_n.png
+}
+
+material gaussgun_drum_mat : basic_template
+{
+    set_texture_alias diffuseMap props/gaussgun/gaussgun_drum_d.png
+	set_texture_alias emissiveMap props/gaussgun/gaussgun_drum_e.png
+    //set_texture_alias aoMap props/gaussgun/gaussgun_drum_a.png
+    //set_texture_alias specularMap props/gaussgun/gaussgun_drum_s.png
+	//set_texture_alias normalMap props/gaussgun/gaussgun_drum_n.png
+}

@@ -1,0 +1,10 @@
+import normal_map_template from "media/shaders/general.material"
+
+material test_movement1_mat : normal_map_template
+{
+    set_texture_alias diffuseMap levels/test_movement1/test_movement1_map1_1024.png
+    set_texture_alias normalMap levels/test_movement1/test_movement1_map2_1024.png
+	set_texture_alias emissiveMap levels/test_movement1/test_movement1_map3_1024.png
+    //set_texture_alias specularMap props/present2/present2_s.png
+	//set_texture_alias normalMap props/present2/present2_n.png
+}

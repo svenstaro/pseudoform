@@ -1,0 +1,28 @@
+vertex_program gui_vs cg
+{
+    source gui/gui.cg
+    profiles vs_1_1 arbvp1
+    entry_point gui_vs
+}
+
+fragment_program gui_ps cg
+{
+    source gui/gui.cg
+    profiles ps_2_0 arbfp1
+    entry_point gui_ps
+}
+
+fragment_program gui_select_ps cg
+{
+    source gui/gui.cg
+    profiles ps_2_x arbfp1
+    entry_point gui_select_ps
+}
+
+fragment_program gui_press_ps cg
+{
+    source gui/gui.cg
+    profiles ps_2_x arbfp1
+    entry_point gui_press_ps
+}
+

@@ -1,0 +1,4 @@
+<prop>
+    <gfx mesh="levels/teaventure_level1/teaventure_level1.mesh" material="teaventure_level1_mat"/>
+    <phys type="tree" mesh="levels/teaventure_level1/teaventure_level1.mesh" mass="0"/>
+</prop>

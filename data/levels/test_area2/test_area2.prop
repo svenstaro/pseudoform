@@ -1,0 +1,4 @@
+<prop>
+    <gfx mesh="levels/test_area2/test_area2.mesh" material=""/>
+    <phys type="tree" mesh="levels/test_area2/test_area2.mesh" mass="0"/>
+</prop>

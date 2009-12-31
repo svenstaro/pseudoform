@@ -1,0 +1,1 @@
+import basic_template from "media/shaders/general.material"material sentry_mat : basic_template{    set_texture_alias diffuseMap actors/sentry/sentry_map1_1024.png    //set_texture_alias aoMap props/present1/present1_a.png	//set_texture_alias normalMap props/present1/present1_n.png}

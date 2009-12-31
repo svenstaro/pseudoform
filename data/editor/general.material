@@ -1,0 +1,13 @@
+import * from "media/shaders/general.material"
+
+material spawn_ent_template : green_wireframe
+{
+}
+
+//material picked_ent_template : white_wireframe
+//{
+//}
+
+material aabb_template : blue_wireframe
+{
+}

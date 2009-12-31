@@ -1,0 +1,4 @@
+<prop>
+    <gfx mesh="levels/test_mockup1/test_mockup1.mesh" material="wood"/>
+    <phys type="tree" mesh="levels/test_mockup1/test_mockup1.mesh" mass="0"/>
+</prop>

@@ -1,0 +1,8 @@
+import basic_template from "media/shaders/general.material"
+
+material teapot_mat : basic_template
+{
+    set_texture_alias diffuseMap media/textures/wood_d.jpg
+    set_texture_alias aoMap props/teapot/teapot_a.png
+    //set_texture_alias emissiveMap media/textures/teapot_e.png
+}

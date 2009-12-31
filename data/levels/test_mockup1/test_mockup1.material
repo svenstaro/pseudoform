@@ -1,0 +1,98 @@
+import basic_template from "media/shaders/general.material"
+import colour_template from "media/shaders/general.material"
+
+material test_mockup1_mat : colour_template
+{
+    set $colour "0.9 0.4 0.2 0"
+}
+
+// all of these materials below cause a bug when the actual prop materials
+// are loaded.  editing the real prop's radio_mat does not work because
+// there's a radio_mat here.  therefore, the test_mockup1 prop will use
+// the "wood" material until we get these names fixed
+// (maybe with a prefix or suffix that they belong to this prop and not the others)
+
+//material gaussgun_base_mat : basic_template
+//{
+//    set_texture_alias diffuseMap props/gaussgun/gaussgun_base_d.png
+//	set_texture_alias emissiveMap props/gaussgun/gaussgun_base_e.png
+//    //set_texture_alias aoMap props/gaussgun/gaussgun_base_a.png
+//    //set_texture_alias specularMap props/gaussgun/gaussgun_base_s.png
+//	//set_texture_alias normalMap props/gaussgun/gaussgun_base_n.png
+//}
+//
+//material gaussgun_barrel_mat : basic_template
+//{
+//    set_texture_alias diffuseMap props/gaussgun/gaussgun_barrel_d.png
+//	//set_texture_alias emissiveMap props/gaussgun/gaussgun_barrel_e.png
+//    //set_texture_alias aoMap props/gaussgun/gaussgun_barrel_a.png
+//    //set_texture_alias specularMap props/gaussgun/gaussgun_barrel_s.png
+//	//set_texture_alias normalMap props/gaussgun/gaussgun_barrel_n.png
+//}
+//
+//material torusknot_mat : colour_template
+//{
+//    set $colour "1 0 0 0.2"
+//}
+//
+//material radio_mat : basic_template
+//{
+//    set_texture_alias diffuseMap props/radio/radio_d.png
+//    set_texture_alias emissiveMap props/radio/radio_e.png
+//}
+//
+//
+//material multigun_mat : colour_template
+//{
+//    set $colour "0.4 0.4 0.4 0"
+//}
+//
+//material tux_mat : colour_template
+//{
+//    set $colour "0.01 0.01 0.01 0.3"
+//}
+//
+//material tux_right_foot_mat : colour_template
+//{
+//    set $colour "1 0.5 0.25 0.5"
+//}
+//
+//material tux_left_foot_mat : colour_template
+//{
+//    set $colour "1 0.5 0.25 0.5"
+//}
+//
+//material tux_right_eye_mat : colour_template
+//{
+//    set $colour "0.9 0.9 0.9 0.2"
+//}
+//
+//material tux_left_eye_mat : colour_template
+//{
+//    set $colour "0.9 0.9 0.9 0.2"
+//}
+//
+//material turbine_mat : colour_template
+//{
+//    set $colour "0.4 0.4 0.4 0"
+//}
+//
+//material plasmacell_mat : colour_template
+//{
+//    set $colour "0.4 0.4 0.4 0"
+//}
+//
+//material turbine_outer_mat : colour_template
+//{
+//    set $colour "0.4 0.4 0.4 0"
+//}
+//
+//material turbine_inner1_mat : colour_template
+//{
+//    set $colour "0.4 0.4 0.4 0"
+//}
+//
+//material turbine_inner2_mat : colour_template
+//{
+//    set $colour "0.4 0.4 0.4 0"
+//}

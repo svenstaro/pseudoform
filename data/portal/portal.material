@@ -1,0 +1,37 @@
+material portal
+{
+    technique
+    {
+        pass stencil
+        {
+            lighting off
+            depth_write off
+            depth_check on
+            colour_write off
+        }
+
+        pass clearDepth
+        {
+            depth_write on
+            depth_check on
+            // for DEPTH output to work, we need depth_check on
+            // but then we'll get clipped if we do oDepth = 1
+            // so we need to be checking for greater depth, instead
+            depth_func greater_equal
+            colour_write off
+
+            fragment_program_ref clear_depth_ps
+            {
+            }
+        }
+
+        pass depth
+        {
+
+            lighting off
+            depth_write on
+            depth_check on
+            colour_write off
+        }
+    }
+}

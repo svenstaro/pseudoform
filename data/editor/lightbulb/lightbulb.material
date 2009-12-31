@@ -1,0 +1,6 @@
+import colour_template from "media/shaders/general.material"
+
+material lightbulb_mat : colour_template
+{
+    set $colour "1 1 1 1"
+}

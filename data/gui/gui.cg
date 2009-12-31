@@ -1,0 +1,114 @@
+struct vertOut
+{
+    float4 p    : POSITION;
+    float2 uv   : TEXCOORD0;
+    float4 off0 : TEXCOORD1;
+    float4 off1 : TEXCOORD2;
+    float4 off2 : TEXCOORD3;
+    float4 off3 : TEXCOORD4;
+    float4 off4 : TEXCOORD5;
+    float4 off5 : TEXCOORD6;
+};
+
+struct fragIn
+{
+    float2 uv   : TEXCOORD0;
+    float4 off0 : TEXCOORD1;
+    float4 off1 : TEXCOORD2;
+    float4 off2 : TEXCOORD3;
+    float4 off3 : TEXCOORD4;
+    float4 off4 : TEXCOORD5;
+    float4 off5 : TEXCOORD6;
+};
+
+vertOut gui_vs(in float4 p : POSITION, in float2 uv : TEXCOORD0,
+    uniform float4 invSize,
+    uniform float4x4 mat)
+{
+    vertOut OUT;
+
+    OUT.p = mul(mat, p);
+    OUT.uv = uv;
+
+    OUT.off0 = float4(uv + float2(-invSize.x, 0), uv + float2(invSize.x, 0));
+    OUT.off1 = float4(uv + float2(0, -invSize.y), uv + float2(0, invSize.y));
+    OUT.off2 = float4(uv + -invSize.xy, uv + invSize.xy);
+    OUT.off3 = float4(uv + float2(invSize.x, -invSize.y), uv + float2(-invSize.x, invSize.y));
+    OUT.off4 = float4(uv + float2(-invSize.x * 2, 0), uv + float2(invSize.x * 2, 0));
+    OUT.off5 = float4(uv + float2(0, -invSize.y * 2), uv + float2(0, invSize.y * 2));
+
+    return OUT;
+}
+
+float4 gui_ps(fragIn IN,
+    uniform float alpha,
+    uniform float4 colour,
+    uniform sampler2D tex : TEXUNIT0): COLOR0
+{
+    float4 texel = tex2D(tex, IN.uv);
+    return float4(texel.xyz, texel.a * alpha) * colour;
+}
+
+float4 gui_press_ps(fragIn IN,
+    uniform float alpha,
+    uniform float4 invSize,
+    uniform float4 colour,
+    uniform sampler2D tex : TEXUNIT0): COLOR0
+{
+//    float4 texel = tex2D(tex, IN.uv);
+//
+//    float4 total = texel +
+//        tex2D(tex, IN.off0.xy) +
+//        tex2D(tex, IN.off0.zw) +
+//        tex2D(tex, IN.off1.xy) +
+//        tex2D(tex, IN.off1.zw) +
+//        tex2D(tex, IN.off2.xy) +
+//        tex2D(tex, IN.off2.zw) +
+//        tex2D(tex, IN.off3.xy) +
+//        tex2D(tex, IN.off3.zw) +
+//        tex2D(tex, IN.off4.xy) +
+//        tex2D(tex, IN.off4.zw) +
+//        tex2D(tex, IN.off5.xy) +
+//        tex2D(tex, IN.off5.zw);
+//
+//    total = total / 13.0;
+//
+//    float4 black = float4(0, 0, 0, total.a);
+//
+//    float4 col = float4(texel.xyz, texel.a * alpha) * colour;
+//
+//    float4 ret = texel.a < 0.5 ? black : col;
+//
+////    return float4(texel.xyz, texel.a * alpha) * colour;
+//    return ret;
+    float4 texel = tex2D(tex, IN.off4.xy);
+    return float4(texel.xyz, texel.a * alpha) * colour;
+}
+
+float4 gui_select_ps(fragIn IN,
+    uniform float alpha,
+    uniform float4 colour,
+    uniform sampler2D tex : TEXUNIT0): COLOR0
+{
+//    float4 texel = tex2D(tex, uv);
+//    return float4(texel.xyz, texel.a * alpha) * colour;
+    float4 texel = tex2D(tex, IN.uv);
+
+    float4 total = texel +
+        tex2D(tex, IN.off0.xy) +
+        tex2D(tex, IN.off0.zw) +
+        tex2D(tex, IN.off1.xy) +
+        tex2D(tex, IN.off1.zw) +
+        tex2D(tex, IN.off2.xy) +
+        tex2D(tex, IN.off2.zw) +
+        tex2D(tex, IN.off3.xy) +
+        tex2D(tex, IN.off3.zw) +
+        tex2D(tex, IN.off4.xy) +
+        tex2D(tex, IN.off4.zw) +
+        tex2D(tex, IN.off5.xy) +
+        tex2D(tex, IN.off5.zw);
+
+    total = total / 13.0;
+
+    return float4(total.aaa * (1.0 - texel.a), 1);
+}

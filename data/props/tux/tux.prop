@@ -1,0 +1,5 @@
+<prop>
+    <gfx group="secondary" mesh="props/tux/tux.mesh"/>
+    <phys type="concave" mesh="props/tux/tux.mesh" mass="10" swept="1"/>
+    <scale x="1" y="1" z="1"/>
+</prop>

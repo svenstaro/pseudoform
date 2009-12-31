@@ -1,0 +1,5 @@
+<prop>
+    <gfx group="secondary" mesh="should_not_exists.mesh" material="wood"/>
+    <phys type="convex" mesh="also_does_not_exist.mesh" swept="1" autoSleep="0"/>
+    <scale x="1" y="1" z="1"/>
+</prop>

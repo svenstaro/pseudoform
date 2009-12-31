@@ -1,0 +1,8 @@
+import normal_map_template from "media/shaders/general.material"
+
+material first_steps_mat : normal_map_template
+{
+    set_texture_alias diffuseMap levels/first_steps/tile_d.png 
+    set_texture_alias aoMap levels/first_steps/first_steps_ao.png
+    set_texture_alias normalMap levels/first_steps/tile_n.png
+}

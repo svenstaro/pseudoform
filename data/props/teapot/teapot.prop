@@ -1,0 +1,5 @@
+<prop>
+    <gfx group="secondary" mesh="props/teapot/teapot.mesh" material="teapot_mat"/>
+    <phys type="convex" mesh="props/teapot/teapot.mesh" mass="10"/>
+    <scale x="1" y="1" z="1"/>
+</prop>

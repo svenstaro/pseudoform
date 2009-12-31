@@ -1,0 +1,20 @@
+function bindEditorInput(state)
+    state:bind("+KC_ESCAPE", function() state:escape() end)
+    state:bind("+KC_DELETE", function() state:deletePicked() end)
+    state:bind("+KC_1", function() state:gizmoVisible(0, true) end)
+    state:bind("-KC_1", function() state:gizmoVisible(0, false) end)
+    state:bind("+KC_2", function() state:gizmoVisible(1, true) end)
+    state:bind("-KC_2", function() state:gizmoVisible(1, false) end)
+    state:bind("+KC_3", function() state:gizmoVisible(2, true) end)
+    state:bind("-KC_3", function() state:gizmoVisible(2, false) end)
+    state:bind("+KC_F11", function() state:exit() end)
+end
+
+function bindPlayInput(state)
+    state:bind("KC_A", function() state:move(vec3(-1, 0, 0)) end)
+    state:bind("KC_D", function() state:move(vec3(1, 0, 0)) end)
+    state:bind("KC_W", function() state:move(vec3(0, 0, -1)) end)
+    state:bind("KC_S", function() state:move(vec3(0, 0, 1)) end)
+    state:bind("+KC_SPACE", function() state:jump() end)
+    state:bind("+KC_F11", function() state:exit() end)
+end

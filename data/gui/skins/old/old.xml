@@ -1,0 +1,37 @@
+<skin name="old">
+    <panel>
+        <top_left image=""/>
+        <top image=""/>
+        <top_right image=""/>
+        <right image=""/>
+        <bottom_right image=""/>
+        <bottom image=""/>
+        <bottom_left image=""/>
+        <left image=""/>
+        <middle image="back_med.png"/>
+    </panel>
+
+    <window>
+        <top_left image=""/>
+        <top image=""/>
+        <top_right image=""/>
+        <right image=""/>
+        <bottom_right image=""/>
+        <bottom image=""/>
+        <bottom_left image=""/>
+        <left image=""/>
+        <middle image="back_light.png"/>
+    </window>
+
+    <titlebar>
+        <top_left image=""/>
+        <top image=""/>
+        <top_right image=""/>
+        <right image=""/>
+        <bottom_right image=""/>
+        <bottom image=""/>
+        <bottom_left image=""/>
+        <left image=""/>
+        <middle image="back_dark.png"/>
+    </titlebar>
+</skin>

@@ -1,0 +1,83 @@
+material gui_mat
+{
+    technique
+    {
+        pass
+        {
+            scene_blend alpha_blend
+
+            vertex_program_ref gui_vs
+            {
+            }
+
+            fragment_program_ref gui_ps
+            {
+            }
+
+            texture_unit
+            {
+                tex_address_mode border
+                tex_border_colour 0 0 0 0
+                filtering none
+            }
+        }
+
+        pass select
+        {
+            scene_blend add
+
+            vertex_program_ref gui_vs
+            {
+            }
+
+            fragment_program_ref gui_select_ps
+            {
+            }
+
+            texture_unit
+            {
+                tex_address_mode border
+                tex_border_colour 0 0 0 0
+                filtering none
+            }
+        }
+
+        pass press
+        {
+            scene_blend alpha_blend
+
+            vertex_program_ref gui_vs
+            {
+            }
+
+            fragment_program_ref gui_press_ps
+            {
+            }
+
+            texture_unit
+            {
+                tex_address_mode border
+                tex_border_colour 0 0 0 0
+                filtering none
+            }
+        }
+
+        pass noBlend
+        {
+            vertex_program_ref gui_vs
+            {
+            }
+
+            fragment_program_ref gui_ps
+            {
+            }
+
+            texture_unit
+            {
+                tex_address_mode border
+                tex_border_colour 0 0 0 0
+                filtering none
+            }
+        }
+    }
+}

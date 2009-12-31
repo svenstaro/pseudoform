@@ -1,0 +1,11 @@
+//Unsupported material: 03-Default[test_elevator1]
+import normal_map_template from "media/shaders/general.material"
+
+material test_elevator1_mat : normal_map_template
+{
+    set_texture_alias diffuseMap levels/test_elevator1/test_elevator1_d.png
+    set_texture_alias aoMap levels/test_elevator1/test_elevator1_a.png
+    set_texture_alias normalMap media/textures/noisy_n.jpg
+    //set_texture_alias specularMap props/present2/present2_s.png
+	//set_texture_alias normalMap props/present2/present2_n.png
+}

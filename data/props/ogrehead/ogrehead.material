@@ -1,0 +1,6 @@
+import basic_template from "media/shaders/general.material"
+
+material ogrehead_mat : basic_template
+{
+    set_texture_alias diffuseMap props/ogrehead/ogrehead_d.jpg
+}

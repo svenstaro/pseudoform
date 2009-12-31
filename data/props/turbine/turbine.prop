@@ -1,0 +1,10 @@
+<prop>
+    <gfx group="secondary"
+        mesh="props/turbine/turbine.mesh"
+        skeleton="props/turbine/turbine.skeleton"
+        material="turbine_mat">
+        <anim name="startup" loop="1"/>
+    </gfx>
+    <phys type="convex" mesh="props/turbine/turbine.mesh" mass="50"/>
+    <scale x="1" y="1" z="1"/>
+</prop>

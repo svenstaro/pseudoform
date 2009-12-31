@@ -1,0 +1,37 @@
+<skin name="awesome">
+    <panel>
+        <top_left image="awesome_panel_tl.png"/>
+        <top image="awesome_panel_tc.png"/>
+        <top_right image="awesome_panel_tr.png"/>
+        <right image="awesome_panel_rc.png"/>
+        <bottom_right image="awesome_panel_br.png"/>
+        <bottom image="awesome_panel_bc.png"/>
+        <bottom_left image="awesome_panel_bl.png"/>
+        <left image="awesome_panel_lc.png"/>
+        <middle image="awesome_panel_mi.png"/>
+    </panel>
+
+    <titlebar>
+        <top_left image="awesome_panel_tl.png"/>
+        <top image="awesome_panel_tc.png"/>
+        <top_right image="awesome_panel_tr.png"/>
+        <right image="awesome_panel_rc.png"/>
+        <bottom_right image=""/>
+        <bottom image=""/>
+        <bottom_left image=""/>
+        <left image="awesome_panel_lc.png"/>
+        <middle image="awesome_panel_mi.png"/>
+    </titlebar>
+
+    <window>
+        <top_left image=""/>
+        <top image=""/>
+        <top_right image=""/>
+        <right image="awesome_panel_rc.png"/>
+        <bottom_right image="awesome_panel_br.png"/>
+        <bottom image="awesome_panel_bc.png"/>
+        <bottom_left image="awesome_panel_bl.png"/>
+        <left image="awesome_panel_lc.png"/>
+        <middle image="awesome_panel_mi.png"/>
+    </window>
+</skin>
