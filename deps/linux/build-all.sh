@@ -5,16 +5,16 @@ DISTRO="unknown"
 message() {
 	case "${1}" in
 		info)
-			echo -e "\033[1;34mINFO:\033[1;37m ${2} \033[0m"
+			echo -e "\033[1;34mINFO:\033[0m ${2} "
 			;;
 		status)
-			echo -e "\033[1;32mSTATUS:\033[1;37m ${2} \033[0m"
+			echo -e "\033[1;32mSTATUS:\033[0m ${2} "
 			;;
 		warning)
-			echo -e "\033[1;33mWARNING:\033[1;37m ${2} \033[0m"
+			echo -e "\033[1;33mWARNING:\033[0m ${2} "
 			;;
 		error)
-			echo -e "\033[1;31mERROR:\033[1;37m ${2} \033[0m"
+			echo -e "\033[1;31mERROR:\033[0m ${2} "
 			;;
 	esac
 }
@@ -79,12 +79,7 @@ make_ogre() {
 	cd build
 	cmake .. || return 1
 	make -j3 || return 1
-	sudo checkinstall
-	if [[ ${DISTRO} == "debian" || ${DISTRO} == "ubuntu" ]]; then
-		sudo dpkg -r *.deb
-	elif [[ ${DISTRO} == "suse" || ${DISTRO} == "fedora" ]]; then
-		sudo rpm - i *.rpm
-	fi
+	sudo checkinstall --pkgname ogre-svn --install --pkgversion 1.7 -y
 }
 
 make_bullet() {
