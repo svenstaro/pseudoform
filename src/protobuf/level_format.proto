@@ -1,0 +1,53 @@
+package levelFormat;
+
+message vec3
+{
+    optional float x = 1;
+    optional float y = 2;
+    optional float z = 3;
+}
+
+message quat
+{
+    optional float x = 1;
+    optional float y = 2;
+    optional float z = 3;
+    optional float w = 4;
+}
+
+message genericPropInfo
+{
+    optional string script = 1;
+    optional vec3 position = 2;
+    optional quat rotation = 3;
+    optional vec3 scale = 4;
+    optional float mass = 5;
+    optional bool collidable = 6;
+}
+
+message portalInfo
+{
+    optional string connection = 1;
+}
+
+message triggerInfo
+{
+    optional string on_enter = 1;
+    optional string on_exit = 2;
+}
+
+message entity
+{
+    optional uint32 type = 1;
+    optional string name = 2;
+    optional genericPropInfo generic_prop_info = 3;
+    optional portalInfo portal_info = 4;
+    optional triggerInfo trigger_info = 5;
+}
+
+message level
+{
+    repeated entity entities = 1;
+    optional string script = 2;
+}
+

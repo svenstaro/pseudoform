@@ -1,0 +1,53 @@
+Portalized uses the following third-party libraries in accordance with their respective licenses:
+
+- zlib
+  by Jean-loup Gailly and Mark Adler
+  http://www.zlib.net/
+
+- libpng
+  by Guy Eric Schalnat, Andreas Dilger, Glenn Randers-Pehrson and others
+  http://www.libpng.org/pub/png/libpng.html
+
+- Newton Game Dynamics (Newton)
+  Julio Jerez and Alain Suero
+  http://www.newtondynamics.com
+
+- NVIDIA CG Toolkit
+  NVIDIA Corporation
+  http://developer.nvidia.com/object/cg_toolkit.html
+  
+- Open Source 3D Graphics Engine (OGRE)
+  Steve ’sinbad’ Streeting
+  http://www.ogre3d.org/
+
+- Object Oriented Input System (OIS)
+  Phillip Castaneda
+  http://sourceforge.net/projects/wgois/
+  
+- FreeType Project (freetype2)
+  David Turner, Robert Wilhelm, and Werner Lemberg
+  http://www.freetype.org/
+  
+- Google Protobuf (protobuf)
+  Google Inc. 
+  http://code.google.com/p/protobuf/
+  
+- Lua
+  Lua.org, PUC-Rio
+  http://www.lua.org/
+  
+- Luabind
+  Daniel Wallin, Arvid Norberg
+  http://www.rasterbar.com/products/luabind.html
+  
+- Boost
+  Beman Dawes, David Abrahams, Rene Rivera
+  http://www.boost.org/
+  
+- libstdc++
+  Free Software Foundation, Inc.
+  http://gcc.gnu.org/libstdc++/
+  
+- FMOD Ex
+  FMOD Sound System, copyright © Firelight Technologies Pty, Ltd., 1994-2007.
+  http://www.fmod.org/
