@@ -1,7 +1,7 @@
 set oldpath = %PATH%
 echo %PATH%
 path = %PATH%;%CD%\CodeBlocks\MinGW\bin
-wget -c http://downloads.sourceforge.net/project/ogre/ogre/1.7/ogr$
+wget -c http://downloads.sourceforge.net/project/ogre/ogre/1.7/ogre-v1-7-0RC1.tar.bz2
 tar xf ogre-v1-7-0RC1.tar.bz2
 cd ogre
 copy ..\bin\* Samples\Common\bin\Release\
