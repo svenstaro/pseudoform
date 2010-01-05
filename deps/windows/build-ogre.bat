@@ -1,7 +1,8 @@
 set oldpath = %PATH%
 echo %PATH%
 path = %PATH%;%CD%\CodeBlocks\MinGW\bin
-svn co https://svn.ogre3d.org/svnroot/ogre/trunk ogre
+wget -c http://downloads.sourceforge.net/project/ogre/ogre/1.7/ogr$
+tar xf ogre-v1-7-0RC1.tar.bz2
 cd ogre
 copy ..\bin\* Samples\Common\bin\Release\
 mv Samples\Common\bin\Release\OIS_d.dll Samples\Common\bin\Debug\

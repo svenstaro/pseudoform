@@ -73,7 +73,12 @@ install_deps() {
 }
 
 make_ogre() {
-	svn co https://svn.ogre3d.org/svnroot/ogre/trunk ogre
+	if [ -d ogre ]; then
+		echo "Existing ogre directory found. Won't get it again."
+	else
+		wget -c http://downloads.sourceforge.net/project/ogre/ogre/1.7/ogre-v1-7-0RC1.tar.bz2
+		tar xf ogre-v1-7-0RC1.tar.bz2
+	fi
 	cd ogre
 	mkdir build
 	cd build
