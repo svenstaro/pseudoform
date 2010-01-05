@@ -73,7 +73,7 @@ install_deps() {
 }
 
 make_ogre() {
-	svn co https://svn.ogre3d.org/svnroot/ogre/trunk ogre
+	svn co http://svn.ogre3d.org/svnroot/ogre/trunk ogre
 	cd ogre
 	mkdir build
 	cd build
