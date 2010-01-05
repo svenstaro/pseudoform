@@ -77,7 +77,7 @@ make_ogre() {
 		echo "Existing ogre directory found. Won't get it again."
 	else
 		wget -c http://downloads.sourceforge.net/project/ogre/ogre/1.7/ogre-v1-7-0RC1.tar.bz2
-		tar xf ogre-v1-7-0RC1.tar.bz2
+		tar xjvf ogre-v1-7-0RC1.tar.bz2
 	fi
 	cd ogre
 	mkdir build
