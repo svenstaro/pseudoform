@@ -30,6 +30,8 @@ get_distro() {
 		DISTRO="debian"
 	elif [[ $(grep -ir "ubuntu" /etc/lsb-release) ]]; then
 		DISTRO="ubuntu"
+	elif [[ $(grep -ir "LinuxMint" /etc/lsb-release) ]]; then
+		DISTRO="linuxmint"
 	else 
 		message "error" "Your distribution could not be detected."
 		message "error" "Please report this to the developers."
@@ -65,6 +67,11 @@ install_deps() {
 			sudo apt-get install build-essential automake pkg-config subversion git cmake libois-dev gdb codeblocks-contrib nvidia-cg-toolkit libfreeimage-dev libboost-dev libfreetype6-dev libxaw7-dev libxrandr-dev libzzip-dev zlib1g-dev checkinstall
 			;;
 		ubuntu)
+			message "info" "You will need to enable all repositories before attempting the installation."
+			read -p "Press return to continue "
+			sudo apt-get install build-essential automake pkg-config subversion git cmake libois-dev gdb codeblocks-contrib nvidia-cg-toolkit libfreeimage-dev libboost-dev libfreetype6-dev libxaw7-dev libxrandr-dev libzzip-dev zlib1g-dev checkinstall
+			;;
+		linuxmint)
 			message "info" "You will need to enable all repositories before attempting the installation."
 			read -p "Press return to continue "
 			sudo apt-get install build-essential automake pkg-config subversion git cmake libois-dev gdb codeblocks-contrib nvidia-cg-toolkit libfreeimage-dev libboost-dev libfreetype6-dev libxaw7-dev libxrandr-dev libzzip-dev zlib1g-dev checkinstall
