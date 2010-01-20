@@ -95,7 +95,18 @@ make_ogre() {
 }
 
 make_bullet() {
-	echo "TODO"
+	if [ -d bulletphysics ]; then
+		echo "Bullet already here, won't make"
+	else
+		wget -c http://bullet.googlecode.com/files/bullet-2.75.tgz
+		tar xf bullet-2.75.tgz bulletphysics
+		echo "status" "downloaded bulletphysics archive"
+		cd bullet-2.75
+		cmake .. || return 1
+		make || return 1
+		sudo checkinstall --pkgname bullet-physics --install --pkgversion 2.75 -y
+		echo "status" "made bulletphysics"
+	fi
 }
 
 message "warning" "This script is really hacky and probably won't work for all systems."
