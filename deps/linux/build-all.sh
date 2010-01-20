@@ -100,12 +100,12 @@ make_bullet() {
 	else
 		wget -c http://bullet.googlecode.com/files/bullet-2.75.tgz
 		tar xf bullet-2.75.tgz bulletphysics
-		echo "status" "downloaded bulletphysics archive"
+		message "status" "downloaded bulletphysics archive"
 		cd bullet-2.75
 		cmake .. || return 1
 		make || return 1
 		sudo checkinstall --pkgname bullet-physics --install --pkgversion 2.75 -y
-		echo "status" "made bulletphysics"
+		message "status" "made bulletphysics"
 	fi
 }
 
