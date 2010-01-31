@@ -48,8 +48,7 @@ install_deps() {
 				message "error" "Please have a look here: http://archlinux.fr/yaourt-en"
 				return 1
 			fi
-			sudo yaourt -Sy --noconfirm base-devel 
-subversion git cmake ogre-svn bullet-svn codeblocks-svn fmodex
+			sudo yaourt -Sy --noconfirm base-devel subversion git cmake ogre-svn bullet-svn codeblocks-svn fmodex
 			;;
 		suse)
 			message "error" "SuSE distributions are currently not supported because I have no clue at all about them."
