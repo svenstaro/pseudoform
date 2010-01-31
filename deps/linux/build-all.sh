@@ -94,6 +94,15 @@ make_ogre() {
 	sudo checkinstall --pkgname ogre-svn --install --pkgversion 1.7 -y
 }
 
+get_newton() {
+	if [ -d newtonSDK ]; then
+		echo "Existing newton directory found. Won't get it again."
+	else
+		wget -c http://www.newtondynamics.com/downloads/NewtonLinux-32-2.13.tar.gz
+		tar xf NewtonLinux-32-2.13.tar.gz newtonSDK/sdk
+	fi
+}
+
 make_bullet() {
 	if [ -d bulletphysics ]; then
 		echo "Bullet already here, won't make"
@@ -124,6 +133,7 @@ fi
 message "status" "Everything looks good, starting build process."
 
 make_ogre || exit 1
+get_newton || exit 1
 make_bullet || exit 1
 
 # vim: ts=2 sw=2
