@@ -4,7 +4,7 @@
 	<Project>
 		<Option title="Portalized" />
 		<Option pch_mode="2" />
-		<Option default_target="Release_win" />
+		<Option default_target="Debug_linux" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug_win">
@@ -25,11 +25,6 @@
 					<Add directory="$(OGRE_HOME)/OgreMain/include" />
 					<Add directory="dependencies/boost_1_39_0" />
 					<Add directory="dependencies/win/newton/sdk" />
-					<Add directory="dependencies/win/lua/src" />
-					<Add directory="dependencies/win/luabind" />
-					<Add directory="dependencies/win/luabind/src" />
-					<Add directory="dependencies/win/luabind/luabind" />
-					<Add directory="dependencies/win/luabind/luabind/detail" />
 					<Add directory="dependencies/win/protobuf/src" />
 					<Add directory="$(OGRE_HOME)/Dependencies/include" />
 					<Add directory="dependencies/win/newton/sdk/dCustomJoints" />
@@ -40,8 +35,6 @@
 					<Add option="-Wl,--enable-runtime-pseudo-reloc" />
 					<Add option="-Wl,--enable-auto-image-base" />
 					<Add option="-Wl,--add-stdcall-alias" />
-					<Add library="dependencies/win/lua/lib/liblua.a" />
-					<Add library="dependencies/win/luabind/lib/libluabind.a" />
 					<Add library="dependencies/boost_1_39_0/lib/libboost_filesystem-mgw34-mt-s-1_39.lib" />
 					<Add library="dependencies/boost_1_39_0/lib/libboost_signals-mgw34-mt-s-1_39.lib" />
 					<Add library="dependencies/boost_1_39_0/lib/libboost_system-mgw34-mt-s-1_39.lib" />
@@ -74,11 +67,6 @@
 					<Add directory="$(OGRE_HOME)/OgreMain/include" />
 					<Add directory="dependencies/boost_1_39_0" />
 					<Add directory="dependencies/win/newton/sdk" />
-					<Add directory="dependencies/win/lua/src" />
-					<Add directory="dependencies/win/luabind" />
-					<Add directory="dependencies/win/luabind/src" />
-					<Add directory="dependencies/win/luabind/luabind" />
-					<Add directory="dependencies/win/luabind/luabind/detail" />
 					<Add directory="dependencies/win/protobuf/src" />
 					<Add directory="$(OGRE_HOME)/Dependencies/include" />
 					<Add directory="dependencies/win/newton/sdk/dCustomJoints" />
@@ -116,21 +104,21 @@
 					<Add option="-D_DEBUG" />
 					<Add option="-DBUILD_EDITOR" />
 					<Add option="-D_LINUX" />
-					<Add directory="dependencies/linux/newton/sdk/dMath" />
-					<Add directory="dependencies/linux/newton/sdk/dCustomJoints" />
+					<Add directory="deps/linux/newtonSDK/sdk" />
+					<Add directory="deps/linux/newtonSDK/sdk/dMath" />
+					<Add directory="deps/linux/newtonSDK/sdk/dCustomJoints" />
 				</Compiler>
 				<Linker>
 					<Add option="`pkg-config --cflags OGRE`" />
 					<Add library="OgreMain" />
 					<Add library="OIS" />
-					<Add library="lua" />
-					<Add library="luabind" />
 					<Add library="boost_filesystem" />
 					<Add library="boost_signals" />
 					<Add library="boost_system" />
 					<Add library="protobuf" />
-					<Add library="Newton" />
-					<Add library="dependencies/linux/newton/sdk/libnewton_utils.a" />
+					<Add library="deps/linux/newtonSDK/sdk/libNewton.a" />
+					<Add library="deps/linux/newton/sdk/libnewton_utils.a" />
+					<Add library="fmodex" />
 					<Add directory="bin/linux/debug" />
 				</Linker>
 			</Target>
@@ -147,6 +135,7 @@
 					<Add option="-DNDEBUG" />
 					<Add option="-DBUILD_EDITOR" />
 					<Add option="-D_LINUX" />
+					<Add directory="deps/linux/newton/sdk" />
 					<Add directory="deps/linux/newtonSDK/sdk/dCustomJoints" />
 					<Add directory="deps/linux/newtonSDK/sdk/dMath" />
 				</Compiler>
@@ -155,14 +144,12 @@
 					<Add option="`pkg-config --cflags OGRE`" />
 					<Add library="OgreMain" />
 					<Add library="OIS" />
-					<Add library="lua" />
-					<Add library="luabind" />
 					<Add library="boost_filesystem" />
 					<Add library="boost_signals" />
 					<Add library="boost_system" />
 					<Add library="protobuf" />
-					<Add library="Newton" />
-					<Add library="dependencies/linux/newton/sdk/libnewton_utils.a" />
+					<Add library="deps/linux/newtonSDK/sdk/libNewton.a" />
+					<Add library="deps/linux/newton/sdk/libnewton_utils.a" />
 					<Add library="fmodex" />
 					<Add directory="bin/linux/release" />
 				</Linker>
@@ -189,11 +176,6 @@
 					<Add directory="$(OGRE_HOME)/OgreMain/include" />
 					<Add directory="dependencies/boost_1_39_0" />
 					<Add directory="dependencies/win/newton/sdk" />
-					<Add directory="dependencies/win/lua/src" />
-					<Add directory="dependencies/win/luabind" />
-					<Add directory="dependencies/win/luabind/src" />
-					<Add directory="dependencies/win/luabind/luabind" />
-					<Add directory="dependencies/win/luabind/luabind/detail" />
 					<Add directory="dependencies/win/protobuf/src" />
 					<Add directory="$(OGRE_HOME)/Dependencies/include" />
 					<Add directory="dependencies/win/newton/sdk/dCustomJoints" />
@@ -205,8 +187,6 @@
 					<Add option="-Wl,--enable-runtime-pseudo-reloc" />
 					<Add option="-Wl,--enable-auto-image-base" />
 					<Add option="-Wl,--add-stdcall-alias" />
-					<Add library="dependencies/win/lua/lib/liblua.a" />
-					<Add library="dependencies/win/luabind/lib/libluabind.a" />
 					<Add library="dependencies/boost_1_39_0/lib/libboost_filesystem-mgw34-mt-s-1_39.lib" />
 					<Add library="dependencies/boost_1_39_0/lib/libboost_signals-mgw34-mt-s-1_39.lib" />
 					<Add library="dependencies/boost_1_39_0/lib/libboost_system-mgw34-mt-s-1_39.lib" />
@@ -238,16 +218,11 @@
 		<Unit filename="data/gui/gui.cg" />
 		<Unit filename="data/gui/gui.material" />
 		<Unit filename="data/gui/gui.program" />
-		<Unit filename="data/levels/credits/credits.lua" />
 		<Unit filename="data/media/shaders/forward.cg" />
 		<Unit filename="data/media/shaders/general.material" />
 		<Unit filename="data/media/shaders/general.program" />
 		<Unit filename="data/media/shaders/utils.cg" />
 		<Unit filename="data/portal/portal.material" />
-		<Unit filename="data/scripts/bind.lua" />
-		<Unit filename="data/scripts/bind_default.lua" />
-		<Unit filename="data/scripts/editor.lua" />
-		<Unit filename="data/scripts/play.lua" />
 		<Unit filename="data/scripts/root.xml" />
 		<Unit filename="src/action_binder.cpp" />
 		<Unit filename="src/action_binder.hpp" />
@@ -257,8 +232,6 @@
 		<Unit filename="src/data_dir.hpp" />
 		<Unit filename="src/editor/camera_control.cpp" />
 		<Unit filename="src/editor/camera_control.hpp" />
-		<Unit filename="src/editor/properties_win.cpp" />
-		<Unit filename="src/editor/properties_win.hpp" />
 		<Unit filename="src/editor/selection_node.cpp" />
 		<Unit filename="src/editor/selection_node.hpp" />
 		<Unit filename="src/error_mesh.cpp" />
@@ -348,18 +321,6 @@
 		<Unit filename="src/input/keys.hpp" />
 		<Unit filename="src/log.cpp" />
 		<Unit filename="src/log.hpp" />
-		<Unit filename="src/lua/bindings.cpp" />
-		<Unit filename="src/lua/bindings.hpp" />
-		<Unit filename="src/lua/bindings_editor.cpp" />
-		<Unit filename="src/lua/bindings_game.cpp" />
-		<Unit filename="src/lua/bindings_gui.cpp" />
-		<Unit filename="src/lua/bindings_math.cpp" />
-		<Unit filename="src/lua/bindings_phys.cpp" />
-		<Unit filename="src/lua/bindings_play.cpp" />
-		<Unit filename="src/lua/bindings_snd.cpp" />
-		<Unit filename="src/lua/lua.cpp" />
-		<Unit filename="src/lua/lua.hpp" />
-		<Unit filename="src/lua/luabind.hpp" />
 		<Unit filename="src/main.cpp" />
 		<Unit filename="src/no_impl.hpp" />
 		<Unit filename="src/numeric_any.hpp" />
@@ -385,6 +346,17 @@
 		<Unit filename="src/recordable.cpp" />
 		<Unit filename="src/recordable.hpp" />
 		<Unit filename="src/safe_any.hpp" />
+		<Unit filename="src/script/bindings.cpp" />
+		<Unit filename="src/script/bindings.hpp" />
+		<Unit filename="src/script/bindings_editor.cpp" />
+		<Unit filename="src/script/bindings_game.cpp" />
+		<Unit filename="src/script/bindings_gui.cpp" />
+		<Unit filename="src/script/bindings_math.cpp" />
+		<Unit filename="src/script/bindings_phys.cpp" />
+		<Unit filename="src/script/bindings_play.cpp" />
+		<Unit filename="src/script/bindings_snd.cpp" />
+		<Unit filename="src/script/script.cpp" />
+		<Unit filename="src/script/script.hpp" />
 		<Unit filename="src/snd/sound.cpp" />
 		<Unit filename="src/snd/sound.hpp" />
 		<Unit filename="src/snd/system.cpp" />
