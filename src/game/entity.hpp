@@ -12,6 +12,7 @@
 #include <algorithm>
 
 #include <boost/shared_ptr.hpp>
+#include <boost/lexical_cast.hpp>
 
 #include "id.hpp"
 #include "types.hpp"

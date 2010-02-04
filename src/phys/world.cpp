@@ -139,7 +139,7 @@ namespace engine
             // default to global gravity
             gravity.enabled = true;
 
-            _world = NewtonCreate(NULL, NULL);
+            _world = NewtonCreate();
             const float WORLD_SIZE = 1000;
             const vec3 A(-WORLD_SIZE, -WORLD_SIZE, -WORLD_SIZE), B(-A);
             NewtonSetWorldSize(_world, &A.x, &B.x);
@@ -194,7 +194,7 @@ namespace engine
 //            }
         }
 
-        void _wakeAABBCB(const NewtonBody *_body)
+        void _wakeAABBCB(const NewtonBody *_body, void* userData)
         {
             bodyCast(_body)->wake();
         }
@@ -202,7 +202,7 @@ namespace engine
         void world::wake(const aabb_t &aabb) const
         {
             vec3 min = aabb.getMinimum(), max = aabb.getMaximum();
-            NewtonWorldForEachBodyInAABBDo(_world, &min.x, &max.x, &_wakeAABBCB);
+            NewtonWorldForEachBodyInAABBDo(_world, &min.x, &max.x, &_wakeAABBCB, NULL);
         }
 
     }

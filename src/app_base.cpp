@@ -29,7 +29,7 @@ int appBase::run(int argc, char **argv)
     configureDirs();
 
     // we need to make sure that we have some settings to load
-    copyFile(DATA_DIR + "scripts/bind_default.lua", DATA_DIR + "scripts/bind.lua");
+    //copyFile(DATA_DIR + "scripts/bind_default.lua", DATA_DIR + "scripts/bind.lua");
     copyFile(DATA_DIR + "scripts/root_default.xml", DATA_DIR + "scripts/root.xml");
 
     gfx::rootPtr root;
