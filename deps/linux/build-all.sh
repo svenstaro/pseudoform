@@ -98,24 +98,23 @@ get_newton() {
 	if [ -d newtonSDK ]; then
 		echo "Existing newton directory found. Won't get it again."
 	else
-		wget -c http://www.newtondynamics.com/downloads/NewtonLinux-32-2.13.tar.gz
-		tar xf NewtonLinux-32-2.13.tar.gz newtonSDK/sdk
+		wget -c http://www.newtondynamics.com/downloads/NewtonLinux-32-2.17.tar.gz
+		tar xf NewtonLinux-32-2.17.tar.gz newtonSDK
 	fi
 }
 
 make_bullet() {
-	if [ -d bulletphysics ]; then
-		echo "Bullet already here, won't make"
+	if [ -d bullet-2.75 ]; then
+		echo "Bullet already downloaded, won't get"
 	else
 		wget -c http://bullet.googlecode.com/files/bullet-2.75.tgz
 		tar xf bullet-2.75.tgz bulletphysics
 		message "status" "downloaded bulletphysics archive"
-		cd bullet-2.75
-		cmake .. || return 1
-		make || return 1
-		sudo checkinstall --pkgname bullet-physics --install --pkgversion 2.75 -y
-		message "status" "made bulletphysics"
 	fi
+	cd bullet-2.75/src
+	cmake . || echo "to remake first delete the bullet-2.75 directory"; return 1
+	sudo checkinstall --pkgname bullet-physics --install --pkgversion 2.75 -y
+	message "status" "made bulletphysics"
 }
 
 message "warning" "This script is really hacky and probably won't work for all systems."
@@ -125,6 +124,7 @@ get_distro || exit 1
 install_deps ${DISTRO} || exit 1
 
 if [[ ${DISTRO} == "archlinux" ]]; then
+	get_newton || echo "Couldn't get Newton"; exit 1
 	# If archlinux got this far, everything is already built
 	message "info" "Everything is done :)."
 	exit 0

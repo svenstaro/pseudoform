@@ -1,0 +1,6 @@
+If you're building this on linux, you need to have the files Newton.h, 
+NewtonCustomJoints.h, dMathDefines.h, dMatrix.h, dQuaternion.h, and 
+dVector.h in your /usr/include folder with read privelages. You'll also 
+need the latest version of Ogre and for right now you'll need fmodex.
+
+--Shua
