@@ -298,8 +298,9 @@ namespace engine
 //            return (outsideTree) ? (NewtonCollision*)id : tree;
 //        }
 
-        mesh::mesh(const std::string &mn, const mat4 &tf):
-            _mesh(NewtonMeshCreate())
+        mesh::mesh(const std::string &mn, const mat4 &tf, const world &_world):
+        /** Don't know if world() is the best thing to pass but it works for now **/
+            _mesh(NewtonMeshCreate(_world))
         {
             Ogre::MeshPtr meshPtr;
             try

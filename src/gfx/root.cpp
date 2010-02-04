@@ -110,13 +110,13 @@ namespace engine
             _root->loadPlugin(plugins + "Plugin_ParticleFX");
 //            #endif
 
-            Ogre::RenderSystemList *availRenderers = _root->getAvailableRenderers();
+            const Ogre::RenderSystemList& availRenderers = _root->getAvailableRenderers();
 
-            if (availRenderers->empty())
+            if (availRenderers.empty())
                 throw std::runtime_error("root error: no available renderers");
 
             // choose first one available
-            _renderSys = *availRenderers->begin();
+            _renderSys = *availRenderers.begin();
 
             // if we have d3d, set slow mode (see Lua, DirectX and D3DCREATE_FPU_PRESERVE)
             if (lib == "d3d")

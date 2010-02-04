@@ -26,7 +26,7 @@ namespace engine
                 NewtonMesh *_mesh;
 
             public:
-                mesh(const string &mn, const mat4 &tf);
+                mesh(const string &mn, const mat4 &tf,const world &_world);
                 mesh(const NewtonCollision *col);
                 ~mesh();
 

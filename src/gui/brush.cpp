@@ -206,7 +206,7 @@ namespace engine
                 }
             }
 
-            _rs->bindGpuProgramParameters(Ogre::GPT_VERTEX_PROGRAM, vertParams);
+            _rs->bindGpuProgramParameters(Ogre::GPT_VERTEX_PROGRAM, vertParams, NULL);
 
             Ogre::GpuProgramParametersSharedPtr fragParams = pass->getFragmentProgramParameters();
 
@@ -226,7 +226,7 @@ namespace engine
                 }
             }
 
-            _rs->bindGpuProgramParameters(Ogre::GPT_FRAGMENT_PROGRAM, fragParams);
+            _rs->bindGpuProgramParameters(Ogre::GPT_FRAGMENT_PROGRAM, fragParams, NULL);
 
             _rs->_beginFrame();
             _rs->_render(rop);

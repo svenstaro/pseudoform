@@ -160,7 +160,7 @@ namespace engine
 //                if (params->_findNamedConstantDefinition("textureMat"))
 //                    params->setNamedConstant("textureMat", textureMat);
 
-                renderSys->bindGpuProgramParameters(Ogre::GPT_VERTEX_PROGRAM, params);
+                renderSys->bindGpuProgramParameters(Ogre::GPT_VERTEX_PROGRAM, params, NULL);
             }
             else
             {
@@ -182,7 +182,7 @@ namespace engine
                 if (params->_findNamedConstantDefinition("farCorner"))
                     params->setNamedConstant("farCorner", vec4(farCorner.x, farCorner.y, farCorner.z, 1));
 
-                renderSys->bindGpuProgramParameters(Ogre::GPT_FRAGMENT_PROGRAM, params);
+                renderSys->bindGpuProgramParameters(Ogre::GPT_FRAGMENT_PROGRAM, params, NULL);
             }
             else
                 renderSys->unbindGpuProgram(Ogre::GPT_FRAGMENT_PROGRAM);
