@@ -8,9 +8,9 @@
 #define SOUND_HPP_INCLUDED
 
 #ifdef _WINDOWS
-//#include <fmod.h>
+#include <fmod.h>
 #elif _LINUX
-//#include <fmodex/fmod.h>
+#include <fmodex/fmod.h>
 #endif
 
 #include <boost/shared_ptr.hpp>
@@ -26,7 +26,7 @@ namespace engine
         {
             private:
 
-//                FMOD_CHANNEL *_chan;
+                FMOD_CHANNEL *_chan;
 
                 float _origFreq;
 
@@ -35,7 +35,7 @@ namespace engine
 
             public:
 
-//                explicit sound(FMOD_CHANNEL *chan);
+                explicit sound(FMOD_CHANNEL *chan);
                 ~sound();
 
                 float speed() const;

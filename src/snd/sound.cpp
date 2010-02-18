@@ -5,9 +5,9 @@
  */
 
 #ifdef _WINDOWS
-#include <fmod.h>
+//#include <fmod.h>
 #elif _LINUX
-#include <fmodex/fmod.h>
+//#include <fmodex/fmod.h>
 #endif
 
 #include "sound.hpp"
@@ -18,12 +18,12 @@ namespace engine
     namespace snd
     {
 
-        sound::sound(FMOD_CHANNEL *chan):
-            _chan(chan),
-            _origFreq(1)
-        {
-            FMOD_Channel_GetFrequency(_chan, &_origFreq);
-        }
+//        sound::sound(FMOD_CHANNEL *chan):
+//            _chan(chan),
+//            _origFreq(1)
+//        {
+//            FMOD_Channel_GetFrequency(_chan, &_origFreq);
+//        }
 
 //        sound::sound(const sound &rhs):
 //            _chan(rhs._chan),
@@ -49,70 +49,72 @@ namespace engine
         float sound::speed() const
         {
             float current = 1;
-            FMOD_Channel_GetFrequency(_chan, &current);
+//            FMOD_Channel_GetFrequency(_chan, &current);
             return current / _origFreq;
         }
 
         void sound::speed(float f)
         {
-            FMOD_Channel_SetFrequency(_chan, _origFreq * f);
+//            FMOD_Channel_SetFrequency(_chan, _origFreq * f);
         }
 
         float sound::volume() const
         {
             float current = 1;
-            FMOD_Channel_GetVolume(_chan, &current);
+//            FMOD_Channel_GetVolume(_chan, &current);
             return current;
         }
 
         void sound::volume(float f)
         {
-            FMOD_Channel_SetVolume(_chan, f);
+//            FMOD_Channel_SetVolume(_chan, f);
         }
 
         void sound::pos(const vec3 &v)
         {
-            FMOD_VECTOR fv = { v.x, v.y, v.z };
-            FMOD_Channel_Set3DAttributes(_chan, &fv, NULL);
+//            FMOD_VECTOR fv = { v.x, v.y, v.z };
+//            FMOD_Channel_Set3DAttributes(_chan, &fv, NULL);
         }
 
         void sound::radii(float min, float max)
         {
-            FMOD_Channel_Set3DMinMaxDistance(_chan, min, max);
+//            FMOD_Channel_Set3DMinMaxDistance(_chan, min, max);
         }
 
         bool sound::playing() const
         {
-            FMOD_BOOL ret;
-            FMOD_Channel_IsPlaying(_chan, &ret);
-            return ret;
+//            FMOD_BOOL ret;
+//            FMOD_Channel_IsPlaying(_chan, &ret);
+//            return ret;
+                return true;
         }
 
         void sound::stop()
         {
-            FMOD_Channel_Stop(_chan);
+//            FMOD_Channel_Stop(_chan);
         }
 
         void sound::loop(int num)
         {
-            FMOD_Channel_SetLoopCount(_chan, num);
+//            FMOD_Channel_SetLoopCount(_chan, num);
         }
 
         void sound::pause()
         {
-            FMOD_Channel_SetPaused(_chan, true);
+//            FMOD_Channel_SetPaused(_chan, true);
         }
 
         void sound::resume()
         {
-            FMOD_Channel_SetPaused(_chan, false);
+//            FMOD_Channel_SetPaused(_chan, false);
         }
 
         bool sound::paused()
         {
-            FMOD_BOOL ret;
-            FMOD_Channel_GetPaused(_chan, &ret);
-            return ret;
+//            FMOD_BOOL ret;
+//            FMOD_Channel_GetPaused(_chan, &ret);
+//            return ret;
+                return true;
         }
 
     }

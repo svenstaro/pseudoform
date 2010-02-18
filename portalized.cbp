@@ -110,15 +110,25 @@
 				</Compiler>
 				<Linker>
 					<Add option="`pkg-config --cflags OGRE`" />
-					<Add library="OgreMain" />
+					<Add library="OgreMain"/>
+<!--					<Add library="/usr/local/lib/libOgrePaging.so" />
+					<Add library="/usr/local/lib/libOgreProperty.so" />
+					<Add library="/usr/local/lib/libOgreRTShaderSystem.so" />
+					<Add library="/usr/local/lib/libOgreTerrain.so" />
+					<Add library="/usr/local/lib/OGRE/libPlugin_PCZSceneManager.so" />
+					<Add library="/usr/local/lib/OGRE/Plugin_BSPSceneManager.so" />
+					<Add library="/usr/local/lib/OGRE/Plugin_OctreeSceneManager.so" />
+					<Add library="/usr/local/lib/OGRE/Plugin_OctreeZone.so" />
+					<Add library="/usr/local/lib/OGRE/Plugin_ParticleFX.so" />
+					<Add library="/usr/local/lib/OGRE/RenderSystem_GL.so" /> -->
 					<Add library="OIS" />
-					<Add library="boost_filesystem" />
-					<Add library="boost_signals" />
-					<Add library="boost_system" />
+					<Add library="boost_filesystem-mt" />
+					<Add library="boost_signals-mt" />
+					<Add library="boost_system-mt" />
+					<Add library="boost_thread-mt" />
 					<Add library="protobuf" />
 					<Add library="deps/linux/newtonSDK/sdk/libNewton.a" />
 					<Add library="deps/linux/newton/sdk/libnewton_utils.a" />
-					<Add library="fmodex" />
 					<Add directory="bin/linux/debug" />
 				</Linker>
 			</Target>
@@ -142,15 +152,25 @@
 				<Linker>
 					<Add option="-s" />
 					<Add option="`pkg-config --cflags OGRE`" />
-					<Add library="OgreMain" />
+					<Add library="OgreMain"/>
+<!--					<Add library="/usr/local/lib/libOgrePaging.so" />
+					<Add library="/usr/local/lib/libOgreProperty.so" />
+					<Add library="/usr/local/lib/libOgreRTShaderSystem.so" />
+					<Add library="/usr/local/lib/libOgreTerrain.so" />
+					<Add library="/usr/local/lib/OGRE/libPlugin_PCZSceneManager.so" />
+					<Add library="/usr/local/lib/OGRE/Plugin_BSPSceneManager.so" />
+					<Add library="/usr/local/lib/OGRE/Plugin_OctreeSceneManager.so" />
+					<Add library="/usr/local/lib/OGRE/Plugin_OctreeZone.so" />
+					<Add library="/usr/local/lib/OGRE/Plugin_ParticleFX.so" />
+					<Add library="/usr/local/lib/OGRE/RenderSystem_GL.so" /> -->
 					<Add library="OIS" />
-					<Add library="boost_filesystem" />
-					<Add library="boost_signals" />
-					<Add library="boost_system" />
+					<Add library="boost_filesystem-mt" />
+					<Add library="boost_signals-mt" />
+					<Add library="boost_system-mt" />
+					<Add library="boost_thread-mt" />
 					<Add library="protobuf" />
 					<Add library="deps/linux/newtonSDK/sdk/libNewton.a" />
 					<Add library="deps/linux/newton/sdk/libnewton_utils.a" />
-					<Add library="fmodex" />
 					<Add directory="bin/linux/release" />
 				</Linker>
 				<ExtraCommands>

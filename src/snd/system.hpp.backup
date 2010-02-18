@@ -31,7 +31,7 @@ namespace engine
 //                FMOD_SYSTEM *_system;
 
 //                typedef std::map<engine::string, FMOD_SOUND*> soundMap;
-//                soundMap _avail2D, _avail3D;
+                soundMap _avail2D, _avail3D;
 
 //                FMOD_SOUND *_getSound(const engine::string &fn, soundMap &which);
 
@@ -54,9 +54,9 @@ namespace engine
                 void listener(const vec3 &p, const vec3 &f, const vec3 &u, int id = 0);
 
 //                operator FMOD_SYSTEM *() const
-//                {
-//                    return _system;
-//                }
+                {
+                    return _system;
+                }
 
         };
     }
