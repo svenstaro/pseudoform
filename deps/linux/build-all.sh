@@ -94,8 +94,8 @@ make_ogre() {
 		if [ -d ogre ]; then
 			echo "Existing ogre directory found. Won't get it again."
 		else
-			wget -c http://downloads.sourceforge.net/project/ogre/ogre/1.7/ogre-v1-7-0RC1.tar.bz2
-			tar xjvf ogre-v1-7-0RC1.tar.bz2
+			wget -c https://sourceforge.net/projects/ogre/files/ogre/1.7/ogre-v1-7-0p1.tar.bz2/download
+			tar xjvf ogre-v1-7-0p1.tar.bz2
 		fi
 		cd ogre
 		if [ ! -d build ]; then
