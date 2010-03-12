@@ -127,6 +127,16 @@ get_newton() {
 	fi
 }
 
+build_libnewton_utils() {
+	if [ ! -f newton/sdk/libnewton_utils.a ]; then
+		cd newton
+		make || return 4
+		cd ..
+	else
+		message "info" "You already have libnewton_utils.a"
+	fi
+}
+
 make_bullet() {
 	if [ ! -f bullet-2.75/build/bullet-physics*.??? ]; then
 		if [ -d bullet-2.75 ]; then
@@ -139,7 +149,7 @@ make_bullet() {
 		cd bullet-2.75
 		mkdir build
 		cd build
-		cmake ../src || return 4
+		cmake ../src || return 5
 		make -j3
 		sudo checkinstall --pkgname bullet-physics --install --pkgversion 2.75 -y
 		message "status" "made bulletphysics"
@@ -167,7 +177,7 @@ make_chaiscript() {
 		fi
 		cd chaiscript-2.2-linux
 		perl -p -i.bak -e "s|/home/jason/Programming/chaiscript-2.2-linux|`pwd`|g" CMakeCache.txt
-		. build_packages.sh || return 4
+		. build_packages.sh || return 7
 		sudo cp -r include/chaiscript /usr/include
 		message "status" "Made and installed chaiscript!"
 		cd ..
@@ -197,10 +207,11 @@ message "status" "Everything looks good, starting build process."
 
 make_ogre || return 2
 get_newton || return 3
+build_libnewton_utils || return 4
 # cmake in bullet isn't working right now, and it's not necessary so it's commented out
-#make_bullet || return 4
-remake_protobuf || return 5
-make_chaiscript || return 6
+#make_bullet || return 5
+remake_protobuf || return 6
+make_chaiscript || return 7
 
 # pseudoform/deps/linux/build-all.sh
 # vim: ts=2 sw=2
