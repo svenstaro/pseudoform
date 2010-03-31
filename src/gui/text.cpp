@@ -1,5 +1,5 @@
  /*
- * Copyright (c) 2008-2009 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
+ * Copyright (c) 2008-2010 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
  * This file is part of Pseudoform (Pseudoform project at http://www.pseudoform.org).
  * For conditions of distribution and use, see copyright notice in COPYING
  */
@@ -28,10 +28,8 @@
 
 namespace engine
 {
-
     namespace gui
     {
-
         const string DEFAULT_FONT("courier");
 
         text::text(const string &name, bool internal):
@@ -41,11 +39,11 @@ namespace engine
             _font(NULL),
             _dirty(false)
         {
-            _interfaces.push_back(WIDGET_TEXT);
-
-            setFont(DEFAULT_FONT);
-            decorate = false;
-            clickable = false;
+            update
+                ("font", DEFAULT_FONT)
+                ("colour", colour::White)
+                ("decorate", false)
+                ("clickable", false);
         }
 
         text::~text()
@@ -59,7 +57,7 @@ namespace engine
                 str, Ogre::ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME);
             if (!ptr.get())
             {
-                log("failed to _loadFont() \"" + str + "\"");
+                log("Failed to _loadFont() \"" + str + "\"");
                 return;
             }
 
@@ -74,8 +72,8 @@ namespace engine
             string texName = tu->getTextureName();
             _fontTexture = Ogre::TexturePtr(Ogre::TextureManager::getSingleton().getByName(texName)).get();
 
-            _updateGlyphs(); // update the infos for the glyphs so we don't query the
-            // font all the time
+            // Update the infos for the glyphs so we don't query the font all the time
+            _updateGlyphs();
         }
 
         void text::_updateGlyphs()
@@ -147,7 +145,7 @@ namespace engine
                     x += i.w;
                 }
 
-                // newlines cause us to start at the beginning
+                // Newlines cause us to start at the beginning
                 // but we might already have a bigger width before
                 w = std::max(w, x);
             }
@@ -168,7 +166,7 @@ namespace engine
                 if (c == '\n')
                 {
                     y += base.h;
-                    x = 0; // start at front again
+                    x = 0; // Start at front again
                 }
                 else if (c == '\t')
                     x += base.w * 4;
@@ -189,7 +187,7 @@ namespace engine
         {
             if (!_font)
             {
-                log("tried to _resizeTexture() with no font loaded on \"" + _name + "\"");
+                log("Tried to _resizeTexture() with no font loaded on \"" + _name + "\"");
                 return;
             }
 
@@ -198,21 +196,23 @@ namespace engine
 
             vec2 s = textSize(_text);
 
-            assert(size_t(s.x) && size_t(s.y) && "text size cannot be 0, check textSize()");
+            assert(size_t(s.x) && size_t(s.y) && "Text size cannot be 0, check textSize()");
 
             _destroyTexture();
 
             _texture = Ogre::TexturePtr(Ogre::TextureManager::getSingleton().createManual(
-                fullName() + "::_texture", "data", Ogre::TEX_TYPE_2D, size_t(s.x), size_t(s.y), 0, // 0 mip maps
+                _uniqueName + "::_texture", "data", Ogre::TEX_TYPE_2D, size_t(s.x), size_t(s.y), 0, // 0 Mip maps
                 _fontTexture->getFormat(), Ogre::TU_DYNAMIC_WRITE_ONLY_DISCARDABLE, &fakeMRL)).get();
-            // make sure that our panel renderer knows about our texture
-            textureName(_texture->getName());
-            size = s;
+
+            // Make sure that our panel renderer knows about our texture
+            update
+                ("texture", _texture->getName())
+                ("size", s);
         }
 
         void text::_renderThis(Ogre::Viewport *vp)
         {
-            // if dirty, then fix ourselves up
+            // If dirty, then fix ourselves up
             if (_dirty)
             {
                 _resizeTexture();
@@ -231,14 +231,14 @@ namespace engine
 
             if (!_font)
             {
-                log("tried to _renderText() with no font loaded on \"" + _name + "\"");
+                log("Tried to _renderText() with no font loaded on \"" + _name + "\"");
                 return;
             }
 
             Ogre::HardwarePixelBufferSharedPtr dest = _texture->getBuffer();
             Ogre::HardwarePixelBufferSharedPtr src = _fontTexture->getBuffer();
 
-            // we want to clear the buffer to get rid of any garbage
+            // We want to clear the buffer to get rid of any garbage
             //if (false)
             {
                 void *data = dest->lock(Ogre::HardwareBuffer::HBL_DISCARD);
@@ -255,7 +255,7 @@ namespace engine
                 if (c == '\n')
                 {
                     y += base.h;
-                    // start at left again
+                    // Start at left again
                     x = 0;
                 }
                 else if (c == '\t')
@@ -272,29 +272,42 @@ namespace engine
 
                     dest->blit(src, srcBox, destBox);
 
-                    // advance width
+                    // Advance width
                     x += i.w;
                 }
             }
         }
 
-        void text::setFont(const string &str)
+        widget &text::update(const string &name, const boost::any &val)
         {
-            _loadFont(str);
-            _dirty = true;
-            // fix our size
-            size = textSize(_text);
+            if (name == "font")
+            {
+                _loadFont(SAFE_ANY_CAST(string, val));
+                _dirty = true;
+                // Fix our size
+                size = textSize(_text);
+            }
+
+            else if (name == "text")
+            {
+                _text = SAFE_ANY_CAST(string, val);
+                _dirty = true;
+                // Fix our size
+                size = textSize(_text);
+            }
+
+            else return panel::update(name, val);
+
+            return *this;
         }
 
-        void text::setText(const string &str)
+        boost::any text::attrib(const string &name) const
         {
-            _text = str;
-            _dirty = true;
-            // fix our size
-            size = textSize(_text);
-        }
+            if (name == "text") return _text;
 
+            else return panel::attrib(name);
+
+            return boost::any();
+        }
     }
-
-
 }

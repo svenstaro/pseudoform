@@ -1,5 +1,5 @@
  /*
- * Copyright (c) 2008-2009 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
+ * Copyright (c) 2008-2010 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
  * This file is part of Pseudoform (Pseudoform project at http://www.pseudoform.org).
  * For conditions of distribution and use, see copyright notice in COPYING
  */
@@ -11,12 +11,10 @@
 
 namespace engine
 {
-
     void makeDir(const string &dir)
     {
         if (!boost::filesystem::exists(dir))
         {
-            //log("making dir " + dir);
             boost::filesystem::create_directory(dir);
         }
     }
@@ -25,7 +23,6 @@ namespace engine
     {
         if (boost::filesystem::exists(file))
         {
-            //log("removing file " + file);
             boost::filesystem::remove(file);
         }
     }
@@ -34,7 +31,6 @@ namespace engine
     {
         if (!boost::filesystem::exists(dest))
         {
-            //log("copying file " + source + " to " + dest);
             if (boost::filesystem::exists(source))
                 boost::filesystem::copy_file(source, dest);
         }

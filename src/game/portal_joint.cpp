@@ -1,5 +1,5 @@
  /*
- * Copyright (c) 2008-2009 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
+ * Copyright (c) 2008-2010 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
  * This file is part of Pseudoform (Pseudoform project at http://www.pseudoform.org).
  * For conditions of distribution and use, see copyright notice in COPYING
  */
@@ -10,8 +10,7 @@
 
 namespace game
 {
-
-    //! written with the great help of Newton creator, Julio Jerez.  many thanks!
+    // this is written with the great help of Newton creator, Julio Jerez.  many thanks!
 
     portalJoint::portalJoint(NewtonBody *child, NewtonBody *parent):
         NewtonCustomJoint(6, child, parent),
@@ -19,11 +18,11 @@ namespace game
     {
         dMatrix matrix;
 
-        // use front vector of child matrix as pin
+        // Use front vector of child matrix as pin
         NewtonBodyGetMatrix(child, &matrix[0][0]);
 
         dVector pivot(0, 0, 0);
-        // calculate the two local matrix of the pivot point
+        // Calculate the two local matrix of the pivot point
         ///CalculateLocalMatrix (pivot, matrix.m_front, m_localMatrix0, m_localMatrix1);
 
         dMatrix pinAndPivot(dgGrammSchmidt(matrix.m_front));
@@ -63,7 +62,7 @@ namespace game
         jacobian1[4] = 0;
         jacobian1[5] = 0;
 
-        // add a angular constraint
+        // Add a angular constraint
         NewtonUserJointAddGeneralRow (m_joint, jacobian0, jacobian1);
 
 
@@ -72,13 +71,13 @@ namespace game
         NewtonBodyGetVelocity(m_body1, &veloc1[0]);
         //!relAccel = -1.0 * (veloc0 % dir0 + veloc1 % dir1) / time;
 
-        // this moves the two bodies at a different Scales in the different spaces.
+        // This moves the two bodies at a different Scales in the different spaces.
         // for example if the space one is twice as big the m_ScaleFactor should be 0.5
         // that way when Body in space zero goes at 1 m/s, body in space 1
         // most be moving at 2 m/s do that the relative velocity is zero
         relAccel = -1.0 * (veloc0 % dir0 + (veloc1 % dir1) * relativeScale) / time;
 
-        // set the desired angular acceleration between the two bodies
+        // Set the desired angular acceleration between the two bodies
         NewtonUserJointSetRowAcceleration (m_joint, relAccel);
 
 
@@ -96,14 +95,14 @@ namespace game
         jacobian1[4] = dir1.m_y;
         jacobian1[5] = dir1.m_z;
 
-        // add a angular constraint
+        // Add a angular constraint
         NewtonUserJointAddGeneralRow (m_joint, jacobian0, jacobian1);
 
         NewtonBodyGetOmega(m_body0, &veloc0[0]);
         NewtonBodyGetOmega(m_body1, &veloc1[0]);
         relAccel = -1.0 * (veloc0 % dir0 + veloc1 % dir1) / time;
 
-        // set the desired angular acceleration between the two bodies
+        // Set the desired angular acceleration between the two bodies
         NewtonUserJointSetRowAcceleration (m_joint, relAccel);
     }
 
@@ -121,5 +120,4 @@ namespace game
         SubminUserRow (bodyMatrix0.m_up,   bodyMatrix1.m_up, timestep);
         SubminUserRow (bodyMatrix0.m_right, bodyMatrix1.m_right, timestep);
     }
-
 }

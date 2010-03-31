@@ -1,5 +1,5 @@
  /*
- * Copyright (c) 2008-2009 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
+ * Copyright (c) 2008-2010 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
  * This file is part of Pseudoform (Pseudoform project at http://www.pseudoform.org).
  * For conditions of distribution and use, see copyright notice in COPYING
  */
@@ -11,7 +11,6 @@
 
 namespace engine
 {
-
     namespace time
     {
 
@@ -35,11 +34,11 @@ namespace engine
             unsigned long d = _timer->getMilliseconds() - _realTotal;
             _realTotal += d;
 
-            _delta = real(d) * 0.001 * speed; // 0.001 = ms -> s
+            // Get time, converted from ms to s, between frames
+            _delta = real(d) * 0.001 * speed;
             _total += _delta;
 
             return _delta;
         }
     }
-
 }

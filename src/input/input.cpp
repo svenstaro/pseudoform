@@ -1,5 +1,5 @@
  /*
- * Copyright (c) 2008-2009 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
+ * Copyright (c) 2008-2010 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
  * This file is part of Pseudoform (Pseudoform project at http://www.pseudoform.org).
  * For conditions of distribution and use, see copyright notice in COPYING
  */
@@ -355,49 +355,27 @@ namespace engine
             _mouse(NULL),
             mouseSens(1)
         {
+        	// Create inputs handlers for keyboard and mouse
             _mgr = OIS::InputManager::createInputSystem(hwnd);
             _keys = (OIS::Keyboard*)_mgr->createInputObject(OIS::OISKeyboard, true);
             _mouse = (OIS::Mouse*)_mgr->createInputObject(OIS::OISMouse, true);
+
+            // We wanna use unicode
             _keys->setTextTranslation(OIS::Keyboard::Unicode);
             if (_keys->getTextTranslation() != OIS::Keyboard::Unicode)
             {
-                log("failed to set unicode translation for keys, trying ascii");
+                log("Failed to set unicode translation for keys, trying ascii");
                 _keys->setTextTranslation(OIS::Keyboard::Ascii);
                 if (_keys->getTextTranslation() != OIS::Keyboard::Ascii)
-                    log("failed to set ascii translation for keys");
+                    log("Failed to set ascii translation for keys");
             }
 
             _fillConversionMap();
-
-//            {
-//                // dump available keys to a file
-//                std::ofstream out((DATA_DIR + "avail_keys.txt").c_str());
-//
-//                const unsigned END = LAST_KEY + 1;
-//                for (unsigned i = 0; i < END; ++i)
-//                {
-//                    OIS::KeyCode k = OIS::KeyCode(i);
-//                    string str = _keys->getAsString(k);
-//                    // we don't want random names like Enter, make it all lowercase
-//                    BOOST_FOREACH(char &c, str) c = std::tolower(c);
-//                    _keyToStrMap[i] = str;
-//                    _strToKeyMap[str] = i;
-//
-//                    out << "\t" << str << string(24 - str.size(), ' ') <<"(" << i << ")\n";
-//                }
-//                for (unsigned i = MB_0; i <= MB_7; ++i)
-//                {
-//                    string str = "mb_" + boost::lexical_cast<string>(i - MB_0);
-//                    _keyToStrMap[i] = str;
-//                    _strToKeyMap[str] = i;
-//
-//                    out << "\t" << str << string(24 - str.size(), ' ') <<"(" << i << ")\n";
-//                }
-//            }
         }
 
         input::~input()
         {
+        	// Unset input handlers
             _mgr->destroyInputObject(_mouse);
             _mgr->destroyInputObject(_keys);
             OIS::InputManager::destroyInputSystem(_mgr);
@@ -430,8 +408,5 @@ namespace engine
             ms.width = w;
             ms.height = h;
         }
-
     }
-
-
 }

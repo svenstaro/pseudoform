@@ -7,6 +7,10 @@
 #ifndef NO_IMPL_HPP_INCLUDED
 #define NO_IMPL_HPP_INCLUDED
 
+/**
+ * @def NO_IMPL(x)
+ * @brief Used for logging about not implemented stuff
+ */
 #define NO_IMPL(x) ::engine::log(\
     ::engine::string(__PRETTY_FUNCTION__) +\
     ::engine::string(" not implemented ") +\

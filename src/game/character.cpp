@@ -1,5 +1,5 @@
  /*
- * Copyright (c) 2008-2009 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
+ * Copyright (c) 2008-2010 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
  * This file is part of Pseudoform (Pseudoform project at http://www.pseudoform.org).
  * For conditions of distribution and use, see copyright notice in COPYING
  */
@@ -36,12 +36,12 @@ namespace game
     {
         _interfaces.push_back(character::TYPE);
 
-        // characters should be fast and easy, so use the instant teleport method
+        // Characters should be fast and easy, so use the instant teleport method
 //        portalMethod = PORTAL_INSTANT;
 
         mass(10);
 
-        autoSleep(false); // never let the character fall asleep
+        autoSleep(false); // Never let the character fall asleep
 
         _pitchNode = _node->createChildSceneNode();
 
@@ -85,12 +85,12 @@ namespace game
 
         if (_floor)
         {
-//            // if we're not moving, simply set the velocity to the floor velocity
+//            // If we're not moving, simply set the velocity to the floor velocity
 //            if (movement.isZeroLength())
 //            {
 //                vel(_floor->vel());
 //            }
-//            // otherwise use forces to move us
+//            // Otherwise use forces to move us
 //            else
             {
                 body::material_t mat = material.mix(_floor->material);
@@ -143,7 +143,7 @@ namespace game
         contactList::const_iterator i = contacts.begin();
         for (; i != contacts.end(); ++i)
         {
-            contact &c = *(*i); // it's a shared pointer
+            contact &c = *(*i); // It's a shared pointer
 
 //            vec3 normal = _node->_getDerivedPosition() - c.position;
 //            normal.normalise();
@@ -241,6 +241,4 @@ namespace game
 
         return ent;
     }
-
 }
-

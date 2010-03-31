@@ -17,20 +17,28 @@ struct NewtonBody;
 
 namespace engine
 {
-
     namespace phys
     {
-
+		/**
+		 * Represents global physics world
+		 */
         class world
         {
             private:
+				/// Newtona main world-oject
                 NewtonWorld *_world;
 
+                // TODO: accum, freq
                 real _accum;
                 real _freq;
 
-                world(const world &rhs); // no copying
+                /**
+                 * Constructor
+                 * @remarks doon't have copying constructor
+                 */
+                world(const world &rhs);
 
+                // TODO: physic lastStep
                 real _lastStep;
 
             public:
@@ -61,24 +69,35 @@ namespace engine
                     return _world;
                 }
 
+                /**
+                 * Constructor
+                 */
                 world();
+                /**
+                 * Destructor
+                 */
                 ~world();
 
-                // dt CAN tick backwards (negative)
+                /**
+                 * Set physics tick
+                 * @remarks dt CAN tick backwards (negative)
+                 */
                 void tick(real dt);
-                // reset the accumulator
+
+                /**
+                 * Reset the accumulator
+                 */
                 void resetAccum() { _accum = 0; }
 
+                // TODO: physic wake
                 void wake(const aabb_t &aabb) const;
 
+                /// Gravity handler
                 gravity_t gravity;
         };
 
         typedef boost::shared_ptr<world> worldPtr;
-
     }
-
 }
-
 
 #endif // PHYS_WORLD_HPP_INCLUDED

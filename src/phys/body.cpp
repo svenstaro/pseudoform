@@ -1,5 +1,5 @@
  /*
- * Copyright (c) 2008-2009 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
+ * Copyright (c) 2008-2010 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
  * This file is part of Pseudoform (Pseudoform project at http://www.pseudoform.org).
  * For conditions of distribution and use, see copyright notice in COPYING
  */
@@ -15,13 +15,10 @@
 #include "collision.hpp"
 #include "types.hpp"
 
-//#include <iostream>
-
 namespace engine
 {
     namespace phys
     {
-
         namespace
         {
             float saturate(float a)
@@ -539,7 +536,5 @@ namespace engine
 //                mass(mass());
 //            }
         }
-
     }
-
 }

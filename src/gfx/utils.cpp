@@ -1,5 +1,5 @@
  /*
- * Copyright (c) 2008-2009 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
+ * Copyright (c) 2008-2010 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
  * This file is part of Pseudoform (Pseudoform project at http://www.pseudoform.org).
  * For conditions of distribution and use, see copyright notice in COPYING
  */
@@ -30,7 +30,7 @@ namespace engine
         {
             if (!Ogre::MaterialManager::getSingleton().resourceExists(matName))
             {
-                log("could not find \"" + matName + "\" material");
+                log("Could not find \"" + matName + "\" material");
                 return NULL;
             }
 
@@ -70,7 +70,7 @@ namespace engine
             }
             catch (...)
             {
-                log("could not find pass \"" + passName + "\" in material \"" + matName + "\"");
+                log("Could not find pass \"" + passName + "\" in material \"" + matName + "\"");
             }
             return NULL;
         }
@@ -92,7 +92,6 @@ namespace engine
         bool hasTexture(const string &name)
         {
             return getTexture(name).get();
-//            return Ogre::TextureManager::getSingleton().resourceExists(name);
         }
 
         bool hasTextureFile(const string &name)

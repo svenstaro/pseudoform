@@ -1,5 +1,5 @@
  /*
- * Copyright (c) 2008-2009 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
+ * Copyright (c) 2008-2010 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
  * This file is part of Pseudoform (Pseudoform project at http://www.pseudoform.org).
  * For conditions of distribution and use, see copyright notice in COPYING
  */
@@ -30,8 +30,6 @@ namespace game
 
         visible(!params.inGame);
         collidable(false);
-
-//        std::cout << "visible: " << !params.inGame << "\n";
     }
 
     trigger::~trigger()
@@ -46,11 +44,11 @@ namespace game
 
         genericProp::processContacts(o, contacts, rejections, dt);
 
-        // no entity associated with body
+        // No entity associated with body
         if (o.misc.empty())
             return;
 
-        // not an entity?
+        // Not an entity?
         entity *ent = SAFE_ANY_CAST_T(entity*, o.misc, NULL);
         if (!ent)
             return;
@@ -64,11 +62,11 @@ namespace game
         {
             touchInfo info = { entPtr, o.autoSleep(), 0 };
             _touches[&o] = info;
-            // don't let the contactee fall asleep or we might get
+            // Don't let the contactee fall asleep or we might get
             // a false exit
             o.autoSleep(false);
 
-            // don't call in the collision callback so we don't
+            // Don't call in the collision callback so we don't
             // accidentally crash due to multi-threading
             _entered.push_back(entPtr);
 //            _callback(onEnter, entPtr);
@@ -90,6 +88,7 @@ namespace game
         triggerPtr thisPtr = ENTITY_CAST(trigger, ptr);
         assert(thisPtr);
 
+        // TODO: uncomment when script will be done
 //        engine::lua::callFunc(_lua, str, thisPtr, ent);
 //        // do garbage collections since we passed in smart pointers
 //        _lua.gc();
@@ -109,10 +108,10 @@ namespace game
             touchInfo &info = i->second;
             info.timeSinceContact += dt;
 
-            // no contact for more than 2 physics steps
+            // No contact for more than 2 physics steps
             if (info.timeSinceContact > _world.freq() * 2)
             {
-                // prepare to remove this object
+                // Prepare to remove this object
                 toRemove.push_back(i);
 
                 assert(info.ent);
@@ -172,6 +171,4 @@ namespace game
 
         return ent;
     }
-
 }
-

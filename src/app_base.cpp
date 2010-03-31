@@ -1,5 +1,5 @@
  /*
- * Copyright (c) 2008-2009 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
+ * Copyright (c) 2008-2010 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
  * This file is part of Pseudoform (Pseudoform project at http://www.pseudoform.org).
  * For conditions of distribution and use, see copyright notice in COPYING
  */
@@ -22,16 +22,18 @@ int appBase::run(int argc, char **argv)
     using namespace engine;
 
     engine::programOptions opts;
-    for (int i = 1; i < argc; ++i) // skip the first one (executable name)
+    for (int i = 1; i < argc; ++i) // Skip the first one (executable name)
         opts.push_back(engine::string(argv[i]));
 
-    // load DATA_DIR and ROOT_DIR
+    // Load DATA_DIR and ROOT_DIR
     configureDirs();
 
-    // we need to make sure that we have some settings to load
+    // We need to make sure that we have some settings to load
+    // TODO: Do something with default bindings. Maybe will need in chaiscript something like this
     //copyFile(DATA_DIR + "scripts/bind_default.lua", DATA_DIR + "scripts/bind.lua");
     copyFile(DATA_DIR + "scripts/root_default.xml", DATA_DIR + "scripts/root.xml");
 
+    // Create render application object
     gfx::rootPtr root;
     try
     {
@@ -39,10 +41,11 @@ int appBase::run(int argc, char **argv)
     }
     catch(const std::exception &e)
     {
-        std::cerr << "root error: " << e.what();
+        std::cerr << "Root error: " << e.what();
         return 0xf33df00d;
     }
 
+    // Create and manage input system
     input::input input(root->hwnd());
     input.mouseSens = 0.25;
     input.resize(root->width(), root->height());
@@ -53,32 +56,32 @@ int appBase::run(int argc, char **argv)
 
     configure(*root, input, soundSys, stateMgr, &opts);
 
-    // game loop
+    // Game loop
     while(root->windowIsOpen())
     {
-        // prepare window
+        // Prepare window
         root->begin();
-        // capture input
+        // Capture input
         input();
 
         // root->begin() and input() can result in a closed window
-        // don't render if the window closed!
+        // Don't render if the window closed!
         if (!root->windowIsOpen())
             break;
 
         soundSys.tick();
 
-        // tick states
+        // Tick states
         if (!stateMgr.tick())
             break;
-        // render states
+
+        // Render states
         stateMgr.render();
 
-        // end window rendering
+        // Finish window rendering
         root->end();
 
-        // we don't really need to time this since
-        // the screen shot will take at least 250 ms
+        // We don't need to time this since the screenshot will take at least 250 ms
         if (input.keys()->isKeyDown(OIS::KC_SYSRQ))
             root->screenShot();
     }

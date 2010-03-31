@@ -1,7 +1,12 @@
  /*
- * Copyright (c) 2008-2009 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
+ * Copyright (c) 2008-2010 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
  * This file is part of Pseudoform (Pseudoform project at http://www.pseudoform.org).
  * For conditions of distribution and use, see copyright notice in COPYING
+ */
+
+/*
+ * Update list:
+ * date
  */
 
 #include <boost/foreach.hpp>
@@ -27,7 +32,6 @@ namespace engine
         panel::panel(const string &name, bool internal):
             widget(name, internal)
         {
-            _interfaces.push_back(WIDGET_PANEL);
         }
 
         panel::~panel()
@@ -53,7 +57,7 @@ namespace engine
 
             if (decorate)
             {
-                if (skinPtr s = getSkin())
+                if (skin *s = getSkin())
                 {
                     const string TYPE = getSkinType();
 
@@ -134,7 +138,7 @@ namespace engine
                 return;
 
             string texName = _textureName;
-            if (skinPtr s = getSkin())
+            if (skin *s = getSkin())
                 texName = s->getTexture(texName);
 
             Ogre::TexturePtr tex = gfx::getTexture(texName);
@@ -143,6 +147,12 @@ namespace engine
                 _textureName.clear();
                 return;
             }
+
+//            if (!b)
+//            {
+//                _textureName.clear();
+//                log("widget " + _name + " has no brush");
+//            }
 
             vec4 dcr = derivedChildrenRect();
 
@@ -169,7 +179,7 @@ namespace engine
         {
             if (decorate)
             {
-                if (skinPtr s = getSkin())
+                if (skin *s = getSkin())
                 {
                     const string TYPE = getSkinType();
 
@@ -192,6 +202,8 @@ namespace engine
 
                     float bottomSize = std::max(std::max(bl.size.y, br.size.y), b.size.y);
 
+//                    const skin::piece &p = s->getPiece(getSkinType(), a);
+//                    return p.size;
                     if (a == A_TL) return vec2(leftSize, topSize);
                     else if (a == A_T) return vec2(0, topSize);
                     else if (a == A_TR) return vec2(rightSize, topSize);
@@ -206,24 +218,33 @@ namespace engine
             return vec2(0, 0);
         }
 
-        void panel::textureName(const string &str)
+        boost::any panel::attrib(const string &name) const
         {
-            _textureName = str;
+            if (name == "texture" || name == "textureName") return _textureName;
+            else return widget::attrib(name);
+            return boost::any();
         }
 
-        void panel::fitTextureSize()
+        widget &panel::update(const string &name, const boost::any &val)
         {
-            string texName = _textureName;
-            if (skinPtr s = getSkin())
-                texName = s->getTexture(texName);
-
-            Ogre::TexturePtr tex = gfx::getTexture(texName);
-            if (tex.get())
+            //using boost::any_cast;
+            if (name == "texture" || name == "textureName") _textureName = SAFE_ANY_CAST(string, val);
+            else if (name == "autoSize" && !_textureName.empty())
             {
-                size = vec2(tex->getWidth(), tex->getHeight());
+                string texName = _textureName;
+                if (skin *s = getSkin())
+                    texName = s->getTexture(texName);
+
+                Ogre::TexturePtr tex = gfx::getTexture(texName);
+                if (tex.get())
+                {
+                    update
+                        ("size", vec2(tex->getWidth(), tex->getHeight()));
+                }
             }
+            else return widget::update(name, val);
+
+            return *this;
         }
-
     }
-
 }

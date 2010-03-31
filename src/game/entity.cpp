@@ -1,5 +1,5 @@
  /*
- * Copyright (c) 2008-2009 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
+ * Copyright (c) 2008-2010 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
  * This file is part of Pseudoform (Pseudoform project at http://www.pseudoform.org).
  * For conditions of distribution and use, see copyright notice in COPYING
  */
@@ -13,13 +13,11 @@
 
 #include "protobuf/level_format.pb.h"
 
-//#include <iostream>
-
 namespace game
 {
-
     engine::idGen entity::_idGen;
 
+    // Default entity type
     const interfaceType entity::TYPE = ENTITY_ENTITY;
 
     entity::entity(const engine::string &n):
@@ -27,18 +25,18 @@ namespace game
         _parent(NULL),
         _initialState(new levelFormat::entity())
     {
-        // ensure genuine name
+        // Ensure genuine name
         _name = _idGen(_name);
 
         if (_name != n)
-            engine::log("entity with name " + n + " already exists, renaming to " + _name);
+            engine::log("Entity with name " + n + " already exists, renaming to " + _name);
 
         _interfaces.push_back(entity::TYPE);
     }
 
     entity::~entity()
     {
-        // allow same name to be used
+        // Allow same name to be used
         _idGen -= _name;
     }
 
@@ -102,7 +100,7 @@ namespace game
     {
         if (!_parent)
         {
-            engine::log("cannot get smartPtr() to entity \"" + _name + "\" in NULL world");
+            engine::log("Cannot get smartPtr() to entity \"" + _name + "\" in NULL world");
             return entityPtr();
         }
         return _parent->get(_name);
@@ -120,7 +118,7 @@ namespace game
         factoryList::const_iterator i = factories.find(type);
         if (i == factories.end())
         {
-            engine::log("entity factory for type \"" +
+            engine::log("Entity factory for type \"" +
                 boost::lexical_cast<engine::string>(type)+ "\" not registered");
             return entityPtr();
         }
@@ -130,10 +128,7 @@ namespace game
 
     entityPtr entityFactory::create(const engine::string &name) const
     {
-        engine::log("cannot create entity \"" + name + "\" because this factory is generic");
+        engine::log("Cannot create entity \"" + name + "\" because this factory is generic");
         return entityPtr();
     }
-
-
-
 }

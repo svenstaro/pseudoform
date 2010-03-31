@@ -1,5 +1,5 @@
  /*
- * Copyright (c) 2008-2009 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
+ * Copyright (c) 2008-2010 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
  * This file is part of Pseudoform (Pseudoform project at http://www.pseudoform.org).
  * For conditions of distribution and use, see copyright notice in COPYING
  */
@@ -26,10 +26,8 @@
 
 namespace engine
 {
-
     namespace gfx
     {
-
         Ogre::RenderSystem *renderer::renderSys() const
         {
             return Ogre::Root::getSingleton().getRenderSystem();
@@ -104,7 +102,7 @@ namespace engine
             _name(_idGen("renderer")),
             _dt(0)
         {
-            // crossing cameras between scene managers is NOT GOOD!
+            // Crossing cameras between scene managers is NOT GOOD!
             assert(_sceneMgr->hasCamera(_camera->getName()) &&
                 "renderer's viewport's camera must belong to its sceneMgr");
 
@@ -147,8 +145,5 @@ namespace engine
         {
             return _viewport->getTarget();
         }
-
     }
-
-
 }

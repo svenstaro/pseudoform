@@ -1,5 +1,5 @@
  /*
- * Copyright (c) 2008-2009 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
+ * Copyright (c) 2008-2010 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
  * This file is part of Pseudoform (Pseudoform project at http://www.pseudoform.org).
  * For conditions of distribution and use, see copyright notice in COPYING
  */
@@ -23,10 +23,10 @@ namespace engine
 {
     namespace snd
     {
-
         class system
         {
             private:
+				  // As I understand, We don't use FMOD anymore?
 
 //                FMOD_SYSTEM *_system;
 
@@ -38,19 +38,39 @@ namespace engine
                 typedef std::list<soundPtr> soundList;
                 soundList _playing;
 
+                /// Speed of music playing
                 float _speed;
 
             public:
-
+				/**
+				 * Constructor
+				 */
                 system();
+
+                /**
+                 * Destructor
+                 */
                 ~system();
 
+                /**
+                 * @brief Used for updating in global game cycle
+                 */
                 void tick();
 
+                /**
+                 * @brief Play sound file
+                 */
                 soundPtr play(const engine::string &fn, bool threeD);
 
+                /**
+                 * @brief Set sound playing speed
+                 */
                 void speed(float f);
 
+                /**
+                 * @brief Set position of sound listener (player)
+                 * TODO: arguments listener. in sound system
+                 */
                 void listener(const vec3 &p, const vec3 &f, const vec3 &u, int id = 0);
 
 //                operator FMOD_SYSTEM *() const

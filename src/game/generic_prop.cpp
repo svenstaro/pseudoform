@@ -1,5 +1,5 @@
  /*
- * Copyright (c) 2008-2009 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
+ * Copyright (c) 2008-2010 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
  * This file is part of Pseudoform (Pseudoform project at http://www.pseudoform.org).
  * For conditions of distribution and use, see copyright notice in COPYING
  */
@@ -44,15 +44,13 @@
 
 namespace game
 {
-
     namespace
     {
-
         void setMaterialName(Ogre::Entity *ent, const engine::string &mat)
         {
             if (mat.empty())
             {
-                // if empty, use the default materials
+                // If empty, use the default materials
                 for (size_t i = 0; i < ent->getNumSubEntities(); ++i)
                 {
                     Ogre::SubEntity *sub = ent->getSubEntity(i);
@@ -65,9 +63,6 @@ namespace game
             }
         }
     }
-
-//    const unsigned CLIP_PLANE_IDX = 256;
-//    const unsigned USE_CLIP_PLANE_IDX = 257;
 
     const interfaceType genericProp::TYPE = ENTITY_GENERIC_PROP;
 
@@ -211,7 +206,7 @@ namespace game
                 }
                 catch(...)
                 {
-                    log("entity \"" + _name + "\" cannot load mesh \"" + mesh + "\"");
+                    log("Entity \"" + _name + "\" cannot load mesh \"" + mesh + "\"");
                 }
             }
 
@@ -256,7 +251,7 @@ namespace game
                     }
                     catch(...)
                     {
-                        log("could not set skeleton \"" + skeleton + "\" on mesh \"" + mesh + "\"");
+                        log("Could not set skeleton \"" + skeleton + "\" on mesh \"" + mesh + "\"");
                     }
                 }
             }
@@ -376,7 +371,7 @@ namespace game
     {
         entity::tick(dt);
 
-        // advance our enabled animations, if we have any
+        // Advance our enabled animations, if we have any
         if (_anims)
         {
             for (Ogre::ConstEnabledAnimationStateIterator i = _anims->getEnabledAnimationStateIterator();
@@ -405,7 +400,7 @@ namespace game
         if (mass() < 0.01 && v.squaredLength() > 0.0001)
         {
             pos(pos() + v * dt);
-            // since this is not normal movement, wake up the objects
+            // Since this is not normal movement, wake up the objects
             // which are in our aabb
             _world.wake(aabb());
         }
@@ -459,7 +454,7 @@ namespace game
 
         if (!desc.has_generic_prop_info())
         {
-            log("generic prop " + _name + " has no generic_prop_info");
+            log("Generic prop " + _name + " has no generic_prop_info");
             return;
         }
 
@@ -467,15 +462,15 @@ namespace game
 
         if (!info.has_script())
         {
-            log("generic prop " + _name + " has no script");
+            log("Generic prop " + _name + " has no script");
             return;
         }
 
-        // make sure we didn't load the script already
+        // Make sure we didn't load the script already
         if (info.script() != _docFileName)
             loadScript(info.script());
 
-        // update default parameters
+        // Update default parameters
         if (info.has_position())
         {
             const levelFormat::vec3 &v = info.position();
@@ -542,14 +537,14 @@ namespace game
 
     void genericProp::fromGenericProp(const genericProp &o)
     {
-        // just in case we loaded something already
+        // Just in case we loaded something already
         _destroyEnt();
 
         _docFileName = o._docFileName;
         _origMaterial = o._origMaterial;
         _origScale = o._origScale;
 
-        // same parent
+        // Same parent
         if (!_node)
             _node = o._node->getParentSceneNode()->createChildSceneNode();
         _node->setScale(o._node->getScale());
@@ -564,7 +559,7 @@ namespace game
 
             _ent->setVisibilityFlags(engine::gfx::MAIN_GROUP);//o._ent->getVisibilityFlags());
 
-            // add animations, but for our own entity
+            // Add animations, but for our own entity
             if (o._anims)
             {
                 _anims = _ent->getAllAnimationStates();
@@ -591,7 +586,7 @@ namespace game
         }
 
         matrix(o.matrix());
-        // clone the collision to allow independent scaling
+        // Clone the collision to allow independent scaling
         collision(engine::phys::collisionPtr(o.collision()->clone()));
 
         collidable(o.collidable());
@@ -599,7 +594,7 @@ namespace game
         autoSleep(o.autoSleep());
 
         scale(o.scale());
-        // set the mass after the scale
+        // Set the mass after the scale
         mass(o.mass());
 
         gravity = o.gravity;
@@ -671,8 +666,4 @@ namespace game
 
         return ent;
     }
-
-
 }
-
-

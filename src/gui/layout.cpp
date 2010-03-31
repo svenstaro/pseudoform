@@ -1,12 +1,11 @@
  /*
- * Copyright (c) 2008-2009 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
+ * Copyright (c) 2008-2010 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
  * This file is part of Pseudoform (Pseudoform project at http://www.pseudoform.org).
  * For conditions of distribution and use, see copyright notice in COPYING
  */
 
 #include "layout.hpp"
 #include "widget.hpp"
-#include "log.hpp"
 
 namespace engine
 {
@@ -26,6 +25,7 @@ namespace engine
 
         void widgetLayoutItem::size(const vec2 &v)
         {
+        	// Apply new size
             _widget->sizeWithSkin(v);
         }
 
@@ -50,6 +50,8 @@ namespace engine
 
         vec2 layout::size() const
         {
+        	// Go through all items in the layour
+        	// and calculate their joined size
             vec2 ret(0, 0);
             BOOST_FOREACH(const layoutItemPtr &i, _items)
             {
@@ -64,7 +66,8 @@ namespace engine
         {
             if (!w)
             {
-                log("tried to add NULL widget to layout");
+                //log("Tried to add null widget to layout");
+                //log("Can't add empty widget into the layout");
                 return;
             }
             _items.push_back(layoutItemPtr(new widgetLayoutItem(w)));
@@ -112,6 +115,7 @@ namespace engine
             {
                 i->pos(p);
 
+                // Set new vertical pozition for items
                 p.y += i->size().y + padding;
             }
         }
@@ -124,6 +128,7 @@ namespace engine
             {
                 i->pos(p);
 
+                // Set new horizontal pozition for items
                 p.x += i->size().x + padding;
             }
         }

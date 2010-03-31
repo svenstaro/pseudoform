@@ -343,7 +343,7 @@ bool vec3::MergePartialFromCodedStream(
         if (input->ExpectTag(21)) goto parse_y;
         break;
       }
-      
+
       // optional float y = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) !=
@@ -357,7 +357,7 @@ bool vec3::MergePartialFromCodedStream(
         if (input->ExpectTag(29)) goto parse_z;
         break;
       }
-      
+
       // optional float z = 3;
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) !=
@@ -371,7 +371,7 @@ bool vec3::MergePartialFromCodedStream(
         if (input->ExpectAtEnd()) return true;
         break;
       }
-      
+
       default: {
       handle_uninterpreted:
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
@@ -395,22 +395,22 @@ void vec3::SerializeWithCachedSizes(
     vec3::SerializeWithCachedSizesToArray(raw_buffer);
     return;
   }
-  
+
   // optional float x = 1;
   if (_has_bit(0)) {
     ::google::protobuf::internal::WireFormatLite::WriteFloat(1, this->x(), output);
   }
-  
+
   // optional float y = 2;
   if (_has_bit(1)) {
     ::google::protobuf::internal::WireFormatLite::WriteFloat(2, this->y(), output);
   }
-  
+
   // optional float z = 3;
   if (_has_bit(2)) {
     ::google::protobuf::internal::WireFormatLite::WriteFloat(3, this->z(), output);
   }
-  
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -423,17 +423,17 @@ void vec3::SerializeWithCachedSizes(
   if (_has_bit(0)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(1, this->x(), target);
   }
-  
+
   // optional float y = 2;
   if (_has_bit(1)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(2, this->y(), target);
   }
-  
+
   // optional float z = 3;
   if (_has_bit(2)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(3, this->z(), target);
   }
-  
+
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -443,23 +443,23 @@ void vec3::SerializeWithCachedSizes(
 
 int vec3::ByteSize() const {
   int total_size = 0;
-  
+
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     // optional float x = 1;
     if (has_x()) {
       total_size += 1 + 4;
     }
-    
+
     // optional float y = 2;
     if (has_y()) {
       total_size += 1 + 4;
     }
-    
+
     // optional float z = 3;
     if (has_z()) {
       total_size += 1 + 4;
     }
-    
+
   }
   if (!unknown_fields().empty()) {
     total_size +=
@@ -511,7 +511,7 @@ void vec3::CopyFrom(const vec3& from) {
 }
 
 bool vec3::IsInitialized() const {
-  
+
   return true;
 }
 
@@ -618,7 +618,7 @@ bool quat::MergePartialFromCodedStream(
         if (input->ExpectTag(21)) goto parse_y;
         break;
       }
-      
+
       // optional float y = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) !=
@@ -632,7 +632,7 @@ bool quat::MergePartialFromCodedStream(
         if (input->ExpectTag(29)) goto parse_z;
         break;
       }
-      
+
       // optional float z = 3;
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) !=
@@ -646,7 +646,7 @@ bool quat::MergePartialFromCodedStream(
         if (input->ExpectTag(37)) goto parse_w;
         break;
       }
-      
+
       // optional float w = 4;
       case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) !=
@@ -660,7 +660,7 @@ bool quat::MergePartialFromCodedStream(
         if (input->ExpectAtEnd()) return true;
         break;
       }
-      
+
       default: {
       handle_uninterpreted:
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
@@ -684,27 +684,27 @@ void quat::SerializeWithCachedSizes(
     quat::SerializeWithCachedSizesToArray(raw_buffer);
     return;
   }
-  
+
   // optional float x = 1;
   if (_has_bit(0)) {
     ::google::protobuf::internal::WireFormatLite::WriteFloat(1, this->x(), output);
   }
-  
+
   // optional float y = 2;
   if (_has_bit(1)) {
     ::google::protobuf::internal::WireFormatLite::WriteFloat(2, this->y(), output);
   }
-  
+
   // optional float z = 3;
   if (_has_bit(2)) {
     ::google::protobuf::internal::WireFormatLite::WriteFloat(3, this->z(), output);
   }
-  
+
   // optional float w = 4;
   if (_has_bit(3)) {
     ::google::protobuf::internal::WireFormatLite::WriteFloat(4, this->w(), output);
   }
-  
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -717,22 +717,22 @@ void quat::SerializeWithCachedSizes(
   if (_has_bit(0)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(1, this->x(), target);
   }
-  
+
   // optional float y = 2;
   if (_has_bit(1)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(2, this->y(), target);
   }
-  
+
   // optional float z = 3;
   if (_has_bit(2)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(3, this->z(), target);
   }
-  
+
   // optional float w = 4;
   if (_has_bit(3)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(4, this->w(), target);
   }
-  
+
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -742,28 +742,28 @@ void quat::SerializeWithCachedSizes(
 
 int quat::ByteSize() const {
   int total_size = 0;
-  
+
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     // optional float x = 1;
     if (has_x()) {
       total_size += 1 + 4;
     }
-    
+
     // optional float y = 2;
     if (has_y()) {
       total_size += 1 + 4;
     }
-    
+
     // optional float z = 3;
     if (has_z()) {
       total_size += 1 + 4;
     }
-    
+
     // optional float w = 4;
     if (has_w()) {
       total_size += 1 + 4;
     }
-    
+
   }
   if (!unknown_fields().empty()) {
     total_size +=
@@ -818,7 +818,7 @@ void quat::CopyFrom(const quat& from) {
 }
 
 bool quat::IsInitialized() const {
-  
+
   return true;
 }
 
@@ -954,7 +954,7 @@ bool genericPropInfo::MergePartialFromCodedStream(
         if (input->ExpectTag(18)) goto parse_position;
         break;
       }
-      
+
       // optional .levelFormat.vec3 position = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) !=
@@ -967,7 +967,7 @@ bool genericPropInfo::MergePartialFromCodedStream(
         if (input->ExpectTag(26)) goto parse_rotation;
         break;
       }
-      
+
       // optional .levelFormat.quat rotation = 3;
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) !=
@@ -980,7 +980,7 @@ bool genericPropInfo::MergePartialFromCodedStream(
         if (input->ExpectTag(34)) goto parse_scale;
         break;
       }
-      
+
       // optional .levelFormat.vec3 scale = 4;
       case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) !=
@@ -993,7 +993,7 @@ bool genericPropInfo::MergePartialFromCodedStream(
         if (input->ExpectTag(45)) goto parse_mass;
         break;
       }
-      
+
       // optional float mass = 5;
       case 5: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) !=
@@ -1007,7 +1007,7 @@ bool genericPropInfo::MergePartialFromCodedStream(
         if (input->ExpectTag(48)) goto parse_collidable;
         break;
       }
-      
+
       // optional bool collidable = 6;
       case 6: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) !=
@@ -1021,7 +1021,7 @@ bool genericPropInfo::MergePartialFromCodedStream(
         if (input->ExpectAtEnd()) return true;
         break;
       }
-      
+
       default: {
       handle_uninterpreted:
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
@@ -1045,7 +1045,7 @@ void genericPropInfo::SerializeWithCachedSizes(
     genericPropInfo::SerializeWithCachedSizesToArray(raw_buffer);
     return;
   }
-  
+
   // optional string script = 1;
   if (_has_bit(0)) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
@@ -1054,35 +1054,35 @@ void genericPropInfo::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteString(
       1, this->script(), output);
   }
-  
+
   // optional .levelFormat.vec3 position = 2;
   if (_has_bit(1)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageNoVirtual(
       2, this->position(), output);
   }
-  
+
   // optional .levelFormat.quat rotation = 3;
   if (_has_bit(2)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageNoVirtual(
       3, this->rotation(), output);
   }
-  
+
   // optional .levelFormat.vec3 scale = 4;
   if (_has_bit(3)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageNoVirtual(
       4, this->scale(), output);
   }
-  
+
   // optional float mass = 5;
   if (_has_bit(4)) {
     ::google::protobuf::internal::WireFormatLite::WriteFloat(5, this->mass(), output);
   }
-  
+
   // optional bool collidable = 6;
   if (_has_bit(5)) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(6, this->collidable(), output);
   }
-  
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -1100,38 +1100,38 @@ void genericPropInfo::SerializeWithCachedSizes(
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         1, this->script(), target);
   }
-  
+
   // optional .levelFormat.vec3 position = 2;
   if (_has_bit(1)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         2, this->position(), target);
   }
-  
+
   // optional .levelFormat.quat rotation = 3;
   if (_has_bit(2)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         3, this->rotation(), target);
   }
-  
+
   // optional .levelFormat.vec3 scale = 4;
   if (_has_bit(3)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         4, this->scale(), target);
   }
-  
+
   // optional float mass = 5;
   if (_has_bit(4)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(5, this->mass(), target);
   }
-  
+
   // optional bool collidable = 6;
   if (_has_bit(5)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(6, this->collidable(), target);
   }
-  
+
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -1141,7 +1141,7 @@ void genericPropInfo::SerializeWithCachedSizes(
 
 int genericPropInfo::ByteSize() const {
   int total_size = 0;
-  
+
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     // optional string script = 1;
     if (has_script()) {
@@ -1149,38 +1149,38 @@ int genericPropInfo::ByteSize() const {
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->script());
     }
-    
+
     // optional .levelFormat.vec3 position = 2;
     if (has_position()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->position());
     }
-    
+
     // optional .levelFormat.quat rotation = 3;
     if (has_rotation()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->rotation());
     }
-    
+
     // optional .levelFormat.vec3 scale = 4;
     if (has_scale()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->scale());
     }
-    
+
     // optional float mass = 5;
     if (has_mass()) {
       total_size += 1 + 4;
     }
-    
+
     // optional bool collidable = 6;
     if (has_collidable()) {
       total_size += 1 + 1;
     }
-    
+
   }
   if (!unknown_fields().empty()) {
     total_size +=
@@ -1241,7 +1241,7 @@ void genericPropInfo::CopyFrom(const genericPropInfo& from) {
 }
 
 bool genericPropInfo::IsInitialized() const {
-  
+
   return true;
 }
 
@@ -1352,7 +1352,7 @@ bool portalInfo::MergePartialFromCodedStream(
         if (input->ExpectAtEnd()) return true;
         break;
       }
-      
+
       default: {
       handle_uninterpreted:
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
@@ -1376,7 +1376,7 @@ void portalInfo::SerializeWithCachedSizes(
     portalInfo::SerializeWithCachedSizesToArray(raw_buffer);
     return;
   }
-  
+
   // optional string connection = 1;
   if (_has_bit(0)) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
@@ -1385,7 +1385,7 @@ void portalInfo::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteString(
       1, this->connection(), output);
   }
-  
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -1403,7 +1403,7 @@ void portalInfo::SerializeWithCachedSizes(
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         1, this->connection(), target);
   }
-  
+
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -1413,7 +1413,7 @@ void portalInfo::SerializeWithCachedSizes(
 
 int portalInfo::ByteSize() const {
   int total_size = 0;
-  
+
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     // optional string connection = 1;
     if (has_connection()) {
@@ -1421,7 +1421,7 @@ int portalInfo::ByteSize() const {
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->connection());
     }
-    
+
   }
   if (!unknown_fields().empty()) {
     total_size +=
@@ -1467,7 +1467,7 @@ void portalInfo::CopyFrom(const portalInfo& from) {
 }
 
 bool portalInfo::IsInitialized() const {
-  
+
   return true;
 }
 
@@ -1584,7 +1584,7 @@ bool triggerInfo::MergePartialFromCodedStream(
         if (input->ExpectTag(18)) goto parse_on_exit;
         break;
       }
-      
+
       // optional string on_exit = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) !=
@@ -1600,7 +1600,7 @@ bool triggerInfo::MergePartialFromCodedStream(
         if (input->ExpectAtEnd()) return true;
         break;
       }
-      
+
       default: {
       handle_uninterpreted:
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
@@ -1624,7 +1624,7 @@ void triggerInfo::SerializeWithCachedSizes(
     triggerInfo::SerializeWithCachedSizesToArray(raw_buffer);
     return;
   }
-  
+
   // optional string on_enter = 1;
   if (_has_bit(0)) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
@@ -1633,7 +1633,7 @@ void triggerInfo::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteString(
       1, this->on_enter(), output);
   }
-  
+
   // optional string on_exit = 2;
   if (_has_bit(1)) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
@@ -1642,7 +1642,7 @@ void triggerInfo::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteString(
       2, this->on_exit(), output);
   }
-  
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -1660,7 +1660,7 @@ void triggerInfo::SerializeWithCachedSizes(
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         1, this->on_enter(), target);
   }
-  
+
   // optional string on_exit = 2;
   if (_has_bit(1)) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
@@ -1670,7 +1670,7 @@ void triggerInfo::SerializeWithCachedSizes(
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         2, this->on_exit(), target);
   }
-  
+
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -1680,7 +1680,7 @@ void triggerInfo::SerializeWithCachedSizes(
 
 int triggerInfo::ByteSize() const {
   int total_size = 0;
-  
+
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     // optional string on_enter = 1;
     if (has_on_enter()) {
@@ -1688,14 +1688,14 @@ int triggerInfo::ByteSize() const {
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->on_enter());
     }
-    
+
     // optional string on_exit = 2;
     if (has_on_exit()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->on_exit());
     }
-    
+
   }
   if (!unknown_fields().empty()) {
     total_size +=
@@ -1744,7 +1744,7 @@ void triggerInfo::CopyFrom(const triggerInfo& from) {
 }
 
 bool triggerInfo::IsInitialized() const {
-  
+
   return true;
 }
 
@@ -1873,7 +1873,7 @@ bool entity::MergePartialFromCodedStream(
         if (input->ExpectTag(18)) goto parse_name;
         break;
       }
-      
+
       // optional string name = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) !=
@@ -1889,7 +1889,7 @@ bool entity::MergePartialFromCodedStream(
         if (input->ExpectTag(26)) goto parse_generic_prop_info;
         break;
       }
-      
+
       // optional .levelFormat.genericPropInfo generic_prop_info = 3;
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) !=
@@ -1902,7 +1902,7 @@ bool entity::MergePartialFromCodedStream(
         if (input->ExpectTag(34)) goto parse_portal_info;
         break;
       }
-      
+
       // optional .levelFormat.portalInfo portal_info = 4;
       case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) !=
@@ -1915,7 +1915,7 @@ bool entity::MergePartialFromCodedStream(
         if (input->ExpectTag(42)) goto parse_trigger_info;
         break;
       }
-      
+
       // optional .levelFormat.triggerInfo trigger_info = 5;
       case 5: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) !=
@@ -1928,7 +1928,7 @@ bool entity::MergePartialFromCodedStream(
         if (input->ExpectAtEnd()) return true;
         break;
       }
-      
+
       default: {
       handle_uninterpreted:
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
@@ -1952,12 +1952,12 @@ void entity::SerializeWithCachedSizes(
     entity::SerializeWithCachedSizesToArray(raw_buffer);
     return;
   }
-  
+
   // optional uint32 type = 1;
   if (_has_bit(0)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->type(), output);
   }
-  
+
   // optional string name = 2;
   if (_has_bit(1)) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
@@ -1966,25 +1966,25 @@ void entity::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteString(
       2, this->name(), output);
   }
-  
+
   // optional .levelFormat.genericPropInfo generic_prop_info = 3;
   if (_has_bit(2)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageNoVirtual(
       3, this->generic_prop_info(), output);
   }
-  
+
   // optional .levelFormat.portalInfo portal_info = 4;
   if (_has_bit(3)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageNoVirtual(
       4, this->portal_info(), output);
   }
-  
+
   // optional .levelFormat.triggerInfo trigger_info = 5;
   if (_has_bit(4)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageNoVirtual(
       5, this->trigger_info(), output);
   }
-  
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -1997,7 +1997,7 @@ void entity::SerializeWithCachedSizes(
   if (_has_bit(0)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->type(), target);
   }
-  
+
   // optional string name = 2;
   if (_has_bit(1)) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
@@ -2007,28 +2007,28 @@ void entity::SerializeWithCachedSizes(
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         2, this->name(), target);
   }
-  
+
   // optional .levelFormat.genericPropInfo generic_prop_info = 3;
   if (_has_bit(2)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         3, this->generic_prop_info(), target);
   }
-  
+
   // optional .levelFormat.portalInfo portal_info = 4;
   if (_has_bit(3)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         4, this->portal_info(), target);
   }
-  
+
   // optional .levelFormat.triggerInfo trigger_info = 5;
   if (_has_bit(4)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         5, this->trigger_info(), target);
   }
-  
+
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -2038,7 +2038,7 @@ void entity::SerializeWithCachedSizes(
 
 int entity::ByteSize() const {
   int total_size = 0;
-  
+
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     // optional uint32 type = 1;
     if (has_type()) {
@@ -2046,35 +2046,35 @@ int entity::ByteSize() const {
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
           this->type());
     }
-    
+
     // optional string name = 2;
     if (has_name()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->name());
     }
-    
+
     // optional .levelFormat.genericPropInfo generic_prop_info = 3;
     if (has_generic_prop_info()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->generic_prop_info());
     }
-    
+
     // optional .levelFormat.portalInfo portal_info = 4;
     if (has_portal_info()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->portal_info());
     }
-    
+
     // optional .levelFormat.triggerInfo trigger_info = 5;
     if (has_trigger_info()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->trigger_info());
     }
-    
+
   }
   if (!unknown_fields().empty()) {
     total_size +=
@@ -2132,7 +2132,7 @@ void entity::CopyFrom(const entity& from) {
 }
 
 bool entity::IsInitialized() const {
-  
+
   return true;
 }
 
@@ -2243,7 +2243,7 @@ bool level::MergePartialFromCodedStream(
         if (input->ExpectTag(18)) goto parse_script;
         break;
       }
-      
+
       // optional string script = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) !=
@@ -2259,7 +2259,7 @@ bool level::MergePartialFromCodedStream(
         if (input->ExpectAtEnd()) return true;
         break;
       }
-      
+
       default: {
       handle_uninterpreted:
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
@@ -2283,13 +2283,13 @@ void level::SerializeWithCachedSizes(
     level::SerializeWithCachedSizesToArray(raw_buffer);
     return;
   }
-  
+
   // repeated .levelFormat.entity entities = 1;
   for (int i = 0; i < this->entities_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageNoVirtual(
       1, this->entities(i), output);
   }
-  
+
   // optional string script = 2;
   if (_has_bit(1)) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
@@ -2298,7 +2298,7 @@ void level::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteString(
       2, this->script(), output);
   }
-  
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -2313,7 +2313,7 @@ void level::SerializeWithCachedSizes(
       WriteMessageNoVirtualToArray(
         1, this->entities(i), target);
   }
-  
+
   // optional string script = 2;
   if (_has_bit(1)) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
@@ -2323,7 +2323,7 @@ void level::SerializeWithCachedSizes(
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         2, this->script(), target);
   }
-  
+
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -2333,7 +2333,7 @@ void level::SerializeWithCachedSizes(
 
 int level::ByteSize() const {
   int total_size = 0;
-  
+
   if (_has_bits_[1 / 32] & (0xffu << (1 % 32))) {
     // optional string script = 2;
     if (has_script()) {
@@ -2341,7 +2341,7 @@ int level::ByteSize() const {
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->script());
     }
-    
+
   }
   // repeated .levelFormat.entity entities = 1;
   total_size += 1 * this->entities_size();
@@ -2350,7 +2350,7 @@ int level::ByteSize() const {
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
         this->entities(i));
   }
-  
+
   if (!unknown_fields().empty()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
@@ -2396,7 +2396,7 @@ void level::CopyFrom(const level& from) {
 }
 
 bool level::IsInitialized() const {
-  
+
   return true;
 }
 

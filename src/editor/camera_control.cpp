@@ -1,5 +1,5 @@
  /*
- * Copyright (c) 2008-2009 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
+ * Copyright (c) 2008-2010 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
  * This file is part of Pseudoform (Pseudoform project at http://www.pseudoform.org).
  * For conditions of distribution and use, see copyright notice in COPYING
  */
@@ -63,7 +63,7 @@ namespace editor
         {
             vec3 movement = ROT * vec3(0, 0, rel.y * 0.1);
 
-            // if movement is greater than 0.1cm
+            // If movement is greater than 0.1cm
             if (movement.squaredLength() > 0.001 * 0.001)
             {
                 pos += XZ.projectVector(movement).normalisedCopy() * movement.length();
@@ -71,7 +71,7 @@ namespace editor
             }
             else
             {
-                // didn't move, *might* be picking/clicking
+                // Didn't move, *might* be picking/clicking
             }
             _yaw = quat(deg(-rel.x), vec3(0, 1, 0)) * _yaw;
 
@@ -83,12 +83,12 @@ namespace editor
             timeLeftToVisibleMouse = 0;
         }
 
-        // check for moving through a portal
+        // Check for moving through a portal
         {
             using game::portal;
             BOOST_FOREACH(portal *p, portal::getAllPortals())
             {
-                if (!p->parent()) // portal not in a world
+                if (!p->parent()) // Portal not in a world
                     continue;
 
                 if (p->isWithinFace(POS) && !p->isBehindFace(POS) && p->isBehindFace(pos))
@@ -108,7 +108,7 @@ namespace editor
 
         if (_yaw.yAxis().dotProduct(vec3::UNIT_Y) < 0.99999)
         {
-            // align Y axis
+            // Align Y axis
 
             quat align = _yaw.yAxis().getRotationTo(vec3::UNIT_Y);
             quat dest = align * _yaw;

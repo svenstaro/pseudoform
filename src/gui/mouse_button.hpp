@@ -1,5 +1,5 @@
  /*
- * Copyright (c) 2008-2009 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
+ * Copyright (c) 2008-2010 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
  * This file is part of Pseudoform (Pseudoform project at http://www.pseudoform.org).
  * For conditions of distribution and use, see copyright notice in COPYING
  */
@@ -11,11 +11,12 @@ namespace engine
 {
     namespace gui
     {
-
+		/// List of available mouse buttons
         enum mouseButton
         {
             MB_LEFT,
             // what kind of fucking idiot used a #define for this?
+            // ^ :D max
             #undef MB_RIGHT
             MB_RIGHT,
             MB_MIDDLE,

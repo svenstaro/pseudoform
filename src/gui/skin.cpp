@@ -1,5 +1,5 @@
  /*
- * Copyright (c) 2008-2009 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
+ * Copyright (c) 2008-2010 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
  * This file is part of Pseudoform (Pseudoform project at http://www.pseudoform.org).
  * For conditions of distribution and use, see copyright notice in COPYING
  */
@@ -9,9 +9,7 @@
 #include "gfx/utils.hpp"
 
 #include "skin.hpp"
-
 #include "log.hpp"
-
 #include "data_dir.hpp"
 
 namespace engine
@@ -25,11 +23,6 @@ namespace engine
 
         skin::piece skin::_defaultPiece = { "", vec2(0, 0) };
 
-//        const string ALIGNMENT_STRINGS[9] =
-//        {
-//            "tl", "t", "tr", "r", "br", "b", "bl", "l", "mi"
-//        };
-
         skin::skin(const string &n):
             _name(n),
             _prefix("gui/skins/" + _name + "/" + _name)
@@ -38,7 +31,7 @@ namespace engine
             doc.LoadFile((engine::DATA_DIR + _prefix + ".xml").c_str());
             if (doc.Error())
             {
-                engine::log("failed to load GUI skin " + _name);
+                engine::log("Failed to load GUI skin " + _name);
                 return;
             }
 
@@ -82,20 +75,6 @@ namespace engine
 
         const skin::piece &skin::getPiece(const string &type, const string &align) const
         {
-//            skin::piece ret;
-//            if (a != A_NONE)
-//                ret.tex = _prefix + type + "_" + ALIGNMENT_STRINGS[a] + ".png";
-//            else
-//                ret.tex = _prefix + type + ".png";
-//
-//            Ogre::TexturePtr tex = gfx::getTexture(ret.tex);
-//            if (tex.get())
-//            {
-//                ret.size = vec2(tex->getWidth(), tex->getHeight());
-//            }
-//            else
-//                ret.size = vec2(1, 1);
-
             elementMap::const_iterator i = _elements.find(type);
 
             if (i != _elements.end())
@@ -105,7 +84,7 @@ namespace engine
                     return j->second;
             }
 
-//            log("cannot find skin " + type + " :: " + align);
+            log("Cannot find skin " + type + " :: " + align);
 
             return _defaultPiece;
         }
@@ -113,7 +92,6 @@ namespace engine
         string skin::getTexture(const string &tex) const
         {
             string ret = _prefix + "_" + tex;
-//            std::cout << "trying " << ret << "\n";
             std::map<string, bool>::iterator i = _textures.find(tex);
             if (i != _textures.end())
             {
@@ -130,6 +108,5 @@ namespace engine
                 return ret;
             return tex;
         }
-
     }
 }

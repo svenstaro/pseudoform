@@ -1,5 +1,5 @@
  /*
- * Copyright (c) 2008-2009 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
+ * Copyright (c) 2008-2010 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
  * This file is part of Pseudoform (Pseudoform project at http://www.pseudoform.org).
  * For conditions of distribution and use, see copyright notice in COPYING
  */
@@ -16,27 +16,39 @@ namespace engine
 {
     namespace gui
     {
-
+		/**
+		 * Gui skin class
+		 */
         class skin
         {
             private:
-
+				/// Gui skin name
                 string _name, _prefix;
 
-                // for caching getTexture() calls
+                /// For caching getTexture() calls
                 mutable std::map<string, bool> _textures;
 
             public:
-
+				/**
+				 * Constructor
+				 */
                 skin(const string &name);
+
+                /**
+                 * Destructor
+                 */
                 ~skin();
 
+                /**
+                 * The part of skin
+                 */
                 struct piece
                 {
                     string tex;
                     vec2 size;
                 };
 
+                // TODO
                 typedef std::map<string, piece> pieceList;
                 typedef std::map<string, pieceList> elementMap;
 
@@ -45,11 +57,8 @@ namespace engine
                 string getTexture(const string &tex) const;
 
             private:
-
                 static piece _defaultPiece;
-
                 elementMap _elements;
-
         };
     }
 }

@@ -1,5 +1,5 @@
  /*
- * Copyright (c) 2008-2009 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
+ * Copyright (c) 2008-2010 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
  * This file is part of Pseudoform (Pseudoform project at http://www.pseudoform.org).
  * For conditions of distribution and use, see copyright notice in COPYING
  */
@@ -24,9 +24,13 @@ namespace levelFormat
     class entity;
 }
 
+/**
+ * @namespace game
+ * @brief Consist of tools for building game world
+ */
 namespace game
 {
-
+	/// Shared pointer to the entity
     typedef boost::shared_ptr<class entity> entityPtr;
 
     class world;
@@ -34,31 +38,54 @@ namespace game
     using engine::interfaceType;
     using engine::interfaceList;
 
+    /**
+     * @class entity
+     * @brief Represents some object-entity in game world
+     */
     class entity
     {
         public:
-
+			/// Entity type
             static const interfaceType TYPE;
 
         protected:
-
+			/// Name of the entity
             engine::string _name;
 
+            /// List of interfaces
             interfaceList _interfaces;
 
             friend class world;
+            /// Pointer to the class we will use entity in
             world *_parent;
 
+            // WTF?
             boost::shared_ptr<levelFormat::entity> _initialState;
 
+            /// List of entities
             static engine::idGen _idGen;
 
         public:
-
+			/**
+			 * @brief Get entity parent
+			 * @return world object this entity refer for
+			 */
             world *parent() const { return _parent; }
+
+            /**
+             * @brief Change entity parent world
+             * @param w new world
+             */
             virtual void willChangeTo(world *w) {}
 
+            /**
+             * Constructor
+             */
             entity(const engine::string &n);
+
+            /**
+             * Destructor
+             */
             virtual ~entity();
 
             // little utility
@@ -73,34 +100,74 @@ namespace game
                 return _initialState;
             }
 
+            // TODO: comment functions
             boost::shared_ptr<levelFormat::entity> copyOfInitialState() const;
 
             boost::shared_ptr<levelFormat::entity> currentState();
 
+            /**
+             * @brief Get entity's name
+             */
             const engine::string &name() const { return _name; }
+
+            /**
+             * @brief Set new name for the current entity
+             * @param str new name
+             */
             void name(const engine::string &str);
+
+            /**
+             * @brief Get list of interfaces
+             */
             const interfaceList &interfaces() const { return _interfaces; }
+
+            /**
+             * @brief Check availability of some interface
+             * @param t interface type to check
+             */
             bool hasInterface(const interfaceType &t) const
             {
                 return std::find(_interfaces.begin(), _interfaces.end(), t) != _interfaces.end();
             }
+
+            /**
+             * @brief Get interface type
+             */
             const interfaceType &type() const
             {
                 assert(!_interfaces.empty());
                 return _interfaces.back();
             }
 
+            /**
+             * @brief Get pointer for the entity with given name
+             * @param name need entity name
+             * @return pointer for the entity
+             */
             virtual entityPtr clone(const engine::string &name)
             {
                 return entityPtr(new entity(name));
             }
 
+            /**
+             * @brief Smart pointer for the current entity
+             */
             entityPtr smartPtr() const;
 
-            virtual void reset(); // reset original state
+            /**
+             * @brief Reset original state
+             */
+            virtual void reset();
 
+            /**
+             * @brief Used with global application cycle
+             */
             virtual void tick(engine::real dt);
 
+            /**
+             * TOOD: maybe loading entity using format from levelFormat class
+             */
+            // TODO All this stuff
             virtual void load(const levelFormat::entity &desc);
             void loadAsInitialState(const levelFormat::entity &desc);
             virtual void save(levelFormat::entity &desc);
@@ -108,8 +175,14 @@ namespace game
     };
 
     class entityFactory;
+    /// Shared pointer for the entity factory
     typedef boost::shared_ptr<entityFactory> entityFactoryPtr;
 
+    /**
+     * @brief Cast entity to given type
+     * @param ent pointer for the entity to cast
+     * @param A new entity type
+     */
     template<typename A>
     boost::shared_ptr<A> entityCast(const entityPtr &ent)
     {
@@ -118,6 +191,12 @@ namespace game
         return boost::static_pointer_cast<A>(ent);
     }
 
+    /**
+     * @brief Cast entity to given type due to given interface
+     * @param ent pointer for the entity to cast
+     * @param type interface type
+     * @param A new entity type
+     */
     template<typename A>
     boost::shared_ptr<A> entityCast(const entityPtr &ent, const interfaceType &type)
     {
@@ -125,7 +204,7 @@ namespace game
             return boost::shared_ptr<A>();
         if (!ent->hasInterface(type))
         {
-            engine::log("cannot cast entity " + ent->name() + " of type " +
+            engine::log("Cannot cast entity " + ent->name() + " of type " +
                 boost::lexical_cast<engine::string>(ent->type()) + " to type " +
                 boost::lexical_cast<engine::string>(type));
             return boost::shared_ptr<A>();
@@ -133,35 +212,62 @@ namespace game
         return entityCast<A>(ent);
     }
 
-    // for conveniency
-    // assumes <type>Ptr naming
+    /// For fast entity casting
     #define ENTITY_CAST(T, ent) entityCast<T>((ent), T::TYPE)
 
+    /**
+     * @class entityFactory
+     * @brief Entity factory
+     * @see class entity
+     * @remarks for more information
+     * visit: http://en.wikipedia.org/wiki/Factory_method_pattern
+     */
     class entityFactory
     {
         protected:
-
             typedef std::map<interfaceType, entityFactoryPtr> factoryList;
+
+            /// List of factories
             factoryList factories;
 
+            /// Interface type
             interfaceType _type;
 
         public:
-
+			/**
+			 * @brief Get interface type
+			 */
             const interfaceType &type() const { return _type; }
 
+            /**
+             * Constructor
+             */
             entityFactory(const interfaceType &t = entity::TYPE):
                 _type(t) {}
 
-            // virtual destructor
+            /**
+             * Destructor
+             */
             virtual ~entityFactory() {}
 
-            // register custom factory
+            /**
+             * @brief Register custom factory
+             */
             void add(const entityFactoryPtr &f);
+
             // retrieve custom factory
 //            entityFactoryPtr operator[](const engine::string &t) const;
-            // spawn an entity
+
+            /**
+             * Spawn an entity
+             */
             entityPtr create(const interfaceType &type, const engine::string &name) const;
+
+            /**
+             * @brief Create new entity for the factory
+             * @param name new entity name
+             * @return pointer to the created entity
+             */
             virtual entityPtr create(const engine::string &name) const;
     };
 
@@ -170,7 +276,6 @@ namespace game
 //    {
 //        return boost::static_pointer_cast<A>(p);
 //    }
-
 }
 
 #endif // ENTITY_HPP_INCLUDED

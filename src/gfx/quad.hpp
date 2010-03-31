@@ -1,5 +1,5 @@
  /*
- * Copyright (c) 2008-2009 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
+ * Copyright (c) 2008-2010 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
  * This file is part of Pseudoform (Pseudoform project at http://www.pseudoform.org).
  * For conditions of distribution and use, see copyright notice in COPYING
  */
@@ -17,41 +17,64 @@
 
 namespace engine
 {
-
     namespace gfx
     {
-
-        // shader-based quad rendering code (for post processing, etc.)
+		/**
+		 * @class quad
+		 * @brief Shader-based quad rendering
+		 *
+		 * This class is used for postprocessing
+		 */
         class quad
         {
             private:
-
+				/// Quad object
                 Ogre::ManualObject *_quad;
 
-                // rectangle xywh
+                /// Quad rectangle (xywh)
                 vec4 _rect;
-                // relative to screen or pixel based?
+
+                /// Relative to screen or pixel based?
                 bool _relative;
 
+				/// Quad name
                 string _name;
+
+                /// Map of quads names
                 static idGen _idGen;
 
             public:
-
-                // matrices at pre scale, pre move, and post all
-//                mat4 preSize, preMove, postMove, textureMat;
-
+                /**
+                 * Constructor
+                 */
                 quad(size_t screenW = 1, size_t screenH = 1);
+
+                /**
+                 * Destructor
+                 */
                 ~quad();
 
+                /**
+                 * @brief Build quad with given dimensions
+                 * @param screenW screen width
+                 * @param screenH screen height
+                 *
+                 * @remarks By default quad is full-screen size
+                 */
                 void build(size_t screenW, size_t screenH);
 
-                // camera is for corner calculations if wanted
+                /**
+                 * @brief Camera is for corner calculations if wanteds
+                 */
                 void render(Ogre::Pass *p,
                     Ogre::Viewport *vp,
                     Ogre::Camera *cam = NULL,
                     bool beginEnd = true) const;
 
+                /**
+                 * @brief Configure quad object
+                 * @param r quad dimensions
+                 */
                 void rect(const vec4 &r, bool isRelative = false)
                 {
                     _rect = r;
@@ -59,11 +82,11 @@ namespace engine
                 }
         };
 
+        /**
+         * Shared pointer to the current class
+         */
         typedef boost::shared_ptr<quad> quadPtr;
-
     }
-
 }
-
 
 #endif // QUAD_HPP_INCLUDED

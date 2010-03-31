@@ -12,35 +12,53 @@
 
 namespace engine
 {
-
     namespace gui
     {
-
+		/**
+		 * Button widget
+		 */
         class button;
+
+        /// Shared pointer for the button
         typedef boost::shared_ptr<button> buttonPtr;
 
         class button: public panel
         {
             protected:
-
+				/// Button label text
                 textPtr _text;
 
+				/**
+				 * Click event
+				 * @param e called event additional data
+				 */
                 void _clickText(const event &e);
 
             public:
-
+				/**
+				 * Constructor
+				 */
                 button(const string &name, bool internal = false);
+
+                /**
+                 * Destructor
+                 */
                 ~button();
 
+                /**
+                 * Update button from global application cycle
+                 */
                 void tick(real dt);
 
-                void setText(const string &str);
-
+                /**
+                 * Get current object type
+                 */
                 string getSkinType() const;
+
+                widget &update(const string &name, const boost::any &val);
+                boost::any attrib(const string &name) const;
         };
-
     }
-
 }
 
 #endif // BUTTON_HPP_INCLUDED

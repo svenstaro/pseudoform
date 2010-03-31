@@ -1,5 +1,5 @@
  /*
- * Copyright (c) 2008-2009 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
+ * Copyright (c) 2008-2010 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
  * This file is part of Pseudoform (Pseudoform project at http://www.pseudoform.org).
  * For conditions of distribution and use, see copyright notice in COPYING
  */
@@ -15,7 +15,6 @@
 
 namespace game
 {
-
     world::world()
     {
     }
@@ -31,19 +30,21 @@ namespace game
         {
             if (ent->_parent)
             {
-                // do not add if it already belongs to a world
+                // Do not add if it already belongs to a world
                 engine::log("entity " + ent->name() + " already belongs to a world");
                 return;
             }
 
             _ents[ent->name()] = ent;
 
-            // set us as it's world
+            // Set us as it's world
             ent->willChangeTo(this);
             ent->_parent = this;
         }
         else
-            engine::log("tried to add null entity to world");
+        {
+            engine::log("Tried to add null entity to world");
+        }
     }
 
     entityPtr world::remove(const engine::string &name)
@@ -51,16 +52,16 @@ namespace game
         entityList::iterator i = _ents.find(name);
         if (i != _ents.end())
         {
-            entityPtr ptr = i->second; // save the entity
-            _ents.erase(i); // remove it
+            entityPtr ptr = i->second; // Save the entity
+            _ents.erase(i); // Remove it
 
             // reset the world
             ptr->willChangeTo(NULL);
             ptr->_parent = NULL;
 
-            return ptr; // return it to user
+            return ptr; // Return it to user
         }
-        engine::log("cannot remove entity\"" + name + "\" from world because it does not exist");
+        engine::log("Cannot remove entity\"" + name + "\" from world because it does not exist");
         return entityPtr();
     }
 
@@ -69,7 +70,7 @@ namespace game
         entityList::const_iterator i = _ents.find(name);
         if (i != _ents.end())
             return i->second;
-        engine::log("could not find entity with name \"" + name + "\"");
+        engine::log("Could not find entity with name \"" + name + "\"");
         return entityPtr();
     }
 
@@ -130,7 +131,4 @@ namespace game
 
         return ret;
     }
-
-
 }
-

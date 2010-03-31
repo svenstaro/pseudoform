@@ -1,5 +1,5 @@
  /*
- * Copyright (c) 2008-2009 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
+ * Copyright (c) 2008-2010 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
  * This file is part of Pseudoform (Pseudoform project at http://www.pseudoform.org).
  * For conditions of distribution and use, see copyright notice in COPYING
  */
@@ -17,10 +17,8 @@
 
 namespace engine
 {
-
     namespace phys
     {
-
         int beginContactCB(const NewtonMaterial *m, const NewtonBody *b0, const NewtonBody *b1,
             int thread)
         {
@@ -80,10 +78,10 @@ namespace engine
             body0->processContacts(*body1, contacts, rejections, dt);
             body1->processContacts(*body0, contacts, rejections, dt);
 
-            // do all rejections here
+            // Do all rejections here
             NewtonWorldCriticalSectionLock(_world);
             {
-                // reject all rejected contacts
+                // Reject all rejected contacts
                 // (they have an auto-check to not reject twice)
                 BOOST_FOREACH(contactPtr &c, rejections)
                 {
@@ -172,7 +170,7 @@ namespace engine
             for (_accum += dt; _accum >= _freq; _accum -= _freq, _lastStep += _freq)
                 NewtonUpdate(_world, _freq);
 
-            // iterate over each body and lerp it
+            // Iterate over each body and lerp it
             NewtonBody *_body = NewtonWorldGetFirstBody(_world);
             while (_body)
             {
@@ -207,4 +205,3 @@ namespace engine
 
     }
 }
-

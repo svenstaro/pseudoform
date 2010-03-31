@@ -1,5 +1,5 @@
  /*
- * Copyright (c) 2008-2009 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
+ * Copyright (c) 2008-2010 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
  * This file is part of Pseudoform (Pseudoform project at http://www.pseudoform.org).
  * For conditions of distribution and use, see copyright notice in COPYING
  */
@@ -12,12 +12,10 @@
 #include <cmath>
 
 #include "selection_node.hpp"
-
 #include "gfx/renderer.hpp"
 
 namespace editor
 {
-
     selectionNode::selectionNode(Ogre::SceneNode *parent):
         _aabbNode(NULL),
         _node0(NULL),
@@ -37,6 +35,7 @@ namespace editor
 
         Ogre::SceneManager *sceneMgr = parent->getCreator();
 
+        // File gizmos map with available doings
         _gizmos[G_TRANSLATE][0] = sceneMgr->createEntity("selectionNode::_gizmos[0][0]", "editor/gizmo_move_x.mesh");
         _gizmos[G_TRANSLATE][0]->setMaterialName("red");
         _gizmos[G_TRANSLATE][1] = sceneMgr->createEntity("selectionNode::_gizmos[0][1]", "editor/gizmo_move_y.mesh");
@@ -58,7 +57,7 @@ namespace editor
         _gizmos[G_SCALE][2] = sceneMgr->createEntity("selectionNode::_gizmos[2][2]", "editor/gizmo_compass_z.mesh");
         _gizmos[G_SCALE][2]->setMaterialName("blue");
 
-        // translation is AABB-relative, scaling is local, rotating is local
+        // Translation is AABB-relative, scaling is local, rotating is local
         _node0->attachObject(_gizmos[G_TRANSLATE][0]);
         _node0->attachObject(_gizmos[G_TRANSLATE][1]);
         _node0->attachObject(_gizmos[G_TRANSLATE][2]);
@@ -107,9 +106,9 @@ namespace editor
 
     void selectionNode::setGizmoType(selectionNode::gizmo_t g)
     {
-        assert(g < 3 && "only 3 gizmos, but g >= 3");
+        assert(g < 3 && "Only 3 gizmos, but g >= 3");
 
-        // reset visibility
+        // Reset visibility
         for (size_t i = 0; i < 3; ++i)
             for (size_t j = 0; j < 3; j++)
                 _gizmos[i][j]->setVisible(false);
@@ -119,15 +118,15 @@ namespace editor
 
     void selectionNode::setGizmoVisible(size_t axis, bool b)
     {
-        if (!_aabb->getVisible() && b) // if no bounding box, then no gizmos
+        if (!_aabb->getVisible() && b) // If no bounding box, then no gizmos
             return;
 
-        assert(axis < 3 && "axis should be 0-2");
+        assert(axis < 3 && "Axis should be 0-2");
 
-        // set visibility
+        // Set visibility
         _gizmos[_currentGizmo][axis]->setVisible(b);
 
-        // convert into a vector
+        // Convert into a vector
         _vec[axis] = float(int(b));
     }
 
@@ -143,7 +142,7 @@ namespace editor
         _node1->setOrientation(rot);
         _aabb->setupBoundingBox(aabb);
 
-        // for some odd reason, without the below line, the AABB
+        // For some odd reason, without the below line, the AABB
         // won't appear =/
         _aabbNode->setPosition(0, 0, 0);
 //        _aabb->setVisible(true);
@@ -159,5 +158,4 @@ namespace editor
     {
         _node0->setScale(engine::vec3(1, 1, 1) * std::sqrt((p - _node0->_getDerivedPosition()).length()));
     }
-
 }

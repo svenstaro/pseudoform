@@ -1,5 +1,5 @@
  /*
- * Copyright (c) 2008-2009 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
+ * Copyright (c) 2008-2010 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
  * This file is part of Pseudoform (Pseudoform project at http://www.pseudoform.org).
  * For conditions of distribution and use, see copyright notice in COPYING
  */
@@ -29,7 +29,6 @@ namespace engine
 {
     namespace phys
     {
-
         class world;
         class contact;
         class body;
@@ -228,8 +227,6 @@ namespace engine
 
         };
     }
-
 }
-
 
 #endif // BODY_HPP_INCLUDED

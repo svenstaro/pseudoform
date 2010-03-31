@@ -1,5 +1,5 @@
  /*
- * Copyright (c) 2008-2009 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
+ * Copyright (c) 2008-2010 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
  * This file is part of Pseudoform (Pseudoform project at http://www.pseudoform.org).
  * For conditions of distribution and use, see copyright notice in COPYING
  */
@@ -11,19 +11,21 @@ namespace engine
 {
     namespace gui
     {
-
         button::button(const string &name, bool internal):
             panel(name, internal),
-            _text(new text("text", true))
+            _text(new text(_name + "::_text", true))
         {
-            _interfaces.push_back(WIDGET_BUTTON);
+            update
+//                ("texture", string("gui/back_med.png"))
+                ("size", vec2(96, 32))
+                ("draggable", false);
 
-            size = vec2(96, 32);
-            draggable = false;
-
-            addChild(_text);
-            _text->clickable = true;
-            _text->setCallback("onClick", boost::bind(&button::_clickText, this, _1));
+            child(_text)
+                ("text", string("<text>"))
+                ("colour", colour::White)
+                ("clickable", true)
+                .callback("onClick", boost::bind(&button::_clickText, this, _1));
+//                ("selectParent", true);
         }
 
         button::~button()
@@ -40,17 +42,29 @@ namespace engine
             _fireCallback("onClick", e.misc);
         }
 
-        void button::setText(const string &str)
+        boost::any button::attrib(const string &name) const
         {
-            _text->setText(str);
+            if (name == "text") return _text->attrib("text");
+
+            else return panel::attrib(name);
+
+            return boost::any();
+        }
+
+        widget &button::update(const string &name, const boost::any &val)
+        {
+            if (name == "text") _text->update("text", val);
+
+            else return panel::update(name, val);
+
+            return *this;
         }
 
         void button::tick(real dt)
         {
             panel::tick(dt);
-            _text->position = size * vec2(0.5, 0.5) - _text->size * vec2(0.5, 0.5);
+            _text->update
+                ("position", size * vec2(0.5, 0.5) - _text->size * vec2(0.5, 0.5));
         }
-
     }
-
 }

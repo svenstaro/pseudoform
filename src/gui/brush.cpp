@@ -1,5 +1,5 @@
  /*
- * Copyright (c) 2008-2009 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
+ * Copyright (c) 2008-2010 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
  * This file is part of Pseudoform (Pseudoform project at http://www.pseudoform.org).
  * For conditions of distribution and use, see copyright notice in COPYING
  */
@@ -19,7 +19,6 @@ namespace engine
 {
     namespace gui
     {
-
         idGen brush::_idGen;
 
         brush::brush():
@@ -40,7 +39,7 @@ namespace engine
                 log("gui_mat unavailable, GUI rendering will be disabled");
             }
 
-            // just get some scene manager, doesn't matter which
+            // Just get some scene manager, doesn't matter which
             Ogre::SceneManagerEnumerator::SceneManagerIterator sceneIter =
                 Ogre::Root::getSingleton().getSceneManagerIterator();
             assert(sceneIter.hasMoreElements());
@@ -68,7 +67,7 @@ namespace engine
                 _quad->position(vec3(-1, 1, 0));
                 _quad->textureCoord(vec2(0, 0));
 
-                // vertices are clockwise, make them anticlockwise
+                // Vertices are clockwise, make them anticlockwise
                 _quad->quad(3, 2, 1, 0);
             }
             _quad->end();
@@ -154,40 +153,45 @@ namespace engine
 
             vec4 r = rect;
             {
-                // if not relative, make it relative and cache it
+                // If not relative, make it relative and cache it
                 float w = 1.0 / vp->getActualWidth();
                 float h = 1.0 / vp->getActualHeight();
-                // scale XY to [0..2], ZW to [0..1]
+
+                // Scale XY to [0..2], ZW to [0..1]
                 r *= vec4(w * 2, h * 2, w, h);
-                // move XY to [-1..1] and add [0..1] WH to XY
+
+                // Move XY to [-1..1] and add [0..1] WH to XY
                 r += vec4(-1 + r.z, -1 + r.w, 0, 0);
-                // negate Y because 0 is at bottom
+
+                // Negate Y because 0 is at bottom
                 r.y *= -1;
             }
 
             Ogre::RenderOperation rop;
             _quad->getSection(0)->getRenderOperation(rop);
 
-            _rs->_setViewport(vp); // render to said viewport
+            _rs->_setViewport(vp); // Render to said viewport
 
-            // scale to dimensions
+            // Scale to dimensions
             mat4 mat(mat4::getScale(r.z, r.w, 1));
-            // translate by XY
+
+            // Translate by XY
             mat = mat4::getTrans(r.x, r.y, 0) * mat;
 
-            // translate by half-texel offsets if necessary
+            // Translate by half-texel offsets if necessary
             if (gfx::renderLib == gfx::RL_D3D)
             {
-                // get [-1..1] offsets
+                // Get [-1..1] offsets
                 float ox = 1.0 / vp->getTarget()->getWidth();
                 float oy = 1.0 / vp->getTarget()->getHeight();
-                // subtract from quad position
+
+                // Subtract from quad position
                 mat = mat4::getTrans(-ox, oy, 0) * mat;
                 // (using a positive Y offset because Y goes up
                 // in this space)
             }
 
-            // flip if needed for GL render targets
+            // Flip if needed for GL render targets
             if (vp->getTarget()->requiresTextureFlipping())
                 mat = mat4::getScale(1, -1, 1) * mat;
 
@@ -206,7 +210,8 @@ namespace engine
                 }
             }
 
-            _rs->bindGpuProgramParameters(Ogre::GPT_VERTEX_PROGRAM, vertParams, NULL);
+            // TODO: !!!!!!
+            //_rs->bindGpuProgramParameters(Ogre::GPT_VERTEX_PROGRAM, vertParams);
 
             Ogre::GpuProgramParametersSharedPtr fragParams = pass->getFragmentProgramParameters();
 
@@ -226,12 +231,12 @@ namespace engine
                 }
             }
 
-            _rs->bindGpuProgramParameters(Ogre::GPT_FRAGMENT_PROGRAM, fragParams, NULL);
+            // TODO: !!!!!!
+            //_rs->bindGpuProgramParameters(Ogre::GPT_FRAGMENT_PROGRAM, fragParams);
 
             _rs->_beginFrame();
             _rs->_render(rop);
             _rs->_endFrame();
         }
-
     }
 }

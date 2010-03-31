@@ -1,5 +1,5 @@
  /*
- * Copyright (c) 2008-2009 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
+ * Copyright (c) 2008-2010 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
  * This file is part of Pseudoform (Pseudoform project at http://www.pseudoform.org).
  * For conditions of distribution and use, see copyright notice in COPYING
  */
@@ -75,7 +75,7 @@ namespace game
         // add ourself to the list
         _allPortals.push_back(this);
 
-        // create our camera we'll be using
+        // Create our camera we'll be using
         _camera = params.parentNode->getCreator()->createCamera(_name + "::_camera");
 
         try
@@ -89,11 +89,11 @@ namespace game
         }
         catch (...)
         {
-            // use the if below
+            // Use the if below
         }
         if (!_partialProxy.get() || !_fullProxy.get())
         {
-            engine::log("could not load portal proxies, portal rendering will be disabled");
+            engine::log("Could not load portal proxies, portal rendering will be disabled");
         }
 
         try
@@ -109,7 +109,7 @@ namespace game
         }
         if (!_stencilPass || !_depthPass || !_clearDepthPass)
         {
-            engine::log("could not load portal shaders, portal rendering will be disabled");
+            engine::log("Could not load portal shaders, portal rendering will be disabled");
         }
     }
 
@@ -119,20 +119,19 @@ namespace game
             _camera->getSceneManager()->destroyCamera(_camera);
         _camera = NULL;
 
-        // remove ourselves from the list
+        // Remove ourselves from the list
         _allPortals.erase(std::find(_allPortals.begin(), _allPortals.end(), this));
 
         assert(_connectedToThis.empty());
-        // no one should be connected to us
-        // at this point
+        // No one should be connected to us at this point
     }
 
     void portal::willChangeTo(world *w)
     {
-        if (_parent != w) // removed from world
+        if (_parent != w) // Removed from world
         {
             BOOST_FOREACH(portal *i, _connectedToThis)
-                i->_connection.reset(); // remove connection TO us so we can be destroyed
+                i->_connection.reset(); // Remove connection TO us so we can be destroyed
             _connectedToThis.clear();
 
             for (copyMap::iterator i = _copies.begin(); i != _copies.end(); ++i)
@@ -149,13 +148,13 @@ namespace game
         engine::phys::body(w)
     {
         collision(engine::phys::box(w, engine::vec3(1, 1, 0.1)));
-        // we want to be dynamic
+        // We want to be dynamic
         mass(1);
-        // and never fall asleep
+        // And never fall asleep
         autoSleep(false);
-        // but we don't need history to record b/c it'll waste memory
+        // But we don't need history to record b/c it'll waste memory
         _recordHistory = false;
-        // and we want to be swept
+        // And we want to be swept
         swept(true);
 
         //! set as trigger volume maybe?
@@ -208,27 +207,27 @@ namespace game
 //        if (!_parent->parent())
 //            return;
 
-        if (o.mass() < 0.01) // forget about statics
+        if (o.mass() < 0.01) // Forget about statics
             return;
 
         if (o.misc.empty())
             return;
 
         entity *ent = SAFE_ANY_CAST_T(entity*, o.misc, NULL);
-        // either NULL or not in a world
+        // Either NULL or not in a world
         if (!ent || !ent->parent())
             return;
 
-        // don't mess with portals for now
+        // Don't mess with portals for now
         if (ent->hasInterface(portal::TYPE))
             return;
 
-        // make sure something funky isn't going on
+        // Make sure something funky isn't going on
         assert(ent->hasInterface(genericProp::TYPE));
 
         genericProp *gp = static_cast<genericProp*>(ent);
 
-        // genericProp inherits from body... should be the same address
+        // GenericProp inherits from body... should be the same address
 //        assert(gp == &o);
 
         assert(gp);
@@ -353,7 +352,7 @@ namespace game
 
     bool portal::isVisible(Ogre::Camera *cam) const
     {
-        // test if we're visible
+        // Test if we're visible
 
         engine::vec3 p = pos();
 
@@ -399,7 +398,7 @@ namespace game
             return;
 
         if (_parent == NULL)
-            // no world, don't render
+            // No world, don't render
             return;
 
         assert(_camera);
@@ -415,7 +414,7 @@ namespace game
 
         using namespace engine;
 
-        // save original position/orientation
+        // Save original position/orientation
         vec3 camPos = cam->getDerivedPosition();
         quat camRot = cam->getDerivedOrientation();
 
@@ -425,8 +424,7 @@ namespace game
         Ogre::RenderSystem *rs = Ogre::Root::getSingleton().getRenderSystem();
         rs->_setViewport(vp);
 
-        // clear depth
-        // and possibly stencil if this is the first render
+        // Clear depth and possibly stencil if this is the first render
 //        if (iter == 1)
 //            rs->clearFrameBuffer(Ogre::FBT_DEPTH | Ogre::FBT_STENCIL);
 //        else
@@ -484,10 +482,10 @@ namespace game
             Ogre::SOP_KEEP, false);
 
         _camera->getSceneManager()->_setPass(_clearDepthPass, true, false);
-        // clear the depth where we are so the other scene can be rendered
+        // Clear the depth where we are so the other scene can be rendered
         renderSurface(camPos);
 
-        // rotate our camera as appropriate
+        // Rotate our camera as appropriate
         mat4 camMat;
         camMat.makeTransform(camPos, vec3(1, 1, 1), camRot);
 
@@ -668,7 +666,7 @@ namespace game
 
             bool operator()(portal *a, portal *b)
             {
-                // furthest portals go in the front
+                // Furthest portals go in the front
                 return a->pos().squaredDistance(camPos) > b->pos().squaredDistance(camPos);
             }
         };
@@ -724,7 +722,7 @@ namespace game
 
         mat4 rel = thisMat.inverse() * m;
 
-        // do the scaling in local space
+        // Do the scaling in local space
         rel.setTrans(rel.getTrans() * relativeScale());
 
         return connectionMat * rel;
@@ -765,7 +763,7 @@ namespace game
 
         if (s.x >= 0.01 && s.y >= 0.01 && s.z >= 0.01)
         {
-            // genericProp will update our node and our body
+            // GenericProp will update our node and our body
             // but we must update our detector manually
             _detector->scale(s);
         }
@@ -790,7 +788,7 @@ namespace game
     {
         genericProp::reset();
 
-        // remove all duplicates
+        // Remove all duplicates
 
         assert(_parent && "cannot reset() outside of world");
 
@@ -898,7 +896,7 @@ namespace game
             copyMap::iterator copyIter = _copies.find(gp);
             if (copyIter == _copies.end())
             {
-                // not created, create it
+                // Not created, create it
                 copyInfo &info = _copies[gp];
 
                 info.gp = ENTITY_CAST(genericProp, gp->clone(gp->name() + "::_portalCopy"));
@@ -913,7 +911,7 @@ namespace game
                 info.gp->omega(gp->omega());
                 info.gp->scale(relativeScale() * gp->scale());
 
-                // make sure we don't get duplicates of the copy
+                // Make sure we don't get duplicates of the copy
                 connection()->_detector->ignoreList.push_back(info.gp.get());
             }
             else
@@ -923,12 +921,12 @@ namespace game
 
                 copyIter->second.gp->clipPlane(connectionPlane);
 
-                // calibrate the copy in case the portals moved or something
+                // Calibrate the copy in case the portals moved or something
                 mat4 ideal = teleportMatrix(gp->matrix());
                 mat4 actual = copyIter->second.gp->matrix();
 
-                // check position, no more than 0.001m offset
-                // check rotations, no more than 1 degree off (0.999 cosine)
+                // Check position, no more than 0.001m offset
+                // Check rotations, no more than 1 degree off (0.999 cosine)
 
                 vec3 idealPos = ideal.getTrans();
                 vec3 actualPos = actual.getTrans();
@@ -939,9 +937,9 @@ namespace game
                 if ((idealPos - actualPos).squaredLength() > 0.001 * 0.001 ||
                     idealRot.xAxis().dotProduct(actualRot.xAxis()) < 0.9999 ||
                     idealRot.yAxis().dotProduct(actualRot.yAxis()) < 0.9999)
-                    // no need to check Z, XY can be used to calculate it
+                    // No need to check Z, XY can be used to calculate it
                 {
-                    // must recalibrate...
+                    // Must recalibrate...
                     copyIter->second.gp->matrix(ideal);
                     //i->second.gp->vel(teleportDir(gp->vel()));
                 }
@@ -959,7 +957,7 @@ namespace game
 
                 genericProp *gp = i->first;
 
-                // if the body is behind us, then we need to teleport it
+                // If the body is behind us, then we need to teleport it
                 if (isBehindFace(gp->pos()))
                 {
                     gp->matrix(teleportMatrix(gp->matrix()));
@@ -995,7 +993,7 @@ namespace game
 
         if (!desc.has_portal_info())
         {
-            log("portal " + _name + " has no portal_info");
+            log("Portal " + _name + " has no portal_info");
             return;
         }
 
@@ -1026,6 +1024,4 @@ namespace game
 
         return ent;
     }
-
 }
-

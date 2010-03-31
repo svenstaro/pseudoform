@@ -1,5 +1,5 @@
  /*
- * Copyright (c) 2008-2009 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
+ * Copyright (c) 2008-2010 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
  * This file is part of Pseudoform (Pseudoform project at http://www.pseudoform.org).
  * For conditions of distribution and use, see copyright notice in COPYING
  */
@@ -40,6 +40,7 @@ namespace engine
                     return _mesh;
                 }
 
+                // Moved to collision.hpp
 //                NewtonCollision *convex(const world &w) const;
 //                NewtonCollision *concave(const world &w) const;
 //
@@ -61,9 +62,7 @@ namespace engine
 //                static NewtonCollision *cone(const world &w, const vec3 &s);
 //                static NewtonCollision *capsule(const world &w, const vec3 &s);
         };
-
     }
-
 }
 
 #endif // MESH_HPP_INCLUDED

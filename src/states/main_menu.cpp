@@ -1,5 +1,5 @@
  /*
- * Copyright (c) 2008-2009 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
+ * Copyright (c) 2008-2010 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
  * This file is part of Pseudoform (Pseudoform project at http://www.pseudoform.org).
  * For conditions of distribution and use, see copyright notice in COPYING
  */
@@ -12,9 +12,10 @@
 
 #include "gui/mouse.hpp"
 #include "gui/panel.hpp"
-#include "gui/window.hpp"
+// TODO: implement window.hpp and scrollbar.hpp
+//#include "gui/window.hpp"
 #include "gui/gui_disp.hpp"
-#include "gui/scrollbar.hpp"
+//#include "gui/scrollbar.hpp"
 #include "gui/text.hpp"
 #include "gui/button.hpp"
 #include "gui/skin.hpp"
@@ -26,8 +27,9 @@
 #include "snd/system.hpp"
 
 #include "main_menu.hpp"
-#include "editor.hpp"
-#include "play.hpp"
+// TODO: implement editor.hpp and play.hpp
+//#include "editor.hpp"
+//#include "play.hpp"
 #include "data_dir.hpp"
 #include "fs_ops.hpp"
 #include "log.hpp"
@@ -37,7 +39,6 @@
 
 namespace game
 {
-
     mainMenuState::mainMenuState(
         const engine::input::input &input,
         engine::snd::system &soundSys,
@@ -54,7 +55,7 @@ namespace game
 
         _createGUI();
 
-        // route input to us
+        // Route input to us
         _input(this, this);
     }
 
@@ -69,7 +70,7 @@ namespace game
 
     void mainMenuState::resume()
     {
-        // route input to us
+        // Route input to us
         _input(this, this);
     }
 
@@ -79,7 +80,6 @@ namespace game
         using namespace engine::gui;
 
         _sheet.reset(new sheet("mainMenuState::_sheet"));
-        // let the dispatch use this sheet
         _dispatchSheet = _sheet;
 
         _sheet->setSkin(skinPtr(new skin("crystal")));
@@ -88,40 +88,41 @@ namespace game
         _sheet->setLayout(lay);
 
         _sheet->size = vec2(_viewport->getActualWidth(), _viewport->getActualHeight());
-
+/*
+        // Menu item - play button
         buttonPtr playButton(new button("playButton"));
         _sheet->addChild(playButton);
         playButton->setText("play");
         playButton->setCallback("onClick", boost::bind(&mainMenuState::_clickButton, this, RUN_PLAY));
 
+        // Menu item - editor button
         buttonPtr editorButton(new button("editorButton"));
         _sheet->addChild(editorButton);
         editorButton->setText("editor");
         editorButton->setCallback("onClick", boost::bind(&mainMenuState::_clickButton, this, RUN_EDITOR));
 
+        // Menu item - credits button
         buttonPtr creditsButton(new button("creditsButton"));
         _sheet->addChild(creditsButton);
         creditsButton->setText("credits");
         creditsButton->setCallback("onClick", boost::bind(&mainMenuState::_clickButton, this, RUN_CREDITS));
 
+        // Add buttons to the application window
         lay->addWidget(playButton);
         lay->addWidget(editorButton);
         lay->addWidget(creditsButton);
+        */
     }
 
     void mainMenuState::_destroyGUI()
     {
         _sheet.reset();
         _dispatchSheet.reset();
-//        _gui.destroyWidget(_thumbnailsWin);
-//        _thumbnailsWin = NULL;
-//        _gui.destroySheet(_sheet);
-//        _sheet = NULL;
     }
 
     void mainMenuState::render()
     {
-        // render our gui sheet
+        // Render our gui sheet for given viewport
         _sheet->render(_viewport);
     }
 
@@ -132,26 +133,27 @@ namespace game
 
     void mainMenuState::tick(stateManager &mgr)
     {
-        _realTimer();
-        // advance GUI
+        // Update GUI
         _sheet->tick(_realTimer.delta());
 
+        // If we have already selected need game state to run
         switch (_whatToRun)
         {
             case RUN_PLAY:
-                mgr.push(statePtr(new playState(_input, _soundSys, _sceneMgr, _viewport, _opts)));
+                //mgr.push(statePtr(new playState(_input, _soundSys, _sceneMgr, _viewport, _opts)));
             break;
 
             case RUN_EDITOR:
-                mgr.push(statePtr(new editorState(_input, _soundSys, _sceneMgr, _viewport, _opts)));
+                //mgr.push(statePtr(new editorState(_input, _soundSys, _sceneMgr, _viewport, _opts)));
             break;
 
             case RUN_CREDITS:
             {
-                playState *s = new playState(_input, _soundSys, _sceneMgr, _viewport, _opts);
-                s->loadLevel("levels/credits.lvl");
-                mgr.push(statePtr(s));
-                //_soundSys.play("media/music/THA - Speed.mp3", false);
+                //playState *s = new playState(_input, _soundSys, _sceneMgr, _viewport, _opts);
+
+                // Already know what to load
+               // s->loadLevel("levels/credits.lvl");
+                //mgr.push(statePtr(s));
             }
             break;
 
@@ -186,5 +188,4 @@ namespace game
     {
         return engine::gui::guiDisp::mouseReleased(e, id);
     }
-
 }

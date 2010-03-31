@@ -1,5 +1,5 @@
  /*
- * Copyright (c) 2008-2009 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
+ * Copyright (c) 2008-2010 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
  * This file is part of Pseudoform (Pseudoform project at http://www.pseudoform.org).
  * For conditions of distribution and use, see copyright notice in COPYING
  */
@@ -22,12 +22,15 @@
 #include "types.hpp"
 #include "world.hpp"
 #include "entity.hpp"
-#include "marker.hpp"
 #include "generic_prop.hpp"
-#include "character.hpp"
+
 #include "portal.hpp"
 #include "trigger.hpp"
+#include "marker.hpp"
+#include "character.hpp"
 #include "player.hpp"
+
+
 #include "log.hpp"
 #include "data_dir.hpp"
 #include "gfx/renderer.hpp"
@@ -42,7 +45,7 @@ namespace game
         _renderer(renderer),
         _soundSys(sndSys)
     {
-        // setup scripting
+        // Set up scripts
         engine::script::bindCommon(script);
         engine::script::bindGame(script);
         engine::script::bindMath(script);
@@ -69,6 +72,7 @@ namespace game
             _soundSys,
             inGame);
 
+        // Register all stuff factories
         entFactory.add(genericPropFactoryPtr(new genericPropFactory(gpParams)));
         entFactory.add(characterFactoryPtr(new characterFactory(gpParams)));
         entFactory.add(portalFactoryPtr(new portalFactory(gpParams)));
@@ -82,6 +86,7 @@ namespace game
         gameWorld.reset();
         physWorld.resetAccum();
 
+        // TODO uncomment level stop function when script will be done
 //        engine::script::callFunc(script, "levelStop", boost::ref(*this));
     }
 
@@ -96,6 +101,7 @@ namespace game
         if (scriptName.empty())
             return;
 
+        // TODO: uncomment when done level starting script
 //        if (!script.file(engine::DATA_DIR + script))
 //        {
 //            engine::log(script + " error: ");
@@ -116,7 +122,7 @@ namespace game
         std::ifstream in((engine::DATA_DIR + fileName).c_str(), std::ios_base::binary);
         if (!in.good())
         {
-            engine::log("failed to load level " + fileName);
+            engine::log("Failed to load level " + fileName);
             return;
         }
 
@@ -128,7 +134,7 @@ namespace game
         else
             scriptName.clear();
 
-        // first pass: create the entities
+        // First pass: create the entities
         std::vector<entityPtr> ents;
         for (int i = 0; i < levelData.entities_size(); ++i)
         {
@@ -136,7 +142,7 @@ namespace game
 
             if (!entData.has_name() || !entData.has_type())
             {
-                engine::log("entity in level " + fileName + " has no type/name");
+                engine::log("Entity in level " + fileName + " has no type/name");
                 continue;
             }
 
@@ -148,7 +154,7 @@ namespace game
             gameWorld.add(ent);
         }
 
-        // second pass: load the entities
+        // Second pass: load the entities
         // we do this because if any of the entities are linked
         // then they will require the other entities to be created first
         for (int i = 0; i < levelData.entities_size(); ++i)
@@ -176,7 +182,7 @@ namespace game
         std::ofstream out((engine::DATA_DIR + fileName).c_str(), std::ios_base::binary);
         if (!out.good())
         {
-            engine::log("failed to save level " + fileName);
+            engine::log("Failed to save level " + fileName);
         }
         else
         {

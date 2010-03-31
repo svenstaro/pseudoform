@@ -1,5 +1,5 @@
  /*
- * Copyright (c) 2008-2009 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
+ * Copyright (c) 2008-2010 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
  * This file is part of Pseudoform (Pseudoform project at http://www.pseudoform.org).
  * For conditions of distribution and use, see copyright notice in COPYING
  */
@@ -21,7 +21,6 @@ namespace engine
 {
     namespace phys
     {
-
         collision::~collision()
         {
             NewtonReleaseCollision(_world, _col);
@@ -571,9 +570,5 @@ namespace engine
             return collisionPtr(new primitiveCollision(
                 w, NewtonCreateCapsule(w, diameter * 0.5, height, 0, &MAT[0][0])));
         }
-
     }
-
-
 }
-
