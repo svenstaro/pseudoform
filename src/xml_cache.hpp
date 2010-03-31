@@ -1,5 +1,5 @@
  /*
- * Copyright (c) 2008-2009 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
+ * Copyright (c) 2008-2010 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
  * This file is part of Pseudoform (Pseudoform project at http://www.pseudoform.org).
  * For conditions of distribution and use, see copyright notice in COPYING
  */
@@ -14,46 +14,47 @@
 
 namespace engine
 {
-
+    /**
+    * @class xmlCache
+    */
     class xmlCache
     {
-
         private:
-
             typedef std::map<engine::string, txml::documentPtr> namedDocuments;
+            /// List of loaded xml-documents
             namedDocuments _docs;
 
         public:
-
-            // fetch a document
+            /**
+            * @brief Fetch a document
+            * @param name name of the document which try to load
+            * @return null if document doesn't exist
+            */
             txml::documentPtr loadOrFetch(const engine::string &name)
             {
-                // if it doesn't exist, we'll get a null ptr
-                // if it does, then we won't get a null ptr
                 txml::documentPtr &doc = _docs[name];
                 if (!doc)
                 {
-                    // if it doesn't exist, load it now
+                    // If it doesn't exist, load it now
                     doc.reset(new txml::document());
                     doc->LoadFile(name.c_str());
-                    // if there's an error, just return a null ptr
+
+                    // If there's an error, just return a null ptr
                     if (doc->Error())
                         doc.reset();
                 }
                 return doc;
             }
 
-            // clear cache
+            /**
+            * @brief Clear cache
+            */
             void clear()
             {
-                // does not invalidate references to the docs
+                // Does not invalidate references to the docs
                 _docs.clear();
             }
-
     };
-
-
-
 }
 
 #endif // XML_CACHE_HPP_INCLUDED

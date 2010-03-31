@@ -13,18 +13,20 @@
  * @namespace engine
  * This namespace consist of functions related to the game-engine
  */
-
 namespace engine
 {
-	// TODO: wtf
+	/**
+	* @class fakeMRL_t
+	* @see class Ogre::ManualResourceLoader
+	* @remarks a fake resource loader to suppress annoying Ogre log
+	* that spams "no manual resource loader"
+	*/
     class fakeMRL_t: public Ogre::ManualResourceLoader
     {
         public:
             void prepareResource(Ogre::Resource *p) {}
             void loadResource(Ogre::Resource *p) {}
     } fakeMRL;
-    // a fake resource loader to suppress annoying Ogre log
-    // that spams "no manual resource loader :( :( :("
 }
 
 #endif // FAKE_MRL_HPP_INCLUDED
