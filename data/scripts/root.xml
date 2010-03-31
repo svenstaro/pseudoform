@@ -1,5 +1,5 @@
 <renderer lib="ogl"
-    plugins="/usr/lib/OGRE/"
+    plugins="/usr/local/lib/OGRE/"
     width="1024"
     height="768"
     fullscreen="0"
