@@ -22,7 +22,7 @@ namespace engine
     template<class T>
     class recordable
     {
-        protected:c
+        protected:
             typedef T history;
             typedef std::map<real, history> historyMap;
             historyMap _history;
