@@ -211,7 +211,7 @@ build_libnewton_utils || return 4
 # cmake in bullet isn't working right now, and it's not necessary so it's commented out
 #make_bullet || return 5
 remake_protobuf || return 6
-make_chaiscript || return 7
+#make_chaiscript || return 7
 
 # pseudoform/deps/linux/build-all.sh
 # vim: ts=2 sw=2
