@@ -15,6 +15,10 @@
 
 namespace engine
 {
+    /**
+    * @class recordable
+    * @brief Stores some events in history
+    */
     template<class T>
     class recordable
     {
@@ -23,11 +27,20 @@ namespace engine
             typedef std::map<real, history> historyMap;
             historyMap _history;
 
+            /**
+            * @brief Add history event into list
+            * @param t event index
+            * @param h history event
+            */
             void _addHistory(real t, const history &h)
             {
                 _history[t] = h;
             }
 
+            /**
+            * @brief Find event in history list
+            * @return 0 if event found in history
+            */
             real _findHistory(real t, history &before, history &after)
             {
                 //typedef std::pair<real, history> val;
@@ -64,29 +77,41 @@ namespace engine
                 return -1;
             }
 
-            // the _time variable is the current point in time
-            // we're at (either virtual or "for real")
+            /// The _time variable is the current point in time
+            /// we're at (either virtual or "for real")
             real _time, _freq, _maxHistory;
 
         public:
-
+            /**
+            * Constructor
+            */
             recordable():
                 _time(0), _freq(1.0 / 60), _maxHistory(60.0) {}
             virtual ~recordable()
             {
             }
 
+            /**
+            * @brief Max events in history
+            * @param t max events number
+            */
             virtual void maxHistory(engine::real t) { _maxHistory = t; }
+            /**
+            * @brief Get max events count in history
+            */
             engine::real maxHistory() const { return _maxHistory; }
 
             engine::real freq() const { return _freq; }
 
-            // interpolation method
+            /**
+            * @brief Interpolation method
+            * @param dt delta time sine some hisory event
+            */
             virtual void lerp(real dt)
             {
                 _time += dt;
 
-                // can't go to where we didn't record
+                // Can't go to where we didn't record
                 if (_time < 0)
                     _time = 0;
             }
@@ -97,6 +122,9 @@ namespace engine
                 return _history.rbegin()->second;
             }
 
+            /**
+            * @brief Latest event in history
+            */
             T &latestHistory()
             {
                 assert(!_history.empty());
