@@ -40,7 +40,7 @@
 #include "gfx/custom_params_idx.hpp"
 #include "gfx/scene_clipper.hpp"
 
-#include "protobuf/level_format.pb.h"
+#include "level_format.pb.h"
 
 namespace game
 {

@@ -35,7 +35,7 @@
 #include "data_dir.hpp"
 #include "gfx/renderer.hpp"
 
-#include "protobuf/level_format.pb.h"
+#include "level_format.pb.h"
 
 namespace game
 {

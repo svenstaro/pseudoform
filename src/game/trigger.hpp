@@ -12,7 +12,7 @@
 #include <list>
 
 // TODO: include script.hpp
-//#include "script/script.hpp"
+#include "script/script.hpp"
 #include "generic_prop.hpp"
 
 namespace game

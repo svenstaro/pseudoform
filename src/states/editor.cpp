@@ -54,7 +54,7 @@
 
 #include "editor/selection_node.hpp"
 
-#include "protobuf/level_format.pb.h"
+#include "level_format.pb.h"
 
 #include <OgreSceneManager.h>
 #include <OgreCamera.h>
@@ -1004,7 +1004,7 @@ namespace game
         using namespace engine::gui;
         using namespace engine;
 
-        widgetPtr win = _sheet->child("propertiesWin");
+		widgetPtr win = _sheet->childPtr("propertiesWin");
 
         if (!win)
             return;

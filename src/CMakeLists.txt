@@ -1,0 +1,60 @@
+# Generate Protobuf stuff
+INCLUDE_DIRECTORIES(${PROTOBUF_INCLUDE_DIRS})
+PROTOBUF_GENERATE_CPP(PROTO_SRCS PROTO_HDRS level_format.proto)
+
+INCLUDE_DIRECTORIES(
+	${CMAKE_CURRENT_BINARY_DIR}
+	${CMAKE_SOURCE_DIR}/src
+	${CMAKE_SOURCE_DIR}/chaiscript 
+	${CMAKE_SOURCE_DIR}/deps/newton/
+	${CMAKE_SOURCE_DIR}/deps/newton/dAnimaton/ 
+	${CMAKE_SOURCE_DIR}/deps/newton/dContainers/ 
+	${CMAKE_SOURCE_DIR}/deps/newton/dCustomJoints 
+	${CMAKE_SOURCE_DIR}/deps/newton/dMath
+	${Boost_INCLUDE_DIRS} 
+	${OIS_INCLUDE_DIRS} 
+	${OGRE_INCLUDE_DIRS} 
+	${Protobuf_INCLUDE_DIRS})
+
+AUX_SOURCE_DIRECTORY(${CMAKE_SOURCE_DIR}/src/ Pseudoform_SRCS)
+AUX_SOURCE_DIRECTORY(${CMAKE_SOURCE_DIR}/src/editor/ Pseudoform_EDITOR_SRCS)
+AUX_SOURCE_DIRECTORY(${CMAKE_SOURCE_DIR}/src/game/ Pseudoform_GAME_SRCS)
+AUX_SOURCE_DIRECTORY(${CMAKE_SOURCE_DIR}/src/gfx/ Pseudoform_GFX_SRCS)
+AUX_SOURCE_DIRECTORY(${CMAKE_SOURCE_DIR}/src/gui/ Pseudoform_GUI_SRCS)
+AUX_SOURCE_DIRECTORY(${CMAKE_SOURCE_DIR}/src/input/ Pseudoform_INPUT_SRCS)
+AUX_SOURCE_DIRECTORY(${CMAKE_SOURCE_DIR}/src/phys/ Pseudoform_PHYS_SRCS)
+AUX_SOURCE_DIRECTORY(${CMAKE_SOURCE_DIR}/src/protobuf/ Pseudoform_PROTOBUF_SRCS)
+AUX_SOURCE_DIRECTORY(${CMAKE_SOURCE_DIR}/src/script/ Pseudoform_SCRIPT_SRCS)
+AUX_SOURCE_DIRECTORY(${CMAKE_SOURCE_DIR}/src/snd/ Pseudoform_SND_SRCS)
+AUX_SOURCE_DIRECTORY(${CMAKE_SOURCE_DIR}/src/states/ Pseudoform_STATES_SRCS)
+AUX_SOURCE_DIRECTORY(${CMAKE_SOURCE_DIR}/src/time/ Pseudoform_TIME_SRCS)
+AUX_SOURCE_DIRECTORY(${CMAKE_SOURCE_DIR}/src/txml/ Pseudoform_TXML_SRCS)
+
+ADD_DEFINITIONS(-Wall)
+
+#SET(CMAKE_BUILD_TYPE Debug)
+
+ADD_EXECUTABLE(Pseudoform 
+	${Pseudoform_SRCS}
+	${Pseudoform_EDITOR_SRCS}
+	${Pseudoform_GAME_SRCS}
+	${Pseudoform_GFX_SRCS}
+	${Pseudoform_GUI_SRCS}
+	${Pseudoform_INPUT_SRCS}
+	${Pseudoform_PHYS_SRCS}
+	${Pseudoform_PROTOBUF_SRCS}
+	${Pseudoform_SCRIPT_SRCS}
+	${Pseudoform_SND_SRCS}
+	${Pseudoform_STATES_SRCS}
+	${Pseudoform_TIME_SRCS}
+	${Pseudoform_TXML_SRCS}
+	${PROTO_SRCS}
+	${PROTO_HDRS})
+
+TARGET_LINK_LIBRARIES(Pseudoform 
+	${Boost_LIBRARIES} 
+	${OIS_LIBRARIES}
+	${OGRE_LIBRARIES} 
+	${Newton_LIBRARY} 
+	Newton_extras 
+	${PROTOBUF_LIBRARY})

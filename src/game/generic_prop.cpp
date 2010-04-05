@@ -28,7 +28,7 @@
 #include "txml/txml.hpp"
 #include "entity_types.hpp"
 
-#include "protobuf/level_format.pb.h"
+#include "level_format.pb.h"
 
 #include "phys/body.hpp"
 #include "phys/mesh.hpp"
