@@ -4,19 +4,15 @@
  * For conditions of distribution and use, see copyright notice in COPYING
  */
 
-/*
- * Update list:
- * date
- * comments
- */
-
 #ifndef GUI_DISP_HPP_INCLUDED
 #define GUI_DISP_HPP_INCLUDED
 
 #include <OIS/OISKeyboard.h>
 #include <OIS/OISMouse.h>
 
-#include "sheet.hpp"
+#include "MyGUI.h"
+#include "MyGUI_OgrePlatform.h"
+#include "MyGUI_OgreRenderManager.h"
 
 namespace engine
 {
@@ -25,10 +21,15 @@ namespace engine
         class guiDisp: public OIS::KeyListener, public OIS::MouseListener
         {
             protected:
-				// TODO: comment this
-                sheetPtr _dispatchSheet;
+                MyGUI::Gui *mGUI;
+                MyGUI::OgrePlatform *mPlatform;
 
             public:
+                /**
+                * @brief Configure gui system
+                */
+                virtual void initGUI(Ogre::RenderWindow *renderWindow, Ogre::SceneManager *sceneMgr);
+
                 /**
                  * Constructor
                  */
@@ -37,7 +38,7 @@ namespace engine
                 /**
                  * Destructor
                  */
-                virtual ~guiDisp() {}
+                virtual ~guiDisp();
 
                 /**
                  * Event key pressed

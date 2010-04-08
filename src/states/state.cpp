@@ -1,5 +1,5 @@
  /*
- * Copyright (c) 2008-2009 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
+ * Copyright (c) 2008-2010 Agop 'nullsquared' Shirinian and Sven-Hendrik 'Svenstaro' Haase
  * This file is part of Pseudoform (Pseudoform project at http://www.pseudoform.org).
  * For conditions of distribution and use, see copyright notice in COPYING
  */
@@ -50,14 +50,14 @@ namespace game
 
     void stateManager::render()
     {
-        assert(!_stack.empty() && "cannot render empty game state stack");
+        assert(!_stack.empty() && "Cannot render empty game state stack");
 
         _stack.back()->render();
     }
 
     bool stateManager::tick()
     {
-        assert(!_stack.empty() && "cannot tick empty game state stack");
+        assert(!_stack.empty() && "Cannot tick empty game state stack");
 
         _stack.back()->tick(*this);
 

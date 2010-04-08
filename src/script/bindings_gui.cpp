@@ -13,20 +13,22 @@
 
 #include "bindings.hpp"
 
+/*
 #include "gui/sheet.hpp"
 #include "gui/widget.hpp"
-//#include "gui/window.hpp"
+#include "gui/window.hpp"
 #include "gui/panel.hpp"
-/*#include "gui/scrollbar.hpp"
+#include "gui/scrollbar.hpp"
 #include "gui/text_box.hpp"
 #include "gui/scrollable_panel.hpp"
-#include "gui/console.hpp"*/
+#include "gui/console.hpp"
 #include "gui/button.hpp"
-/*#include "gui/file_dialog.hpp"
-#include "gui/drop_down_menu.hpp"*/
+#include "gui/file_dialog.hpp"
+#include "gui/drop_down_menu.hpp"
 #include "gui/skin.hpp"
-//#include "gui/check_box.hpp"
+#include "gui/check_box.hpp"
 #include "gui/layout.hpp"
+*/
 
 #include "log.hpp"
 #include "types.hpp"
@@ -173,7 +175,7 @@ namespace engine
         {
             using namespace chaiscript;
 
-            using namespace gui;
+//            using namespace gui;
 
 //            module(L, "gui")
 //            [

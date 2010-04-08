@@ -11,7 +11,7 @@
 #include "app_base.hpp"
 
 
-#include "states/editor.hpp"
+//#include "states/editor.hpp"
 
 // TODO: Implement play.hpp state
 //#include "states/play.hpp"
@@ -40,7 +40,7 @@ void mainApp::configure(
 {
     using namespace game;
 
-    stateMgr.push(statePtr(new mainMenuState(input, soundSys, root.sceneMgr(), root.viewport(), opts)));
+    stateMgr.push(statePtr(new mainMenuState(input, soundSys, root.sceneMgr(), root.viewport(), root.window(), opts)));
     #ifdef DEBUG_NEWTON_BUILD
     //stateMgr.push(statePtr(new playState(input, soundSys, root.sceneMgr(), root.viewport(), opts)));
     #else

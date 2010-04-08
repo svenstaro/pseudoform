@@ -10,6 +10,7 @@
 #include <boost/ref.hpp>
 #include <boost/bind.hpp>
 
+/*
 #include "gui/mouse.hpp"
 #include "gui/panel.hpp"
 // TODO: implement window.hpp and scrollbar.hpp
@@ -20,6 +21,7 @@
 #include "gui/button.hpp"
 #include "gui/skin.hpp"
 #include "gui/layout.hpp"
+*/
 
 #include "input/input.hpp"
 #include "input/keys.hpp"
@@ -42,12 +44,13 @@ namespace game
     mainMenuState::mainMenuState(
         const engine::input::input &input,
         engine::snd::system &soundSys,
-        Ogre::SceneManager *mgr, Ogre::Viewport *vp,
+        Ogre::SceneManager *mgr, Ogre::Viewport *vp, Ogre::RenderWindow *rWindow,
         engine::programOptions *opts):
         _input(input),
         _soundSys(soundSys),
         _sceneMgr(mgr),
         _viewport(vp),
+        _window(rWindow), // Added for MyGUI
         _opts(opts),
         _whatToRun(RUN_NOTHING)
     {
@@ -79,6 +82,15 @@ namespace game
         using namespace engine;
         using namespace engine::gui;
 
+        // Inherited from guiDisp class
+        mainMenuState::initGUI(_window, _sceneMgr);
+        mGUI->load("test.layout");
+
+        // Force updating MyGUI
+        bool value = false;
+        mPlatform->getRenderManagerPtr()->renderQueueStarted(Ogre::RENDER_QUEUE_OVERLAY, "", value);
+
+/*
         _sheet.reset(new sheet("mainMenuState::_sheet"));
         _dispatchSheet = _sheet;
 
@@ -88,6 +100,7 @@ namespace game
         _sheet->setLayout(lay);
 
         _sheet->size = vec2(_viewport->getActualWidth(), _viewport->getActualHeight());
+        */
 /*
         // Menu item - play button
         buttonPtr playButton(new button("playButton"));
@@ -116,14 +129,16 @@ namespace game
 
     void mainMenuState::_destroyGUI()
     {
-        _sheet.reset();
-        _dispatchSheet.reset();
+        //_sheet.reset();
+       // _dispatchSheet.reset();
     }
 
     void mainMenuState::render()
     {
+        // Needn't in this with MyGUI
+
         // Render our gui sheet for given viewport
-        _sheet->render(_viewport);
+        //_sheet->render(_viewport);
     }
 
     void mainMenuState::_clickButton(whatToRun r)
@@ -133,8 +148,12 @@ namespace game
 
     void mainMenuState::tick(stateManager &mgr)
     {
+        // This is deprecated for MyGUI latest version
+        // because gui updates automatically
+        mGUI->injectFrameEntered(_realTimer.delta());
+
         // Update GUI
-        _sheet->tick(_realTimer.delta());
+        //_sheet->tick(_realTimer.delta());
 
         // If we have already selected need game state to run
         switch (_whatToRun)
@@ -164,28 +183,35 @@ namespace game
         _whatToRun = RUN_NOTHING;
     }
 
+/*
     bool mainMenuState::keyPressed(const OIS::KeyEvent &e)
     {
-        return engine::gui::guiDisp::keyPressed(e);
+        //return engine::gui::guiDisp::keyPressed(e);
+        return true;
     }
 
     bool mainMenuState::keyReleased(const OIS::KeyEvent &e)
     {
-        return engine::gui::guiDisp::keyReleased(e);
+        //return engine::gui::guiDisp::keyReleased(e);
+        return true;
     }
 
     bool mainMenuState::mouseMoved(const OIS::MouseEvent &e)
     {
-        return engine::gui::guiDisp::mouseMoved(e);
+        //return engine::gui::guiDisp::mouseMoved(e);
+        return true;
     }
 
     bool mainMenuState::mousePressed(const OIS::MouseEvent &e, OIS::MouseButtonID id)
     {
-        return engine::gui::guiDisp::mousePressed(e, id);
+        //return engine::gui::guiDisp::mousePressed(e, id);
+        return true;
     }
 
     bool mainMenuState::mouseReleased(const OIS::MouseEvent &e, OIS::MouseButtonID id)
     {
-        return engine::gui::guiDisp::mouseReleased(e, id);
+        //return engine::gui::guiDisp::mouseReleased(e, id);
+        return true;
     }
+*/
 }

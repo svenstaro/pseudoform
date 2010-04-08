@@ -44,28 +44,28 @@ class vec3 : public ::google::protobuf::Message {
  public:
   vec3();
   virtual ~vec3();
-
+  
   vec3(const vec3& from);
-
+  
   inline vec3& operator=(const vec3& from) {
     CopyFrom(from);
     return *this;
   }
-
+  
   inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
     return _unknown_fields_;
   }
-
+  
   inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
     return &_unknown_fields_;
   }
-
+  
   static const ::google::protobuf::Descriptor* descriptor();
   static const vec3& default_instance();
   void Swap(vec3* other);
-
+  
   // implements Message ----------------------------------------------
-
+  
   vec3* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
@@ -73,7 +73,7 @@ class vec3 : public ::google::protobuf::Message {
   void MergeFrom(const vec3& from);
   void Clear();
   bool IsInitialized() const;
-
+  
   int ByteSize() const;
   bool MergePartialFromCodedStream(
       ::google::protobuf::io::CodedInputStream* input);
@@ -86,47 +86,47 @@ class vec3 : public ::google::protobuf::Message {
   void SharedDtor();
   void SetCachedSize(int size) const { _cached_size_ = size; }
   public:
-
+  
   ::google::protobuf::Metadata GetMetadata() const;
-
+  
   // nested types ----------------------------------------------------
-
+  
   // accessors -------------------------------------------------------
-
+  
   // optional float x = 1;
   inline bool has_x() const;
   inline void clear_x();
   static const int kXFieldNumber = 1;
   inline float x() const;
   inline void set_x(float value);
-
+  
   // optional float y = 2;
   inline bool has_y() const;
   inline void clear_y();
   static const int kYFieldNumber = 2;
   inline float y() const;
   inline void set_y(float value);
-
+  
   // optional float z = 3;
   inline bool has_z() const;
   inline void clear_z();
   static const int kZFieldNumber = 3;
   inline float z() const;
   inline void set_z(float value);
-
+  
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
-
+  
   float x_;
   float y_;
   float z_;
   friend void  protobuf_AddDesc_level_5fformat_2eproto();
   friend void protobuf_AssignDesc_level_5fformat_2eproto();
   friend void protobuf_ShutdownFile_level_5fformat_2eproto();
-
+  
   ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
-
+  
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
     return (_has_bits_[index / 32] & (1u << (index % 32))) != 0;
@@ -137,7 +137,7 @@ class vec3 : public ::google::protobuf::Message {
   inline void _clear_bit(int index) {
     _has_bits_[index / 32] &= ~(1u << (index % 32));
   }
-
+  
   void InitAsDefaultInstance();
   static vec3* default_instance_;
 };
@@ -147,28 +147,28 @@ class quat : public ::google::protobuf::Message {
  public:
   quat();
   virtual ~quat();
-
+  
   quat(const quat& from);
-
+  
   inline quat& operator=(const quat& from) {
     CopyFrom(from);
     return *this;
   }
-
+  
   inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
     return _unknown_fields_;
   }
-
+  
   inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
     return &_unknown_fields_;
   }
-
+  
   static const ::google::protobuf::Descriptor* descriptor();
   static const quat& default_instance();
   void Swap(quat* other);
-
+  
   // implements Message ----------------------------------------------
-
+  
   quat* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
@@ -176,7 +176,7 @@ class quat : public ::google::protobuf::Message {
   void MergeFrom(const quat& from);
   void Clear();
   bool IsInitialized() const;
-
+  
   int ByteSize() const;
   bool MergePartialFromCodedStream(
       ::google::protobuf::io::CodedInputStream* input);
@@ -189,45 +189,45 @@ class quat : public ::google::protobuf::Message {
   void SharedDtor();
   void SetCachedSize(int size) const { _cached_size_ = size; }
   public:
-
+  
   ::google::protobuf::Metadata GetMetadata() const;
-
+  
   // nested types ----------------------------------------------------
-
+  
   // accessors -------------------------------------------------------
-
+  
   // optional float x = 1;
   inline bool has_x() const;
   inline void clear_x();
   static const int kXFieldNumber = 1;
   inline float x() const;
   inline void set_x(float value);
-
+  
   // optional float y = 2;
   inline bool has_y() const;
   inline void clear_y();
   static const int kYFieldNumber = 2;
   inline float y() const;
   inline void set_y(float value);
-
+  
   // optional float z = 3;
   inline bool has_z() const;
   inline void clear_z();
   static const int kZFieldNumber = 3;
   inline float z() const;
   inline void set_z(float value);
-
+  
   // optional float w = 4;
   inline bool has_w() const;
   inline void clear_w();
   static const int kWFieldNumber = 4;
   inline float w() const;
   inline void set_w(float value);
-
+  
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
-
+  
   float x_;
   float y_;
   float z_;
@@ -235,9 +235,9 @@ class quat : public ::google::protobuf::Message {
   friend void  protobuf_AddDesc_level_5fformat_2eproto();
   friend void protobuf_AssignDesc_level_5fformat_2eproto();
   friend void protobuf_ShutdownFile_level_5fformat_2eproto();
-
+  
   ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
-
+  
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
     return (_has_bits_[index / 32] & (1u << (index % 32))) != 0;
@@ -248,7 +248,7 @@ class quat : public ::google::protobuf::Message {
   inline void _clear_bit(int index) {
     _has_bits_[index / 32] &= ~(1u << (index % 32));
   }
-
+  
   void InitAsDefaultInstance();
   static quat* default_instance_;
 };
@@ -258,28 +258,28 @@ class genericPropInfo : public ::google::protobuf::Message {
  public:
   genericPropInfo();
   virtual ~genericPropInfo();
-
+  
   genericPropInfo(const genericPropInfo& from);
-
+  
   inline genericPropInfo& operator=(const genericPropInfo& from) {
     CopyFrom(from);
     return *this;
   }
-
+  
   inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
     return _unknown_fields_;
   }
-
+  
   inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
     return &_unknown_fields_;
   }
-
+  
   static const ::google::protobuf::Descriptor* descriptor();
   static const genericPropInfo& default_instance();
   void Swap(genericPropInfo* other);
-
+  
   // implements Message ----------------------------------------------
-
+  
   genericPropInfo* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
@@ -287,7 +287,7 @@ class genericPropInfo : public ::google::protobuf::Message {
   void MergeFrom(const genericPropInfo& from);
   void Clear();
   bool IsInitialized() const;
-
+  
   int ByteSize() const;
   bool MergePartialFromCodedStream(
       ::google::protobuf::io::CodedInputStream* input);
@@ -300,13 +300,13 @@ class genericPropInfo : public ::google::protobuf::Message {
   void SharedDtor();
   void SetCachedSize(int size) const { _cached_size_ = size; }
   public:
-
+  
   ::google::protobuf::Metadata GetMetadata() const;
-
+  
   // nested types ----------------------------------------------------
-
+  
   // accessors -------------------------------------------------------
-
+  
   // optional string script = 1;
   inline bool has_script() const;
   inline void clear_script();
@@ -316,46 +316,46 @@ class genericPropInfo : public ::google::protobuf::Message {
   inline void set_script(const char* value);
   inline void set_script(const char* value, size_t size);
   inline ::std::string* mutable_script();
-
+  
   // optional .levelFormat.vec3 position = 2;
   inline bool has_position() const;
   inline void clear_position();
   static const int kPositionFieldNumber = 2;
   inline const ::levelFormat::vec3& position() const;
   inline ::levelFormat::vec3* mutable_position();
-
+  
   // optional .levelFormat.quat rotation = 3;
   inline bool has_rotation() const;
   inline void clear_rotation();
   static const int kRotationFieldNumber = 3;
   inline const ::levelFormat::quat& rotation() const;
   inline ::levelFormat::quat* mutable_rotation();
-
+  
   // optional .levelFormat.vec3 scale = 4;
   inline bool has_scale() const;
   inline void clear_scale();
   static const int kScaleFieldNumber = 4;
   inline const ::levelFormat::vec3& scale() const;
   inline ::levelFormat::vec3* mutable_scale();
-
+  
   // optional float mass = 5;
   inline bool has_mass() const;
   inline void clear_mass();
   static const int kMassFieldNumber = 5;
   inline float mass() const;
   inline void set_mass(float value);
-
+  
   // optional bool collidable = 6;
   inline bool has_collidable() const;
   inline void clear_collidable();
   static const int kCollidableFieldNumber = 6;
   inline bool collidable() const;
   inline void set_collidable(bool value);
-
+  
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
-
+  
   ::std::string* script_;
   static const ::std::string _default_script_;
   ::levelFormat::vec3* position_;
@@ -366,9 +366,9 @@ class genericPropInfo : public ::google::protobuf::Message {
   friend void  protobuf_AddDesc_level_5fformat_2eproto();
   friend void protobuf_AssignDesc_level_5fformat_2eproto();
   friend void protobuf_ShutdownFile_level_5fformat_2eproto();
-
+  
   ::google::protobuf::uint32 _has_bits_[(6 + 31) / 32];
-
+  
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
     return (_has_bits_[index / 32] & (1u << (index % 32))) != 0;
@@ -379,7 +379,7 @@ class genericPropInfo : public ::google::protobuf::Message {
   inline void _clear_bit(int index) {
     _has_bits_[index / 32] &= ~(1u << (index % 32));
   }
-
+  
   void InitAsDefaultInstance();
   static genericPropInfo* default_instance_;
 };
@@ -389,28 +389,28 @@ class portalInfo : public ::google::protobuf::Message {
  public:
   portalInfo();
   virtual ~portalInfo();
-
+  
   portalInfo(const portalInfo& from);
-
+  
   inline portalInfo& operator=(const portalInfo& from) {
     CopyFrom(from);
     return *this;
   }
-
+  
   inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
     return _unknown_fields_;
   }
-
+  
   inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
     return &_unknown_fields_;
   }
-
+  
   static const ::google::protobuf::Descriptor* descriptor();
   static const portalInfo& default_instance();
   void Swap(portalInfo* other);
-
+  
   // implements Message ----------------------------------------------
-
+  
   portalInfo* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
@@ -418,7 +418,7 @@ class portalInfo : public ::google::protobuf::Message {
   void MergeFrom(const portalInfo& from);
   void Clear();
   bool IsInitialized() const;
-
+  
   int ByteSize() const;
   bool MergePartialFromCodedStream(
       ::google::protobuf::io::CodedInputStream* input);
@@ -431,13 +431,13 @@ class portalInfo : public ::google::protobuf::Message {
   void SharedDtor();
   void SetCachedSize(int size) const { _cached_size_ = size; }
   public:
-
+  
   ::google::protobuf::Metadata GetMetadata() const;
-
+  
   // nested types ----------------------------------------------------
-
+  
   // accessors -------------------------------------------------------
-
+  
   // optional string connection = 1;
   inline bool has_connection() const;
   inline void clear_connection();
@@ -447,19 +447,19 @@ class portalInfo : public ::google::protobuf::Message {
   inline void set_connection(const char* value);
   inline void set_connection(const char* value, size_t size);
   inline ::std::string* mutable_connection();
-
+  
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
-
+  
   ::std::string* connection_;
   static const ::std::string _default_connection_;
   friend void  protobuf_AddDesc_level_5fformat_2eproto();
   friend void protobuf_AssignDesc_level_5fformat_2eproto();
   friend void protobuf_ShutdownFile_level_5fformat_2eproto();
-
+  
   ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
-
+  
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
     return (_has_bits_[index / 32] & (1u << (index % 32))) != 0;
@@ -470,7 +470,7 @@ class portalInfo : public ::google::protobuf::Message {
   inline void _clear_bit(int index) {
     _has_bits_[index / 32] &= ~(1u << (index % 32));
   }
-
+  
   void InitAsDefaultInstance();
   static portalInfo* default_instance_;
 };
@@ -480,28 +480,28 @@ class triggerInfo : public ::google::protobuf::Message {
  public:
   triggerInfo();
   virtual ~triggerInfo();
-
+  
   triggerInfo(const triggerInfo& from);
-
+  
   inline triggerInfo& operator=(const triggerInfo& from) {
     CopyFrom(from);
     return *this;
   }
-
+  
   inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
     return _unknown_fields_;
   }
-
+  
   inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
     return &_unknown_fields_;
   }
-
+  
   static const ::google::protobuf::Descriptor* descriptor();
   static const triggerInfo& default_instance();
   void Swap(triggerInfo* other);
-
+  
   // implements Message ----------------------------------------------
-
+  
   triggerInfo* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
@@ -509,7 +509,7 @@ class triggerInfo : public ::google::protobuf::Message {
   void MergeFrom(const triggerInfo& from);
   void Clear();
   bool IsInitialized() const;
-
+  
   int ByteSize() const;
   bool MergePartialFromCodedStream(
       ::google::protobuf::io::CodedInputStream* input);
@@ -522,13 +522,13 @@ class triggerInfo : public ::google::protobuf::Message {
   void SharedDtor();
   void SetCachedSize(int size) const { _cached_size_ = size; }
   public:
-
+  
   ::google::protobuf::Metadata GetMetadata() const;
-
+  
   // nested types ----------------------------------------------------
-
+  
   // accessors -------------------------------------------------------
-
+  
   // optional string on_enter = 1;
   inline bool has_on_enter() const;
   inline void clear_on_enter();
@@ -538,7 +538,7 @@ class triggerInfo : public ::google::protobuf::Message {
   inline void set_on_enter(const char* value);
   inline void set_on_enter(const char* value, size_t size);
   inline ::std::string* mutable_on_enter();
-
+  
   // optional string on_exit = 2;
   inline bool has_on_exit() const;
   inline void clear_on_exit();
@@ -548,11 +548,11 @@ class triggerInfo : public ::google::protobuf::Message {
   inline void set_on_exit(const char* value);
   inline void set_on_exit(const char* value, size_t size);
   inline ::std::string* mutable_on_exit();
-
+  
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
-
+  
   ::std::string* on_enter_;
   static const ::std::string _default_on_enter_;
   ::std::string* on_exit_;
@@ -560,9 +560,9 @@ class triggerInfo : public ::google::protobuf::Message {
   friend void  protobuf_AddDesc_level_5fformat_2eproto();
   friend void protobuf_AssignDesc_level_5fformat_2eproto();
   friend void protobuf_ShutdownFile_level_5fformat_2eproto();
-
+  
   ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
-
+  
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
     return (_has_bits_[index / 32] & (1u << (index % 32))) != 0;
@@ -573,7 +573,7 @@ class triggerInfo : public ::google::protobuf::Message {
   inline void _clear_bit(int index) {
     _has_bits_[index / 32] &= ~(1u << (index % 32));
   }
-
+  
   void InitAsDefaultInstance();
   static triggerInfo* default_instance_;
 };
@@ -583,28 +583,28 @@ class entity : public ::google::protobuf::Message {
  public:
   entity();
   virtual ~entity();
-
+  
   entity(const entity& from);
-
+  
   inline entity& operator=(const entity& from) {
     CopyFrom(from);
     return *this;
   }
-
+  
   inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
     return _unknown_fields_;
   }
-
+  
   inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
     return &_unknown_fields_;
   }
-
+  
   static const ::google::protobuf::Descriptor* descriptor();
   static const entity& default_instance();
   void Swap(entity* other);
-
+  
   // implements Message ----------------------------------------------
-
+  
   entity* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
@@ -612,7 +612,7 @@ class entity : public ::google::protobuf::Message {
   void MergeFrom(const entity& from);
   void Clear();
   bool IsInitialized() const;
-
+  
   int ByteSize() const;
   bool MergePartialFromCodedStream(
       ::google::protobuf::io::CodedInputStream* input);
@@ -625,20 +625,20 @@ class entity : public ::google::protobuf::Message {
   void SharedDtor();
   void SetCachedSize(int size) const { _cached_size_ = size; }
   public:
-
+  
   ::google::protobuf::Metadata GetMetadata() const;
-
+  
   // nested types ----------------------------------------------------
-
+  
   // accessors -------------------------------------------------------
-
+  
   // optional uint32 type = 1;
   inline bool has_type() const;
   inline void clear_type();
   static const int kTypeFieldNumber = 1;
   inline ::google::protobuf::uint32 type() const;
   inline void set_type(::google::protobuf::uint32 value);
-
+  
   // optional string name = 2;
   inline bool has_name() const;
   inline void clear_name();
@@ -648,32 +648,32 @@ class entity : public ::google::protobuf::Message {
   inline void set_name(const char* value);
   inline void set_name(const char* value, size_t size);
   inline ::std::string* mutable_name();
-
+  
   // optional .levelFormat.genericPropInfo generic_prop_info = 3;
   inline bool has_generic_prop_info() const;
   inline void clear_generic_prop_info();
   static const int kGenericPropInfoFieldNumber = 3;
   inline const ::levelFormat::genericPropInfo& generic_prop_info() const;
   inline ::levelFormat::genericPropInfo* mutable_generic_prop_info();
-
+  
   // optional .levelFormat.portalInfo portal_info = 4;
   inline bool has_portal_info() const;
   inline void clear_portal_info();
   static const int kPortalInfoFieldNumber = 4;
   inline const ::levelFormat::portalInfo& portal_info() const;
   inline ::levelFormat::portalInfo* mutable_portal_info();
-
+  
   // optional .levelFormat.triggerInfo trigger_info = 5;
   inline bool has_trigger_info() const;
   inline void clear_trigger_info();
   static const int kTriggerInfoFieldNumber = 5;
   inline const ::levelFormat::triggerInfo& trigger_info() const;
   inline ::levelFormat::triggerInfo* mutable_trigger_info();
-
+  
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
-
+  
   ::google::protobuf::uint32 type_;
   ::std::string* name_;
   static const ::std::string _default_name_;
@@ -683,9 +683,9 @@ class entity : public ::google::protobuf::Message {
   friend void  protobuf_AddDesc_level_5fformat_2eproto();
   friend void protobuf_AssignDesc_level_5fformat_2eproto();
   friend void protobuf_ShutdownFile_level_5fformat_2eproto();
-
+  
   ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
-
+  
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
     return (_has_bits_[index / 32] & (1u << (index % 32))) != 0;
@@ -696,7 +696,7 @@ class entity : public ::google::protobuf::Message {
   inline void _clear_bit(int index) {
     _has_bits_[index / 32] &= ~(1u << (index % 32));
   }
-
+  
   void InitAsDefaultInstance();
   static entity* default_instance_;
 };
@@ -706,28 +706,28 @@ class level : public ::google::protobuf::Message {
  public:
   level();
   virtual ~level();
-
+  
   level(const level& from);
-
+  
   inline level& operator=(const level& from) {
     CopyFrom(from);
     return *this;
   }
-
+  
   inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
     return _unknown_fields_;
   }
-
+  
   inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
     return &_unknown_fields_;
   }
-
+  
   static const ::google::protobuf::Descriptor* descriptor();
   static const level& default_instance();
   void Swap(level* other);
-
+  
   // implements Message ----------------------------------------------
-
+  
   level* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
@@ -735,7 +735,7 @@ class level : public ::google::protobuf::Message {
   void MergeFrom(const level& from);
   void Clear();
   bool IsInitialized() const;
-
+  
   int ByteSize() const;
   bool MergePartialFromCodedStream(
       ::google::protobuf::io::CodedInputStream* input);
@@ -748,13 +748,13 @@ class level : public ::google::protobuf::Message {
   void SharedDtor();
   void SetCachedSize(int size) const { _cached_size_ = size; }
   public:
-
+  
   ::google::protobuf::Metadata GetMetadata() const;
-
+  
   // nested types ----------------------------------------------------
-
+  
   // accessors -------------------------------------------------------
-
+  
   // repeated .levelFormat.entity entities = 1;
   inline int entities_size() const;
   inline void clear_entities();
@@ -764,7 +764,7 @@ class level : public ::google::protobuf::Message {
   inline const ::levelFormat::entity& entities(int index) const;
   inline ::levelFormat::entity* mutable_entities(int index);
   inline ::levelFormat::entity* add_entities();
-
+  
   // optional string script = 2;
   inline bool has_script() const;
   inline void clear_script();
@@ -774,20 +774,20 @@ class level : public ::google::protobuf::Message {
   inline void set_script(const char* value);
   inline void set_script(const char* value, size_t size);
   inline ::std::string* mutable_script();
-
+  
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
-
+  
   ::google::protobuf::RepeatedPtrField< ::levelFormat::entity > entities_;
   ::std::string* script_;
   static const ::std::string _default_script_;
   friend void  protobuf_AddDesc_level_5fformat_2eproto();
   friend void protobuf_AssignDesc_level_5fformat_2eproto();
   friend void protobuf_ShutdownFile_level_5fformat_2eproto();
-
+  
   ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
-
+  
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
     return (_has_bits_[index / 32] & (1u << (index % 32))) != 0;
@@ -798,7 +798,7 @@ class level : public ::google::protobuf::Message {
   inline void _clear_bit(int index) {
     _has_bits_[index / 32] &= ~(1u << (index % 32));
   }
-
+  
   void InitAsDefaultInstance();
   static level* default_instance_;
 };
