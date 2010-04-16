@@ -2,8 +2,15 @@ Pseudoform INSTALL
 ============================
 
 To install the game, just extract it to somewhere and run
-Linux: ./pseudoform_linux.sh
-Windows: pseudoform_win.bat
+Linux: 
+cmake .
+make
+./pseudoform_linux.sh
+
+Windows: 
+run cmake in root dir
+run make in root dir
+pseudoform_win.bat
 
 Except for working 3D drivers, no dependencies should be required in either case. 
 Please excuse the improper installation as of now.
