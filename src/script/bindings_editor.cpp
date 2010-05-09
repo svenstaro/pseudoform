@@ -21,8 +21,8 @@ namespace engine
     {
         void bindEditor(script &scr)
         {
-            using namespace chaiscript;
-            using namespace game;
+            //using namespace chaiscript;
+//            using namespace game;
 
 //            void play();
 //            void redo();

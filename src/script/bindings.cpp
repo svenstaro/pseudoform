@@ -15,7 +15,7 @@
 #include "log.hpp"
 #include "types.hpp"
 #include "action_binder.hpp"
-#include "gui/widget.hpp"
+//#include "gui/widget.hpp"
 #include "game/entity.hpp"
 #include "game/level.hpp"
 

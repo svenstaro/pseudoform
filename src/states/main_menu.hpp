@@ -56,14 +56,14 @@ namespace game
             /// Sound system handler
             engine::snd::system &_soundSys;
 
-            /// Gui handler
-            engine::gui::sheetPtr _sheet;
-
             /// Ogre's scene manager to use in this state
             Ogre::SceneManager *_sceneMgr;
 
             /// Viewport to use in this state
             Ogre::Viewport *_viewport;
+
+            /// Render window
+            Ogre::RenderWindow *_window;
 
             /// Program arguments options
             engine::programOptions *_opts;
@@ -107,14 +107,14 @@ namespace game
              * Constructor
              * @param input input manager handler
              * @param soundSys sound system handler
-             * @mgr scene manager handler
-             * @vp viewport
-             * @opts argument parameters
+             * @param mgr scene manager handler
+             * @param vp viewport
+             * @param opts argument parameters
              */
             mainMenuState(
                 const engine::input::input &input,
                 engine::snd::system &soundSys,
-                Ogre::SceneManager *mgr, Ogre::Viewport *vp,
+                Ogre::SceneManager *mgr, Ogre::Viewport *vp, Ogre::RenderWindow *rWindow,
                 engine::programOptions *opts = NULL);
 
             /**
@@ -130,26 +130,28 @@ namespace game
             void suspend();
             void resume();
 
+            // We don't need to overload this method due
+            // they are already implemented in gui_disp.cpp
             /**
              * @brief Event key pressed
              */
-            virtual bool keyPressed(const OIS::KeyEvent &e);
+            //virtual bool keyPressed(const OIS::KeyEvent &e);
             /**
              * @brief Even key released
              */
-            virtual bool keyReleased(const OIS::KeyEvent &e);
+            //virtual bool keyReleased(const OIS::KeyEvent &e);
             /**
              * @brief Event mouse moved
              */
-            virtual bool mouseMoved(const OIS::MouseEvent &e);
+            //virtual bool mouseMoved(const OIS::MouseEvent &e);
             /**
              * @brief Event mouse pressed
              */
-            virtual bool mousePressed(const OIS::MouseEvent &e, OIS::MouseButtonID id);
+            //virtual bool mousePressed(const OIS::MouseEvent &e, OIS::MouseButtonID id);
             /**
              * @brief Event mouse released
              */
-            virtual bool mouseReleased(const OIS::MouseEvent &e, OIS::MouseButtonID id);
+            //virtual bool mouseReleased(const OIS::MouseEvent &e, OIS::MouseButtonID id);
     };
 }
 

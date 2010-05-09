@@ -16,7 +16,7 @@
 #include "script/bindings.hpp"
 #include "script/script.hpp"
 
-#include "gui/sheet.hpp"
+//#include "gui/sheet.hpp"
 
 #include "level.hpp"
 #include "types.hpp"

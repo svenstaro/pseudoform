@@ -21,8 +21,8 @@ namespace engine
     {
         void bindPlay(script &scr)
         {
-            using namespace chaiscript;
-            using namespace game;
+            //using namespace chaiscript;
+//            using namespace game;
 
 //            module(L)
 //            [

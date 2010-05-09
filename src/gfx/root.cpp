@@ -25,6 +25,8 @@
 #include "log.hpp"
 #include "fs_ops.hpp"
 
+#include <boost/filesystem.hpp>
+
 #include "txml/txml.hpp"
 
 namespace engine
@@ -91,22 +93,22 @@ namespace engine
             }
             else
             {
-                #ifdef _DEBUG
-                _root->loadPlugin(plugins + "RenderSystem_GL_d");
-                #else
+                //#ifdef _DEBUG
+                //_root->loadPlugin(plugins + "RenderSystem_GL_d");
+                //#else
                 _root->loadPlugin(plugins + "RenderSystem_GL");
-                #endif
+                //#endif
                 renderLib = RL_OGL;
             }
 
             // Load CG shader manager and particle manager
-            #ifdef _DEBUG
-            _root->loadPlugin(plugins + "Plugin_CgProgramManager_d");
-            _root->loadPlugin(plugins + "Plugin_ParticleFX_d");
-            #else
+            //#ifdef _DEBUG
+            //_root->loadPlugin(plugins + "Plugin_CgProgramManager_d");
+            //_root->loadPlugin(plugins + "Plugin_ParticleFX_d");
+            //#else
             _root->loadPlugin(plugins + "Plugin_CgProgramManager");
             _root->loadPlugin(plugins + "Plugin_ParticleFX");
-            #endif
+            //#endif
 
             // Get full list of available renderers
             const Ogre::RenderSystemList& availRenderers = _root->getAvailableRenderers();
@@ -177,8 +179,10 @@ namespace engine
 
             // Manage project resources
             Ogre::ResourceGroupManager &rgm = Ogre::ResourceGroupManager::getSingleton();
-            rgm.addResourceLocation(engine::DATA_DIR, "FileSystem", "data", true);
-            rgm.initialiseResourceGroup("data");
+            rgm.addResourceLocation(engine::DATA_DIR, "FileSystem", "General", true);
+            rgm.addResourceLocation(engine::DATA_DIR + "/media", "FileSystem", "General", true);
+            rgm.addResourceLocation(engine::DATA_DIR + "/media/MyGUI_Media", "FileSystem", "General", true);
+            rgm.initialiseResourceGroup("General");
 
             Ogre::MaterialManager::getSingleton().setDefaultAnisotropy(16);
             Ogre::MaterialManager::getSingleton().setDefaultTextureFiltering(Ogre::TFO_ANISOTROPIC);
